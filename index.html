@@ -2815,6 +2815,719 @@ cpPresentSources=function(){
   }
 }
 </style>
+
+<style id="frotapro-pro-redesign-v3">
+/* ==========================================================================
+   FROTAPRO v3.0 — REDESIGN PRO, ANIMAÇÕES DE BOTÕES, SCROLLBARS OCULTAS,
+   SPLASH SCREEN DESKTOP & CENTRAL DE CONFIGURAÇÕES E ATUALIZAÇÕES
+   ========================================================================== */
+
+/* 1. OCULTAR BARRAS DE ROLAGEM MANTENDO A ROLAGEM FUNCIONAL */
+html, body, .side, .main, .content, .tablewrap, .rh-table-wrap, .cp-present-table,
+.cp-topic-tabs, .cp-subtabs, .modal, .modalbody, .fp-dash-body, .master-list-panel,
+* {
+  scrollbar-width: none !important; /* Firefox */
+  -ms-overflow-style: none !important; /* IE / Edge Legacy */
+}
+html::-webkit-scrollbar,
+body::-webkit-scrollbar,
+.side::-webkit-scrollbar,
+.main::-webkit-scrollbar,
+.content::-webkit-scrollbar,
+.tablewrap::-webkit-scrollbar,
+.rh-table-wrap::-webkit-scrollbar,
+.cp-present-table::-webkit-scrollbar,
+.cp-topic-tabs::-webkit-scrollbar,
+.cp-subtabs::-webkit-scrollbar,
+.modal::-webkit-scrollbar,
+.modalbody::-webkit-scrollbar,
+.fp-dash-body::-webkit-scrollbar,
+.master-list-panel::-webkit-scrollbar,
+*::-webkit-scrollbar {
+  width: 0 !important;
+  height: 0 !important;
+  display: none !important;
+  background: transparent !important;
+}
+
+/* 2. ESTÉTICA PRO, PROFUNDIDADE, GLASSMORPHISM E VIDA NOS BOTÕES */
+@media screen {
+  :root {
+    --fp-navy-deep: #091729;
+    --fp-navy-mid: #102847;
+    --fp-blue-pro: #1d63dc;
+    --fp-blue-bright: #3b82f6;
+    --fp-cyan-glow: #38bdf8;
+    --fp-emerald: #10b981;
+    --fp-bg-canvas: #eef3f9;
+    --fp-card-border: rgba(203, 217, 236, 0.85);
+    --fp-shadow-sm: 0 2px 8px rgba(13, 33, 62, 0.04);
+    --fp-shadow-md: 0 10px 28px -6px rgba(13, 33, 62, 0.08), 0 2px 6px rgba(13, 33, 62, 0.04);
+    --fp-shadow-lg: 0 20px 44px -10px rgba(11, 28, 54, 0.16);
+  }
+
+  body {
+    background:
+      radial-gradient(circle at 12% 0%, rgba(56, 189, 248, 0.07), transparent 34%),
+      radial-gradient(circle at 92% 8%, rgba(37, 99, 235, 0.06), transparent 38%),
+      var(--fp-bg-canvas) !important;
+    color: #15253b !important;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Barra lateral refinada */
+  .side {
+    background:
+      radial-gradient(circle at 20% 0%, rgba(56, 189, 248, 0.14), transparent 42%),
+      linear-gradient(180deg, #0d213c 0%, #091628 55%, #06101e 100%) !important;
+    border-right: 1px solid rgba(255, 255, 255, 0.08) !important;
+    box-shadow: 6px 0 32px rgba(6, 16, 30, 0.22) !important;
+  }
+
+  .brand {
+    padding: 8px 10px 22px !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+  }
+
+  .brandicon {
+    background: linear-gradient(135deg, #2563eb 0%, #0ea5e9 100%) !important;
+    box-shadow: 0 8px 20px rgba(14, 165, 233, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.35) !important;
+    border: 1px solid rgba(255, 255, 255, 0.22) !important;
+    transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.3s ease !important;
+  }
+  .brand:hover .brandicon {
+    transform: translateY(-1px) scale(1.04) !important;
+    box-shadow: 0 12px 24px rgba(14, 165, 233, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.45) !important;
+  }
+
+  .navlabel {
+    color: #6f8bb0 !important;
+    font-weight: 800 !important;
+    letter-spacing: 1.6px !important;
+  }
+
+  .nav button {
+    position: relative !important;
+    border-radius: 11px !important;
+    padding: 11px 13px !important;
+    margin: 3px 0 !important;
+    color: #bdd0e8 !important;
+    font-weight: 600 !important;
+    transition: all 0.22s cubic-bezier(0.22, 1, 0.36, 1) !important;
+    overflow: hidden !important;
+  }
+
+  .nav button:hover {
+    background: rgba(255, 255, 255, 0.08) !important;
+    color: #ffffff !important;
+    transform: translateX(3px) !important;
+  }
+
+  .nav button.active {
+    background: linear-gradient(90deg, rgba(37, 99, 235, 0.34) 0%, rgba(14, 165, 233, 0.16) 100%) !important;
+    color: #ffffff !important;
+    font-weight: 700 !important;
+    box-shadow: inset 0 0 0 1px rgba(96, 165, 250, 0.35), 0 6px 16px rgba(6, 16, 30, 0.25) !important;
+  }
+
+  .nav button.active::before {
+    content: "" !important;
+    position: absolute !important;
+    left: 0 !important;
+    top: 20% !important;
+    bottom: 20% !important;
+    width: 3.5px !important;
+    border-radius: 0 4px 4px 0 !important;
+    background: linear-gradient(180deg, #38bdf8, #3b82f6) !important;
+    box-shadow: 0 0 10px #38bdf8 !important;
+  }
+
+  .nav button .ico svg {
+    transition: transform 0.22s ease, stroke 0.22s ease !important;
+  }
+  .nav button:hover .ico svg,
+  .nav button.active .ico svg {
+    transform: scale(1.1) !important;
+    stroke: #7dd3fc !important;
+  }
+
+  .fp-nav-badge {
+    margin-left: auto !important;
+    padding: 2px 7px !important;
+    border-radius: 999px !important;
+    font-size: 9px !important;
+    font-weight: 800 !important;
+    letter-spacing: 0.6px !important;
+    background: linear-gradient(135deg, #10b981, #059669) !important;
+    color: #ffffff !important;
+    box-shadow: 0 2px 8px rgba(16, 185, 129, 0.45) !important;
+    animation: fpPulseBadge 2s infinite !important;
+  }
+
+  @keyframes fpPulseBadge {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.07); opacity: 0.88; }
+  }
+
+  /* Cartão discreto de versão no rodapé da barra lateral */
+  .fp-version-card {
+    margin: 22px 6px 8px !important;
+    padding: 12px 13px !important;
+    border-radius: 12px !important;
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02)) !important;
+    border: 1px solid rgba(148, 184, 230, 0.16) !important;
+    cursor: pointer !important;
+    transition: all 0.22s ease !important;
+  }
+  .fp-version-card:hover {
+    background: rgba(255, 255, 255, 0.1) !important;
+    border-color: rgba(56, 189, 248, 0.4) !important;
+    transform: translateY(-1px) !important;
+  }
+  .fp-ver-row {
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    color: #f1f6fd !important;
+    font-size: 11.5px !important;
+    letter-spacing: 0.2px !important;
+  }
+  .fp-ver-dot {
+    width: 8px !important;
+    height: 8px !important;
+    border-radius: 50% !important;
+    background: #10b981 !important;
+    box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.22) !important;
+    flex-shrink: 0 !important;
+  }
+  .fp-ver-dot.has-update {
+    background: #38bdf8 !important;
+    box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.28) !important;
+  }
+  .fp-ver-meta {
+    margin-top: 5px !important;
+    font-size: 10.5px !important;
+    color: #93accb !important;
+    padding-left: 16px !important;
+  }
+
+  /* Cabeçalho superior translúcido */
+  .top {
+    background: rgba(255, 255, 255, 0.86) !important;
+    backdrop-filter: blur(14px) !important;
+    -webkit-backdrop-filter: blur(14px) !important;
+    border-bottom: 1px solid rgba(203, 217, 236, 0.75) !important;
+    box-shadow: 0 4px 20px rgba(13, 33, 62, 0.03) !important;
+  }
+
+  .avatar {
+    background: linear-gradient(135deg, #1d63dc, #0ea5e9) !important;
+    color: #ffffff !important;
+    box-shadow: 0 4px 12px rgba(29, 99, 220, 0.28) !important;
+  }
+
+  /* Vida nos botões (micro-interações, brilho, elevação e clique tátil) */
+  button {
+    position: relative;
+    border-radius: 10px !important;
+    transition:
+      transform 0.18s cubic-bezier(0.22, 1, 0.36, 1),
+      box-shadow 0.22s ease,
+      background 0.22s ease,
+      border-color 0.22s ease,
+      filter 0.18s ease !important;
+  }
+
+  button:not(:disabled):hover {
+    transform: translateY(-1.5px) !important;
+  }
+
+  button:not(:disabled):active {
+    transform: translateY(0.5px) scale(0.985) !important;
+  }
+
+  button.primary {
+    background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 55%, #1e40af 100%) !important;
+    color: #ffffff !important;
+    border: 1px solid rgba(255, 255, 255, 0.16) !important;
+    box-shadow: 0 6px 16px -3px rgba(37, 99, 235, 0.42), inset 0 1px 0 rgba(255, 255, 255, 0.25) !important;
+  }
+  button.primary:not(:disabled):hover {
+    background: linear-gradient(135deg, #3b82f6 0%, #2563eb 55%, #1d4ed8 100%) !important;
+    box-shadow: 0 10px 22px -4px rgba(37, 99, 235, 0.52), inset 0 1px 0 rgba(255, 255, 255, 0.35) !important;
+  }
+
+  button.soft {
+    background: linear-gradient(180deg, #ffffff 0%, #f1f5fb 100%) !important;
+    color: #264163 !important;
+    border: 1px solid #d3dfee !important;
+    box-shadow: 0 2px 6px rgba(15, 35, 65, 0.04), inset 0 1px 0 #ffffff !important;
+  }
+  button.soft:not(:disabled):hover {
+    background: linear-gradient(180deg, #ffffff 0%, #e6eef9 100%) !important;
+    border-color: #b4c8e2 !important;
+    color: #133157 !important;
+    box-shadow: 0 6px 14px rgba(15, 35, 65, 0.08) !important;
+  }
+
+  button.greenbtn {
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%) !important;
+    color: #ffffff !important;
+    border: 1px solid rgba(255, 255, 255, 0.18) !important;
+    box-shadow: 0 6px 16px -3px rgba(16, 185, 129, 0.38), inset 0 1px 0 rgba(255, 255, 255, 0.25) !important;
+  }
+  button.greenbtn:not(:disabled):hover {
+    background: linear-gradient(135deg, #34d399 0%, #10b981 100%) !important;
+    box-shadow: 0 10px 22px -4px rgba(16, 185, 129, 0.48) !important;
+  }
+
+  button.danger {
+    background: linear-gradient(180deg, #fff5f5 0%, #ffe4e6 100%) !important;
+    color: #be123c !important;
+    border: 1px solid #fecdd3 !important;
+    box-shadow: 0 2px 6px rgba(190, 18, 60, 0.06) !important;
+  }
+  button.danger:not(:disabled):hover {
+    background: linear-gradient(135deg, #e11d48 0%, #be123c 100%) !important;
+    color: #ffffff !important;
+    border-color: #be123c !important;
+    box-shadow: 0 8px 18px -3px rgba(225, 29, 72, 0.4) !important;
+  }
+
+  /* Cards com acabamento executivo */
+  .card {
+    background: rgba(255, 255, 255, 0.96) !important;
+    border: 1px solid var(--fp-card-border) !important;
+    border-radius: 16px !important;
+    box-shadow: var(--fp-shadow-md) !important;
+    transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease !important;
+  }
+
+  #view .dash-stats > .stat-card:hover,
+  #view .dash-secondary-stats > .stat-card:hover {
+    transform: translateY(-2.5px) !important;
+    border-color: #9ec0ea !important;
+    box-shadow: 0 14px 30px -8px rgba(29, 99, 220, 0.14) !important;
+  }
+
+  /* Inputs com foco elegante */
+  .field input:focus, .field select:focus, .field textarea:focus,
+  .filter input:focus, .filter select:focus {
+    outline: none !important;
+    border-color: #3b82f6 !important;
+    box-shadow: 0 0 0 3.5px rgba(59, 130, 246, 0.16) !important;
+  }
+
+  /* Toast mais bonito */
+  .toast {
+    background: linear-gradient(135deg, #0f2542, #163660) !important;
+    border: 1px solid rgba(96, 165, 250, 0.35) !important;
+    box-shadow: 0 16px 36px rgba(7, 19, 36, 0.32) !important;
+    border-radius: 12px !important;
+    font-weight: 600 !important;
+  }
+}
+
+/* 3. NOTIFICAÇÃO DE ATUALIZAÇÃO ELEGANTE (DESKTOP & WEB) */
+#fpUpdateBanner {
+  position: fixed;
+  right: 22px;
+  bottom: 22px;
+  z-index: 9990;
+  max-width: 410px;
+  width: calc(100vw - 32px);
+  background: linear-gradient(145deg, #0d223e 0%, #133159 100%);
+  color: #f4f8ff;
+  border: 1px solid rgba(56, 189, 248, 0.42);
+  border-radius: 16px;
+  padding: 16px 18px;
+  box-shadow: 0 22px 48px rgba(6, 16, 32, 0.42), 0 0 0 1px rgba(255, 255, 255, 0.06) inset;
+  display: none;
+  animation: fpSlideUpBanner 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+#fpUpdateBanner.visible {
+  display: block;
+}
+@keyframes fpSlideUpBanner {
+  from { opacity: 0; transform: translateY(18px) scale(0.97); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+.fp-upd-head {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+}
+.fp-upd-ico {
+  width: 38px;
+  height: 38px;
+  border-radius: 11px;
+  background: linear-gradient(135deg, #0ea5e9, #2563eb);
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  box-shadow: 0 6px 16px rgba(14, 165, 233, 0.38);
+}
+.fp-upd-title {
+  font-size: 13.5px;
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: 0.1px;
+}
+.fp-upd-sub {
+  font-size: 11.5px;
+  color: #b5cae6;
+  margin-top: 2px;
+}
+.fp-upd-body {
+  margin: 10px 0 13px;
+  font-size: 12px;
+  line-height: 1.5;
+  color: #d6e4f7;
+}
+.fp-upd-actions {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+}
+.fp-upd-later {
+  background: rgba(255, 255, 255, 0.1) !important;
+  color: #dce8f8 !important;
+  border: 1px solid rgba(255, 255, 255, 0.14) !important;
+  padding: 8px 12px !important;
+  font-size: 12px !important;
+}
+.fp-upd-now {
+  background: linear-gradient(135deg, #10b981, #059669) !important;
+  color: #ffffff !important;
+  padding: 8px 14px !important;
+  font-size: 12px !important;
+  box-shadow: 0 6px 16px rgba(16, 185, 129, 0.38) !important;
+}
+
+/* 4. ABERTURA INOVADORA DO APP INSTALADO NO COMPUTADOR (SPLASH SCREEN) */
+#fpDesktopSplash {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  background:
+    radial-gradient(circle at 25% 20%, rgba(14, 165, 233, 0.22), transparent 45%),
+    radial-gradient(circle at 80% 80%, rgba(37, 99, 235, 0.25), transparent 50%),
+    linear-gradient(160deg, #071222 0%, #0d213d 52%, #081528 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  overflow: hidden;
+  transition: opacity 0.55s cubic-bezier(0.22, 1, 0.36, 1), visibility 0.55s ease, transform 0.55s ease;
+}
+#fpDesktopSplash.fp-splash-hide {
+  opacity: 0;
+  visibility: hidden;
+  transform: scale(1.03);
+  pointer-events: none;
+}
+.fp-splash-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(56, 189, 248, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(56, 189, 248, 0.06) 1px, transparent 1px);
+  background-size: 44px 44px;
+  mask-image: radial-gradient(circle at center, black 35%, transparent 80%);
+  -webkit-mask-image: radial-gradient(circle at center, black 35%, transparent 80%);
+  animation: fpGridMove 14s linear infinite;
+}
+@keyframes fpGridMove {
+  from { transform: translateY(0); }
+  to { transform: translateY(44px); }
+}
+.fp-splash-card {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 36px 42px;
+  max-width: 440px;
+}
+.fp-splash-logo-ring {
+  position: relative;
+  width: 108px;
+  height: 108px;
+  border-radius: 28px;
+  background: linear-gradient(135deg, #2563eb 0%, #0ea5e9 100%);
+  display: grid;
+  place-items: center;
+  box-shadow:
+    0 20px 50px rgba(14, 165, 233, 0.42),
+    0 0 0 1px rgba(255, 255, 255, 0.28) inset;
+  animation: fpLogoFloat 2.4s ease-in-out infinite, fpLogoPop 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.fp-splash-logo-ring::after {
+  content: "";
+  position: absolute;
+  inset: -8px;
+  border-radius: 34px;
+  border: 1.5px solid rgba(56, 189, 248, 0.45);
+  animation: fpRingExpand 2.2s ease-out infinite;
+}
+@keyframes fpLogoPop {
+  from { opacity: 0; transform: scale(0.72) translateY(14px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+@keyframes fpLogoFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+@keyframes fpRingExpand {
+  0% { transform: scale(0.95); opacity: 0.85; }
+  100% { transform: scale(1.18); opacity: 0; }
+}
+.fp-splash-logo-ring svg {
+  width: 60px;
+  height: 50px;
+  fill: none;
+  stroke: #ffffff;
+  stroke-width: 3.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.fp-splash-road {
+  width: 160px;
+  height: 3px;
+  margin-top: 18px;
+  border-radius: 99px;
+  background: rgba(255, 255, 255, 0.12);
+  overflow: hidden;
+  position: relative;
+}
+.fp-splash-road::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  width: 45%;
+  background: linear-gradient(90deg, transparent, #38bdf8, #ffffff);
+  border-radius: 99px;
+  animation: fpRoadStreak 1.1s ease-in-out infinite;
+}
+@keyframes fpRoadStreak {
+  0% { transform: translateX(-120%); }
+  100% { transform: translateX(260%); }
+}
+.fp-splash-title {
+  margin: 22px 0 4px;
+  font-size: 30px;
+  font-weight: 900;
+  letter-spacing: 2px;
+  color: #ffffff;
+}
+.fp-splash-title span {
+  color: #38bdf8;
+}
+.fp-splash-sub {
+  font-size: 11.5px;
+  letter-spacing: 2.2px;
+  text-transform: uppercase;
+  color: #93b4dc;
+  font-weight: 700;
+}
+.fp-splash-bar {
+  width: 240px;
+  height: 5px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.1);
+  margin-top: 26px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+.fp-splash-bar-fill {
+  height: 100%;
+  width: 0%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #2563eb, #38bdf8, #10b981);
+  transition: width 0.35s ease;
+}
+.fp-splash-status {
+  margin-top: 12px;
+  font-size: 12px;
+  color: #b7cde8;
+  font-weight: 500;
+}
+.fp-splash-ver {
+  margin-top: 18px;
+  padding: 4px 12px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  font-size: 10.5px;
+  color: #8fb0d8;
+  letter-spacing: 0.6px;
+}
+
+/* 5. ESTILOS DA ABA COMPLETA DE CONFIGURAÇÕES */
+.fp-cfg-hero {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 22px 24px;
+  border-radius: 18px;
+  background: linear-gradient(135deg, #0e2442 0%, #163966 60%, #1d4f8c 100%);
+  color: #ffffff;
+  margin-bottom: 18px;
+  box-shadow: 0 14px 32px -8px rgba(13, 33, 62, 0.28);
+  border: 1px solid rgba(96, 165, 250, 0.28);
+}
+.fp-cfg-hero-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.fp-cfg-logo {
+  width: 56px;
+  height: 56px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, #2563eb, #0ea5e9);
+  display: grid;
+  place-items: center;
+  box-shadow: 0 10px 22px rgba(14, 165, 233, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  flex-shrink: 0;
+}
+.fp-cfg-logo svg {
+  width: 32px;
+  height: 26px;
+  fill: none;
+  stroke: #ffffff;
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.fp-cfg-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 8px;
+}
+.fp-cfg-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 700;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: #eaf3ff;
+}
+.fp-cfg-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+@media (max-width: 900px) {
+  .fp-cfg-grid {
+    grid-template-columns: 1fr;
+  }
+}
+.fp-cfg-card h3 {
+  margin: 0 0 6px;
+  font-size: 16px;
+  color: #132844;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.fp-cfg-list {
+  margin: 12px 0;
+  padding: 0;
+  list-style: none;
+}
+.fp-cfg-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 9px 0;
+  border-bottom: 1px solid #e6edf6;
+  font-size: 13px;
+}
+.fp-cfg-list li:last-child {
+  border-bottom: 0;
+}
+.fp-switch-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 11px 0;
+  border-bottom: 1px solid #e6edf6;
+}
+.fp-switch-row:last-child {
+  border-bottom: 0;
+}
+.fp-switch {
+  position: relative;
+  width: 44px;
+  height: 24px;
+  flex-shrink: 0;
+}
+.fp-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+.fp-slider {
+  position: absolute;
+  cursor: pointer;
+  inset: 0;
+  background: #cbd7e6;
+  border-radius: 999px;
+  transition: 0.25s;
+}
+.fp-slider::before {
+  content: "";
+  position: absolute;
+  height: 18px;
+  width: 18px;
+  left: 3px;
+  bottom: 3px;
+  background: #ffffff;
+  border-radius: 50%;
+  transition: 0.25s;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.18);
+}
+.fp-switch input:checked + .fp-slider {
+  background: linear-gradient(135deg, #2563eb, #0ea5e9);
+}
+.fp-switch input:checked + .fp-slider::before {
+  transform: translateX(20px);
+}
+.fp-changelog-box {
+  background: #f5f8fd;
+  border: 1px solid #dce6f3;
+  border-radius: 12px;
+  padding: 12px 14px;
+  margin-top: 12px;
+  font-size: 12.5px;
+  color: #314968;
+}
+.fp-changelog-box ul {
+  margin: 6px 0 0 18px;
+  padding: 0;
+  line-height: 1.6;
+}
+
+@media print {
+  #fpDesktopSplash, #fpUpdateBanner {
+    display: none !important;
+  }
+}
+</style>
+
 </head>
 <body>
 <div class="layout">
@@ -2828,8 +3541,12 @@ cpPresentSources=function(){
 <div class="navlabel">GESTÃO</div>
 <button data-page="cadastros"><span class="ico"><svg viewbox="0 0 24 24"><circle cx="12" cy="8" r="4"></circle><path d="M4 21a8 8 0 0 1 16 0"></path></svg></span><span>Cadastros</span></button>
 <button data-page="relatorios"><span class="ico"><svg viewbox="0 0 24 24"><path d="M4 20V4h16v16zM8 16v-4m4 4V8m4 8v-6"></path></svg></span><span>Relatórios PDF</span></button>
-<button data-page="backup"><span class="ico"><svg viewbox="0 0 24 24"><path d="M12 3v12m-5-5 5 5 5-5M4 20h16"></path></svg></span><span>Backup / restauração</span></button></nav>
-<div class="sidefoot">SISTEMA LOCAL<br/><b style="color:#e2ecf8">Seus dados neste navegador</b><br/>Faça backup regularmente.</div></aside>
+<button data-page="backup"><span class="ico"><svg viewbox="0 0 24 24"><path d="M12 3v12m-5-5 5 5 5-5M4 20h16"></path></svg></span><span>Backup / restauração</span></button>
+<button data-page="configuracoes"><span class="ico"><svg viewbox="0 0 24 24"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09a1.65 1.65 0 0 0-1-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09a1.65 1.65 0 0 0 1.51-1 1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33h.01a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82v.01a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg></span><span>Configurações</span><span class="fp-nav-badge" id="fpConfigBadge" hidden>NOVA</span></button></nav>
+<div class="sidefoot fp-version-card" onclick="go('configuracoes')" title="Abrir Configurações e Atualizações">
+  <div class="fp-ver-row"><span class="fp-ver-dot"></span><b>FrotaPro Enterprise</b></div>
+  <div class="fp-ver-meta">Versão <span id="fpSideVer">v3.0.0</span> • <span id="fpSideStatus">Atualizado</span></div>
+</div></aside>
 <main class="main"><header class="top"><b id="crumb">Painel gerencial</b><div class="user"><span id="today"></span><span class="avatar">GP</span><b>Gestão</b></div></header><div class="content" id="view"></div></main>
 </div>
 <div class="modalback" id="modal"><div class="modal"><div class="modalhead"><h2 id="modalTitle">Novo registro</h2><button class="soft" onclick="closeModal()">✕ Fechar</button></div><div class="modalbody" id="modalBody"></div><div class="modalfoot"><button class="soft" onclick="closeModal()">Cancelar</button><button class="primary" id="modalSave">Salvar</button></div></div></div>
@@ -2921,7 +3638,7 @@ $('#today').textContent=new Date().toLocaleDateString('pt-BR',{day:'2-digit',mon
 function head(t,d,buttons=''){return `<div class="head"><div><h1>${t}</h1><p>${d}</p></div><div class="actions">${buttons}</div></div>`}
 function dashboardIcon(key){const p={trips:'<rect x="3" y="7" width="18" height="12" rx="2"/><path d="M7 7V5h10v2M7 19v2m10-2v2M7 12h10"/>',revenue:'<path d="M12 2v20M17 6H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>',expenses:'<path d="M5 3h14v18H5zM8 7h8M8 11h8M8 15h5"/><path d="m15 17 2 2 4-4"/>',balance:'<path d="M3 17l6-6 4 3 8-9"/><path d="M15 5h6v6"/>',distance:'<path d="M4 19 19 4M7 4h12v12"/><circle cx="5" cy="19" r="2"/>',average:'<path d="M4 18V6m0 12h16M7 14l4-4 3 2 5-6"/>',fleet:'<path d="M2 7h13v11H2zM15 11h4l3 4v3h-7z"/><circle cx="6" cy="19" r="2"/><circle cx="18" cy="19" r="2"/><path d="M4 10h8M4 13h6"/>',route:'<path d="M1 5h5M1 9h3" stroke-dasharray="1.5 2"/><path d="M4 11h10V7h4l4 5v6H4z"/><path d="M14 11h8M18 7v4"/><circle cx="8" cy="19" r="2"/><circle cx="18" cy="19" r="2"/><path d="M2 15h2"/>',income:'<circle cx="12" cy="12" r="9"/><path d="M12 7v10m4-7H10a2 2 0 0 0 0 4h4a2 2 0 0 1 0 4H8"/>'};return `<svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">${p[key]||p.trips}</svg>`}
 function stat(l,v,i,n,c=''){return `<div class="card stat-card"><div class="statlabel"><span>${l}</span><span class="staticon stat-icon icon-${i}">${dashboardIcon(i)}</span></div><div class="statvalue ${c}">${v}</div><div class="statnote">${n}</div><span class="stat-accent" aria-hidden="true"></span></div>`}
-function render(){let names={custos:'Custo por veículo',dashboard:'Painel gerencial',viagens:'Viagens',despesas:'Despesas das viagens',rh:'Controle RH · Chapas e diárias',cadastros:'Cadastros',relatorios:'Relatórios gerenciais',backup:'Backup e restauração'};if(!names[page])page='dashboard';$('#crumb').textContent=names[page];let v=$('#view');v.innerHTML=({custos:cpPage,dashboard:dashboard,viagens:tripsPage,despesas:expensesPage,rh:rhPage,cadastros:registerPage,relatorios:reportsPage,backup:backupPage})[page]()}
+function render(){let names={custos:'Custo por veículo',dashboard:'Painel gerencial',viagens:'Viagens',despesas:'Despesas das viagens',rh:'Controle RH · Chapas e diárias',cadastros:'Cadastros',relatorios:'Relatórios gerenciais',backup:'Backup e restauração',configuracoes:'Configurações do Sistema'};if(!names[page])page='dashboard';$('#crumb').textContent=names[page];let v=$('#view');v.innerHTML=({custos:cpPage,dashboard:dashboard,viagens:tripsPage,despesas:expensesPage,rh:rhPage,cadastros:registerPage,relatorios:reportsPage,backup:backupPage,configuracoes:typeof settingsPage==='function'?settingsPage:dashboard})[page]();if(typeof afterRenderSettings==='function'&&page==='configuracoes')afterRenderSettings();}
 function dashboard(){
  // O mês do painel segue a DATA DE FATURAMENTO da viagem; despesas vinculadas acompanham a viagem.
  const period=dashMonth||month();
@@ -3487,8 +4204,460 @@ function printTripList(){let html=tripTable(db.viagens,false);let w=window.open(
 </head><body><h1>FROTAPRO — RELATÓRIO DE VIAGENS</h1><p>Emitido em ${dateBR(today())}</p>${html}
 
 
+
+<!-- ABERTURA INOVADORA PARA O APP INSTALADO NO COMPUTADOR -->
+<div id="fpDesktopSplash" aria-hidden="true" style="display:none">
+  <div class="fp-splash-grid"></div>
+  <div class="fp-splash-card">
+    <div class="fp-splash-logo-ring">
+      <svg viewBox="0 0 64 52" aria-hidden="true">
+        <path d="M4 34h34V11H4zM38 20h11l10 11v3H38z"/>
+        <path d="M13 42a6 6 0 1 0 0-12 6 6 0 0 0 0 12Zm36 0a6 6 0 1 0 0-12 6 6 0 0 0 0 12Z"/>
+        <path d="M10 18h17M10 25h22M4 47h55"/>
+        <path d="M44 7h12M50 2v10"/>
+      </svg>
+    </div>
+    <div class="fp-splash-road"></div>
+    <div class="fp-splash-title">FROTA<span>PRO</span></div>
+    <div class="fp-splash-sub">Gestão Inteligente de Frotas</div>
+    <div class="fp-splash-bar"><div class="fp-splash-bar-fill" id="fpSplashProgress"></div></div>
+    <div class="fp-splash-status" id="fpSplashStatusText">Inicializando módulos operacionais...</div>
+    <div class="fp-splash-ver" id="fpSplashVersionTag">Versão v3.0.0 • Edição Desktop</div>
+  </div>
+</div>
+
+<!-- NOTIFICAÇÃO DE ATUALIZAÇÃO NÃO INTRUSIVA (NÃO TRAVA O SISTEMA) -->
+<aside id="fpUpdateBanner" role="region" aria-label="Atualização do FrotaPro">
+  <div class="fp-upd-head">
+    <div class="fp-upd-ico">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 12a9 9 0 0 0-9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/>
+        <path d="M3 3v5h5"/>
+        <path d="M3 12a9 9 0 0 0 9 9 9.75 9.75 0 0 0 6.74-2.74L21 16"/>
+        <path d="M16 16h5v5"/>
+      </svg>
+    </div>
+    <div>
+      <div class="fp-upd-title" id="fpUpdTitle">Nova versão disponível</div>
+      <div class="fp-upd-sub" id="fpUpdSubtitle">FrotaPro v3.0.0 pronto para instalar</div>
+    </div>
+  </div>
+  <div class="fp-upd-body" id="fpUpdBody">
+    Uma melhoria foi publicada. Você pode continuar trabalhando normalmente e aplicar a atualização quando finalizar seu lançamento.
+  </div>
+  <div class="fp-upd-actions">
+    <button type="button" class="fp-upd-later" onclick="fpDismissUpdateBanner()">Continuar trabalhando</button>
+    <button type="button" class="fp-upd-now" id="fpUpdApplyBtn" onclick="fpApplySystemUpdate()">Atualizar agora</button>
+  </div>
+</aside>
+
+<script id="frotapro-settings-and-updater">
+(function () {
+  const APP_VERSION = '3.0.0';
+  const APP_BUILD_DATE = '27/11/2026';
+  const SETTINGS_KEY = 'frotapro_settings_v3';
+
+  const defaultSettings = {
+    empresaNome: 'FrotaPro Transportes',
+    gestorNome: 'Gestão',
+    gestorSigla: 'GP',
+    splashDesktop: true,
+    autoCheckUpdates: true,
+    compactTables: false
+  };
+
+  function getSettings() {
+    try {
+      const saved = JSON.parse(localStorage.getItem(SETTINGS_KEY) || '{}');
+      return { ...defaultSettings, ...saved };
+    } catch (e) {
+      return { ...defaultSettings };
+    }
+  }
+
+  function saveSettings(partial) {
+    const next = { ...getSettings(), ...partial };
+    localStorage.setItem(SETTINGS_KEY, JSON.stringify(next));
+    applyVisualSettings(next);
+    return next;
+  }
+
+  function applyVisualSettings(cfg = getSettings()) {
+    const userBold = document.querySelector('.top .user b');
+    const userAvatar = document.querySelector('.top .user .avatar');
+    if (userBold && cfg.gestorNome) userBold.textContent = cfg.gestorNome;
+    if (userAvatar && cfg.gestorSigla) userAvatar.textContent = cfg.gestorSigla.slice(0, 3).toUpperCase();
+    const sideVer = document.getElementById('fpSideVer');
+    if (sideVer) sideVer.textContent = 'v' + APP_VERSION;
+  }
+
+  // 1. ABERTURA ANIMADA PARA O APP INSTALADO NO COMPUTADOR (STANDALONE / DESKTOP)
+  function initDesktopSplash() {
+    const splash = document.getElementById('fpDesktopSplash');
+    if (!splash) return;
+    const cfg = getSettings();
+    const isStandalone = window.matchMedia('(display-mode: standalone)').matches
+      || window.matchMedia('(display-mode: window-controls-overlay)').matches
+      || window.navigator.standalone === true;
+    const alreadyShownSession = sessionStorage.getItem('fp_splash_shown') === '1';
+
+    // Exibe na abertura do app instalado no computador (ou quando testado via botão)
+    if (!cfg.splashDesktop || (!isStandalone && alreadyShownSession)) {
+      splash.remove();
+      return;
+    }
+
+    sessionStorage.setItem('fp_splash_shown', '1');
+    splash.style.display = 'flex';
+    const bar = document.getElementById('fpSplashProgress');
+    const status = document.getElementById('fpSplashStatusText');
+    const verTag = document.getElementById('fpSplashVersionTag');
+    if (verTag) verTag.textContent = `Versão v${APP_VERSION} • Edição Desktop`;
+
+    const steps = [
+      { pct: 32, text: 'Carregando base operacional e frota...' },
+      { pct: 68, text: 'Sincronizando indicadores gerenciais...' },
+      { pct: 100, text: 'Sistema pronto para operação.' }
+    ];
+
+    steps.forEach((step, idx) => {
+      setTimeout(() => {
+        if (bar) bar.style.width = step.pct + '%';
+        if (status) status.textContent = step.text;
+      }, 220 * (idx + 1));
+    });
+
+    setTimeout(() => {
+      splash.classList.add('fp-splash-hide');
+      setTimeout(() => {
+        if (splash && splash.parentNode) splash.style.display = 'none';
+      }, 600);
+    }, 1350);
+  }
+
+  window.fpPreviewSplash = function () {
+    const splash = document.getElementById('fpDesktopSplash');
+    if (!splash) return;
+    splash.classList.remove('fp-splash-hide');
+    splash.style.display = 'flex';
+    const bar = document.getElementById('fpSplashProgress');
+    const status = document.getElementById('fpSplashStatusText');
+    if (bar) bar.style.width = '0%';
+    if (status) status.textContent = 'Inicializando módulos operacionais...';
+    setTimeout(() => { if (bar) bar.style.width = '45%'; if (status) status.textContent = 'Verificando integridade dos dados...'; }, 240);
+    setTimeout(() => { if (bar) bar.style.width = '100%'; if (status) status.textContent = 'Tudo pronto!'; }, 620);
+    setTimeout(() => {
+      splash.classList.add('fp-splash-hide');
+      setTimeout(() => { splash.style.display = 'none'; }, 600);
+    }, 1450);
+  };
+
+  // 2. SISTEMA INTELIGENTE DE ATUALIZAÇÃO (NÃO TRAVA O SISTEMA)
+  let pendingWorker = null;
+  let remoteVersionInfo = null;
+  let updateState = {
+    checking: false,
+    available: false,
+    latestVersion: APP_VERSION,
+    notes: [],
+    lastChecked: null
+  };
+
+  function markUpdateAvailable(versionLabel, notes = []) {
+    updateState.available = true;
+    updateState.latestVersion = versionLabel || APP_VERSION;
+    updateState.notes = notes;
+
+    const badge = document.getElementById('fpConfigBadge');
+    const sideDot = document.querySelector('.fp-ver-dot');
+    const sideStatus = document.getElementById('fpSideStatus');
+    if (badge) badge.hidden = false;
+    if (sideDot) sideDot.classList.add('has-update');
+    if (sideStatus) sideStatus.textContent = 'Atualização disponível';
+
+    const banner = document.getElementById('fpUpdateBanner');
+    const sub = document.getElementById('fpUpdSubtitle');
+    const body = document.getElementById('fpUpdBody');
+    if (sub) sub.textContent = `FrotaPro v${updateState.latestVersion} disponível`;
+    if (body && notes.length) {
+      body.textContent = `Novidades: ${notes.slice(0, 2).join(' • ')}. Seus dados permanecem intactos.`;
+    }
+    if (banner && sessionStorage.getItem('fp_upd_dismissed_' + updateState.latestVersion) !== '1') {
+      banner.classList.add('visible');
+    }
+    if (typeof page !== 'undefined' && page === 'configuracoes' && typeof render === 'function') {
+      render();
+    }
+  }
+
+  window.fpDismissUpdateBanner = function () {
+    const banner = document.getElementById('fpUpdateBanner');
+    if (banner) banner.classList.remove('visible');
+    sessionStorage.setItem('fp_upd_dismissed_' + updateState.latestVersion, '1');
+    if (typeof notify === 'function') notify('Você pode atualizar quando quiser na aba Configurações.');
+  };
+
+  window.fpApplySystemUpdate = async function () {
+    const btn = document.getElementById('fpUpdApplyBtn');
+    if (btn) {
+      btn.disabled = true;
+      btn.textContent = 'Atualizando...';
+    }
+    try {
+      // Garante persistência antes de recarregar
+      if (typeof persist === 'function') persist();
+
+      if (pendingWorker) {
+        pendingWorker.postMessage({ type: 'SKIP_WAITING' });
+      }
+      if ('caches' in window) {
+        const keys = await caches.keys();
+        await Promise.all(keys.map(k => caches.delete(k)));
+      }
+      if ('serviceWorker' in navigator) {
+        const reg = await navigator.serviceWorker.getRegistration();
+        if (reg) await reg.update();
+      }
+    } catch (e) {}
+
+    if (typeof notify === 'function') notify('Aplicando atualização v' + updateState.latestVersion + '...');
+    setTimeout(() => {
+      window.location.reload();
+    }, 650);
+  };
+
+  window.fpCheckForUpdates = async function (manual = false) {
+    if (updateState.checking) return;
+    updateState.checking = true;
+    if (typeof page !== 'undefined' && page === 'configuracoes' && typeof render === 'function') render();
+
+    try {
+      // 1) Verifica atualização via Service Worker
+      if ('serviceWorker' in navigator) {
+        const reg = await navigator.serviceWorker.getRegistration();
+        if (reg) {
+          await reg.update();
+          if (reg.waiting) {
+            pendingWorker = reg.waiting;
+            markUpdateAvailable(APP_VERSION + ' (Nova revisão)', ['Melhorias de desempenho e visual']);
+          }
+        }
+      }
+
+      // 2) Verifica ./version.json no GitHub Pages (com cache-busting)
+      const res = await fetch('./version.json?t=' + Date.now(), { cache: 'no-store' });
+      if (res.ok) {
+        const data = await res.json();
+        remoteVersionInfo = data;
+        if (data && data.version && String(data.version).trim() !== APP_VERSION) {
+          markUpdateAvailable(String(data.version).trim(), Array.isArray(data.notes) ? data.notes : []);
+        } else if (manual && !updateState.available && typeof notify === 'function') {
+          notify('O FrotaPro já está na versão mais recente (v' + APP_VERSION + ').');
+        }
+      } else if (manual && !updateState.available && typeof notify === 'function') {
+        notify('Verificação concluída: sistema atualizado (v' + APP_VERSION + ').');
+      }
+    } catch (err) {
+      if (manual && typeof notify === 'function') {
+        notify('Não foi possível consultar o servidor agora. Seus dados locais estão seguros.');
+      }
+    } finally {
+      updateState.checking = false;
+      updateState.lastChecked = new Date().toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
+      if (typeof page !== 'undefined' && page === 'configuracoes' && typeof render === 'function') render();
+    }
+  };
+
+  // Escuta Service Worker para detectar nova versão em segundo plano sem travar o uso
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.addEventListener('load', async () => {
+      try {
+        const reg = await navigator.serviceWorker.getRegistration();
+        if (!reg) return;
+        if (reg.waiting) {
+          pendingWorker = reg.waiting;
+          markUpdateAvailable(APP_VERSION, ['Nova atualização pronta para aplicar']);
+        }
+        reg.addEventListener('updatefound', () => {
+          const nw = reg.installing;
+          if (!nw) return;
+          nw.addEventListener('statechange', () => {
+            if (nw.state === 'installed' && navigator.serviceWorker.controller) {
+              pendingWorker = nw;
+              markUpdateAvailable(APP_VERSION, ['Nova atualização pronta para aplicar']);
+            }
+          });
+        });
+      } catch (e) {}
+    });
+  }
+
+  // 3. PÁGINA COMPLETA DE CONFIGURAÇÕES
+  window.settingsPage = function () {
+    const cfg = getSettings();
+    const totalTrips = (db && Array.isArray(db.viagens)) ? db.viagens.length : 0;
+    const totalExpenses = (db && Array.isArray(db.viagens)) ? db.viagens.reduce((s, t) => s + (t.despesas || []).length, 0) : 0;
+    const totalVehicles = (db && Array.isArray(db.veiculos)) ? db.veiculos.length : 0;
+    const isInstalled = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
+
+    const statusChip = updateState.available
+      ? `<span class="fp-cfg-chip" style="background:rgba(16,185,129,0.26);border-color:rgba(52,211,153,0.5)">● Nova versão v${esc(updateState.latestVersion)} disponível</span>`
+      : `<span class="fp-cfg-chip" style="background:rgba(16,185,129,0.2);border-color:rgba(52,211,153,0.4)">✓ Sistema atualizado</span>`;
+
+    return head(
+      'Configurações do Sistema',
+      'Gerencie atualizações do aplicativo, identidade operacional, abertura desktop e segurança dos dados.',
+      `<button class="soft" onclick="fpPreviewSplash()">✦ Testar abertura do app</button>
+       <button class="primary" onclick="fpCheckForUpdates(true)">↻ Verificar atualizações</button>`
+    ) + `
+    <div class="fp-cfg-hero">
+      <div class="fp-cfg-hero-left">
+        <div class="fp-cfg-logo">
+          <svg viewBox="0 0 64 52" aria-hidden="true">
+            <path d="M4 34h34V11H4zM38 20h11l10 11v3H38z"/>
+            <path d="M13 42a6 6 0 1 0 0-12 6 6 0 0 0 0 12Zm36 0a6 6 0 1 0 0-12 6 6 0 0 0 0 12Z"/>
+            <path d="M10 18h17M10 25h22M4 47h55"/>
+            <path d="M44 7h12M50 2v10"/>
+          </svg>
+        </div>
+        <div>
+          <div style="font-size:19px;font-weight:850;letter-spacing:.3px">FrotaPro Enterprise <span style="opacity:.85;font-weight:600">v${APP_VERSION}</span></div>
+          <div style="font-size:12.5px;color:#bfd5f2;margin-top:3px">Plataforma Gerencial de Viagens, Custos por Veículo e Controle RH</div>
+          <div class="fp-cfg-badges">
+            <span class="fp-cfg-chip">Versão instalada: v${APP_VERSION}</span>
+            <span class="fp-cfg-chip">Compilação: ${APP_BUILD_DATE}</span>
+            <span class="fp-cfg-chip">${isInstalled ? 'Modo: Aplicativo Instalado (Desktop/PWA)' : 'Modo: Navegador Web'}</span>
+            ${statusChip}
+          </div>
+        </div>
+      </div>
+      <div>
+        ${updateState.available
+          ? `<button class="greenbtn" onclick="fpApplySystemUpdate()">⬇ Instalar v${esc(updateState.latestVersion)} agora</button>`
+          : `<button class="soft" onclick="fpCheckForUpdates(true)">${updateState.checking ? 'Verificando...' : 'Buscar nova versão'}</button>`}
+      </div>
+    </div>
+
+    <div class="fp-cfg-grid">
+      <div class="card fp-cfg-card">
+        <h3>Atualizações do Aplicativo</h3>
+        <p class="muted" style="margin:0 0 10px">As atualizações são baixadas em segundo plano sem interromper lançamentos em andamento.</p>
+        <ul class="fp-cfg-list">
+          <li><span class="muted">Versão atual em execução</span><b>v${APP_VERSION}</b></li>
+          <li><span class="muted">Última versão verificada</span><b>v${esc(updateState.latestVersion)}</b></li>
+          <li><span class="muted">Última verificação</span><b>${updateState.lastChecked || 'Automática ao iniciar'}</b></li>
+          <li><span class="muted">Proteção de dados na atualização</span><b style="color:#059669">100% preservados</b></li>
+        </ul>
+        <div class="fp-changelog-box">
+          <b>Novidades da versão v${APP_VERSION}:</b>
+          <ul>
+            <li>Visual Pro modernizado com botões interativos e barras de rolagem ocultas.</li>
+            <li>Tela de abertura animada exclusiva para o aplicativo instalado no computador.</li>
+            <li>Central de Configurações com verificação segura de atualizações sem travar o uso.</li>
+          </ul>
+        </div>
+        <div class="actions" style="margin-top:14px">
+          <button class="primary" onclick="fpCheckForUpdates(true)">${updateState.checking ? 'Verificando...' : 'Verificar agora'}</button>
+          ${updateState.available ? `<button class="greenbtn" onclick="fpApplySystemUpdate()">Aplicar atualização</button>` : ''}
+        </div>
+      </div>
+
+      <div class="card fp-cfg-card">
+        <h3>Personalização e Experiência</h3>
+        <p class="muted" style="margin:0 0 12px">Ajuste a identificação exibida no topo do sistema e o comportamento da abertura.</p>
+        <div class="grid" style="gap:11px">
+          <div class="field">
+            <label>Nome do perfil / operador no cabeçalho</label>
+            <input id="cfgGestorNome" type="text" value="${esc(cfg.gestorNome)}" placeholder="Ex: Gestão Frota">
+          </div>
+          <div class="field">
+            <label>Sigla do avatar (até 3 letras)</label>
+            <input id="cfgGestorSigla" type="text" maxlength="3" value="${esc(cfg.gestorSigla)}" placeholder="GP">
+          </div>
+        </div>
+        <div style="margin-top:12px">
+          <div class="fp-switch-row">
+            <div>
+              <b style="font-size:13px">Tela de abertura animada (App Desktop)</b>
+              <div class="muted" style="font-size:11.5px">Exibe a apresentação com a logo do FrotaPro ao abrir o programa instalado.</div>
+            </div>
+            <label class="fp-switch">
+              <input id="cfgSplashDesktop" type="checkbox" ${cfg.splashDesktop ? 'checked' : ''}>
+              <span class="fp-slider"></span>
+            </label>
+          </div>
+          <div class="fp-switch-row">
+            <div>
+              <b style="font-size:13px">Verificar atualizações automaticamente</b>
+              <div class="muted" style="font-size:11.5px">Notifica discretamente quando uma nova versão estiver disponível no GitHub.</div>
+            </div>
+            <label class="fp-switch">
+              <input id="cfgAutoCheck" type="checkbox" ${cfg.autoCheckUpdates ? 'checked' : ''}>
+              <span class="fp-slider"></span>
+            </label>
+          </div>
+        </div>
+        <div class="actions" style="margin-top:14px">
+          <button class="primary" onclick="fpSaveSettingsForm()">Salvar preferências</button>
+          <button class="soft" onclick="fpPreviewSplash()">Visualizar abertura</button>
+        </div>
+      </div>
+
+      <div class="card fp-cfg-card">
+        <h3>Resumo Operacional da Base</h3>
+        <p class="muted" style="margin:0 0 10px">Status atual dos registros armazenados no sistema.</p>
+        <ul class="fp-cfg-list">
+          <li><span class="muted">Veículos cadastrados</span><b>${totalVehicles}</b></li>
+          <li><span class="muted">Viagens registradas</span><b>${totalTrips}</b></li>
+          <li><span class="muted">Despesas vinculadas</span><b>${totalExpenses}</b></li>
+          <li><span class="muted">Motoristas cadastrados</span><b>${(db && Array.isArray(db.motoristas)) ? db.motoristas.length : 0}</b></li>
+        </ul>
+        <div class="actions" style="margin-top:14px">
+          <button class="soft" onclick="go('backup')">Ir para Backup e Restauração</button>
+        </div>
+      </div>
+
+      <div class="card fp-cfg-card">
+        <h3>Instalação no Computador e Celular</h3>
+        <p class="muted" style="line-height:1.65;margin:0 0 12px">
+          O FrotaPro pode ser instalado como programa dedicado no Windows, Mac ou Android, abrindo em janela própria com ícone na área de trabalho e tela de abertura animada.
+        </p>
+        <div class="fp-changelog-box" style="margin-top:0">
+          <b>Como instalar no computador (Chrome / Edge):</b>
+          <ul>
+            <li>Clique no ícone de instalação na barra de endereço ou no botão <b>Instalar App</b> no topo.</li>
+            <li>O sistema passará a abrir como aplicativo nativo com a abertura animada FrotaPro.</li>
+          </ul>
+        </div>
+      </div>
+    </div>`;
+  };
+
+  window.fpSaveSettingsForm = function () {
+    const gestorNome = (document.getElementById('cfgGestorNome')?.value || '').trim() || 'Gestão';
+    const gestorSigla = (document.getElementById('cfgGestorSigla')?.value || '').trim() || 'GP';
+    const splashDesktop = !!document.getElementById('cfgSplashDesktop')?.checked;
+    const autoCheckUpdates = !!document.getElementById('cfgAutoCheck')?.checked;
+    saveSettings({ gestorNome, gestorSigla, splashDesktop, autoCheckUpdates });
+    if (typeof notify === 'function') notify('Configurações salvas com sucesso!');
+    render();
+  };
+
+  window.afterRenderSettings = function () {
+    applyVisualSettings();
+  };
+
+  // Inicialização segura
+  applyVisualSettings();
+  initDesktopSplash();
+  if (getSettings().autoCheckUpdates) {
+    setTimeout(() => fpCheckForUpdates(false), 2500);
+  }
+})();
+</script>
+
 </body></html>`);w.document.close();w.focus();w.print()}
-function backupPage(){return head('Backup e restauração','Proteja os dados e transfira-os quando necessário.')+`<div class="grid two"><div class="card"><h3>Baixar backup completo</h3><p class="muted">Inclui viagens, despesas vinculadas e cadastros. Os dados antigos de fretes e abastecimentos são preservados no arquivo, mas não entram nos cálculos.</p><button class="primary" onclick="backup()">Baixar JSON</button></div><div class="card"><h3>Restaurar backup</h3><p class="muted">A restauração substitui os dados atuais.</p><input id="backupFile" type="file" accept=".json"><button class="soft" style="margin-top:10px" onclick="restoreBackup()">Restaurar arquivo</button></div><div class="card"><h3>Quantidade de registros</h3>${[['Viagens',db.viagens.length],['Despesas avulsas',db.despesas.length],['Despesas dentro das viagens',db.viagens.reduce((s,t)=>s+(t.despesas||[]).length,0)],['Fretes',db.fretes.length],['Abastecimentos',db.abastecimentos.length]].map(x=>`<p style="display:flex;justify-content:space-between;border-bottom:1px solid var(--line);padding:7px 0"><span class="muted">${x[0]}</span><b>${x[1]}</b></p>`).join('')}</div><div class="card"><h3>Importante</h3><p class="muted" style="line-height:1.7">Este arquivo funciona localmente no navegador e não sincroniza automaticamente entre computadores. Faça backup frequente e guarde o JSON fora do computador.</p></div></div>`}
+function backupPage(){return head('Backup e restauração','Proteja os dados e transfira-os quando necessário.')+`<div class="grid two"><div class="card"><h3>Baixar backup completo</h3><p class="muted">Inclui viagens, despesas vinculadas e cadastros. Os dados antigos de fretes e abastecimentos são preservados no arquivo, mas não entram nos cálculos.</p><button class="primary" onclick="backup()">Baixar JSON</button></div><div class="card"><h3>Restaurar backup</h3><p class="muted">A restauração substitui os dados atuais.</p><input id="backupFile" type="file" accept=".json"><button class="soft" style="margin-top:10px" onclick="restoreBackup()">Restaurar arquivo</button></div><div class="card"><h3>Quantidade de registros</h3>${[['Viagens',db.viagens.length],['Despesas avulsas',db.despesas.length],['Despesas dentro das viagens',db.viagens.reduce((s,t)=>s+(t.despesas||[]).length,0)],['Fretes',db.fretes.length],['Abastecimentos',db.abastecimentos.length]].map(x=>`<p style="display:flex;justify-content:space-between;border-bottom:1px solid var(--line);padding:7px 0"><span class="muted">${x[0]}</span><b>${x[1]}</b></p>`).join('')}</div><div class="card"><h3>Segurança e Portabilidade</h3><p class="muted" style="line-height:1.7">Exporte regularmente o arquivo JSON para manter cópias de segurança externas ou transferir os lançamentos entre computadores com total integridade.</p></div></div>`}
 function backup(){let b=new Blob([JSON.stringify(db,null,2)],{type:'application/json'}),a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='FrotaPro-backup-'+today()+'.json';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000);notify('Backup baixado.')}
 function restoreBackup(){if(fpRestoreBusy)return;const anchor=fpGetAnchor();let f=$('#backupFile').files[0];if(!f){notify('Selecione um arquivo primeiro.');return}fpRestoreBusy=true;let r=new FileReader();r.onload=async()=>{try{let d=JSON.parse(r.result);if(!d||typeof d!=='object'||Array.isArray(d)||!Array.isArray(d.viagens)||!Array.isArray(d.despesas))throw 0;if(d.viagens.some(t=>!t||typeof t!=='object'||(t.despesas!==undefined&&!Array.isArray(t.despesas))))throw 0;if(!await fpConfirm('Este backup substituirá todos os dados atuais do sistema. A substituição não pode ser desfeita sem um backup dos dados atuais. Faça uma cópia antes de continuar. Deseja substituir os dados?',{title:'Restaurar backup',confirmText:'Sim, substituir dados',cancelText:'Não',anchor}))return;db={...blank(),...d};['viagens','despesas','fretes','abastecimentos','veiculos','motoristas','fornecedores','clientes','origens','destinos','postos','combustiveis','categorias'].forEach(k=>{if(!Array.isArray(db[k]))db[k]=blank()[k]});db.viagens.forEach(t=>{if(!Array.isArray(t.despesas))t.despesas=[];t.despesas.forEach(normalizeFuelExpense)});db.despesas.forEach(normalizeFuelExpense);ensureStradaVehicle();persist();render();notify('Backup restaurado.')}catch(e){await fpMessage('Arquivo inválido ou incompatível.',anchor)}finally{fpRestoreBusy=false}};r.onerror=async()=>{await fpMessage('Não foi possível ler o arquivo de backup. Tente selecionar o arquivo novamente.',anchor);fpRestoreBusy=false};try{r.readAsText(f)}catch(e){fpRestoreBusy=false;fpMessage('Não foi possível ler o arquivo de backup.',anchor)}}
 // Enter avança para o próximo campo de preenchimento, sem exigir clique do mouse.
