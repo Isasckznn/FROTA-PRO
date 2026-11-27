@@ -3563,6 +3563,15 @@ body::-webkit-scrollbar,
 }
 </style>
 
+<style id="fp-polish-v31">
+/* Polimento visual v3.1: botões com animação suave, sem alterar regras de negócio */
+button{transition:transform .16s ease,box-shadow .2s ease,background-color .2s ease,filter .2s ease;position:relative;overflow:hidden}
+button:not(:disabled):hover{transform:translateY(-1px);filter:brightness(1.04);box-shadow:0 6px 16px rgba(16,35,63,.14)}
+button:not(:disabled):active{transform:translateY(0) scale(.98);box-shadow:0 2px 6px rgba(16,35,63,.12)}
+button:disabled{opacity:.55;cursor:not-allowed}
+button:focus-visible{outline:2px solid #2866d8;outline-offset:2px}
+@media (prefers-reduced-motion: reduce){button{transition:none!important}button:hover{transform:none!important}}
+</style>
 </head>
 <body>
 <div class="layout">
@@ -3580,7 +3589,7 @@ body::-webkit-scrollbar,
 <button data-page="configuracoes"><span class="ico"><svg viewbox="0 0 24 24"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09a1.65 1.65 0 0 0-1-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09a1.65 1.65 0 0 0 1.51-1 1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33h.01a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82v.01a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg></span><span>Configurações</span><span class="fp-nav-badge" id="fpConfigBadge" hidden>NOVA</span></button></nav>
 <div class="sidefoot fp-version-card" onclick="go('configuracoes')" title="Abrir Configurações e Atualizações">
   <div class="fp-ver-row"><span class="fp-ver-dot"></span><b>FrotaPro Enterprise</b></div>
-  <div class="fp-ver-meta">Versão <span id="fpSideVer">v3.0.0</span> • <span id="fpSideStatus">Atualizado</span></div>
+  <div class="fp-ver-meta">Versão <span id="fpSideVer">v3.1.0</span> • <span id="fpSideStatus">Atualizado</span></div>
 </div></aside>
 <main class="main"><header class="top"><b id="crumb">Painel gerencial</b><div class="user"><span id="today"></span><span class="avatar">GP</span><b>Gestão</b></div></header><div class="content" id="view"></div></main>
 </div>
@@ -4281,410 +4290,7 @@ function printTripList(){let html=tripTable(db.viagens,false);let w=window.open(
   </div>
 </aside>
 
-<script id="frotapro-settings-and-updater">
-(function () {
-  const APP_VERSION = '3.0.0';
-  const APP_BUILD_DATE = '27/11/2026';
-  const SETTINGS_KEY = 'frotapro_settings_v3';
 
-  const defaultSettings = {
-    empresaNome: 'FrotaPro Transportes',
-    gestorNome: 'Gestão',
-    gestorSigla: 'GP',
-    splashDesktop: true,
-    autoCheckUpdates: true,
-    compactTables: false
-  };
-
-  function getSettings() {
-    try {
-      const saved = JSON.parse(localStorage.getItem(SETTINGS_KEY) || '{}');
-      return { ...defaultSettings, ...saved };
-    } catch (e) {
-      return { ...defaultSettings };
-    }
-  }
-
-  function saveSettings(partial) {
-    const next = { ...getSettings(), ...partial };
-    localStorage.setItem(SETTINGS_KEY, JSON.stringify(next));
-    applyVisualSettings(next);
-    return next;
-  }
-
-  function applyVisualSettings(cfg = getSettings()) {
-    const userBold = document.querySelector('.top .user b');
-    const userAvatar = document.querySelector('.top .user .avatar');
-    if (userBold && cfg.gestorNome) userBold.textContent = cfg.gestorNome;
-    if (userAvatar && cfg.gestorSigla) userAvatar.textContent = cfg.gestorSigla.slice(0, 3).toUpperCase();
-    const sideVer = document.getElementById('fpSideVer');
-    if (sideVer) sideVer.textContent = 'v' + APP_VERSION;
-  }
-
-  // 1. ABERTURA ANIMADA PARA O APP INSTALADO NO COMPUTADOR (STANDALONE / DESKTOP)
-  function initDesktopSplash() {
-    const splash = document.getElementById('fpDesktopSplash');
-    if (!splash) return;
-    const cfg = getSettings();
-    const isStandalone = window.matchMedia('(display-mode: standalone)').matches
-      || window.matchMedia('(display-mode: window-controls-overlay)').matches
-      || window.navigator.standalone === true;
-    const alreadyShownSession = sessionStorage.getItem('fp_splash_shown') === '1';
-
-    // Exibe na abertura do app instalado no computador (ou quando testado via botão)
-    if (!cfg.splashDesktop || (!isStandalone && alreadyShownSession)) {
-      splash.remove();
-      return;
-    }
-
-    sessionStorage.setItem('fp_splash_shown', '1');
-    splash.style.display = 'flex';
-    const bar = document.getElementById('fpSplashProgress');
-    const status = document.getElementById('fpSplashStatusText');
-    const verTag = document.getElementById('fpSplashVersionTag');
-    if (verTag) verTag.textContent = `Versão v${APP_VERSION} • Edição Desktop`;
-
-    const steps = [
-      { pct: 32, text: 'Carregando base operacional e frota...' },
-      { pct: 68, text: 'Sincronizando indicadores gerenciais...' },
-      { pct: 100, text: 'Sistema pronto para operação.' }
-    ];
-
-    steps.forEach((step, idx) => {
-      setTimeout(() => {
-        if (bar) bar.style.width = step.pct + '%';
-        if (status) status.textContent = step.text;
-      }, 220 * (idx + 1));
-    });
-
-    setTimeout(() => {
-      splash.classList.add('fp-splash-hide');
-      setTimeout(() => {
-        if (splash && splash.parentNode) splash.style.display = 'none';
-      }, 600);
-    }, 1350);
-  }
-
-  window.fpPreviewSplash = function () {
-    const splash = document.getElementById('fpDesktopSplash');
-    if (!splash) return;
-    splash.classList.remove('fp-splash-hide');
-    splash.style.display = 'flex';
-    const bar = document.getElementById('fpSplashProgress');
-    const status = document.getElementById('fpSplashStatusText');
-    if (bar) bar.style.width = '0%';
-    if (status) status.textContent = 'Inicializando módulos operacionais...';
-    setTimeout(() => { if (bar) bar.style.width = '45%'; if (status) status.textContent = 'Verificando integridade dos dados...'; }, 240);
-    setTimeout(() => { if (bar) bar.style.width = '100%'; if (status) status.textContent = 'Tudo pronto!'; }, 620);
-    setTimeout(() => {
-      splash.classList.add('fp-splash-hide');
-      setTimeout(() => { splash.style.display = 'none'; }, 600);
-    }, 1450);
-  };
-
-  // 2. SISTEMA INTELIGENTE DE ATUALIZAÇÃO (NÃO TRAVA O SISTEMA)
-  let pendingWorker = null;
-  let remoteVersionInfo = null;
-  let updateState = {
-    checking: false,
-    available: false,
-    latestVersion: APP_VERSION,
-    notes: [],
-    lastChecked: null
-  };
-
-  function markUpdateAvailable(versionLabel, notes = []) {
-    updateState.available = true;
-    updateState.latestVersion = versionLabel || APP_VERSION;
-    updateState.notes = notes;
-
-    const badge = document.getElementById('fpConfigBadge');
-    const sideDot = document.querySelector('.fp-ver-dot');
-    const sideStatus = document.getElementById('fpSideStatus');
-    if (badge) badge.hidden = false;
-    if (sideDot) sideDot.classList.add('has-update');
-    if (sideStatus) sideStatus.textContent = 'Atualização disponível';
-
-    const banner = document.getElementById('fpUpdateBanner');
-    const sub = document.getElementById('fpUpdSubtitle');
-    const body = document.getElementById('fpUpdBody');
-    if (sub) sub.textContent = `FrotaPro v${updateState.latestVersion} disponível`;
-    if (body && notes.length) {
-      body.textContent = `Novidades: ${notes.slice(0, 2).join(' • ')}. Seus dados permanecem intactos.`;
-    }
-    if (banner && sessionStorage.getItem('fp_upd_dismissed_' + updateState.latestVersion) !== '1') {
-      banner.classList.add('visible');
-    }
-    if (typeof page !== 'undefined' && page === 'configuracoes' && typeof render === 'function') {
-      render();
-    }
-  }
-
-  window.fpDismissUpdateBanner = function () {
-    const banner = document.getElementById('fpUpdateBanner');
-    if (banner) banner.classList.remove('visible');
-    sessionStorage.setItem('fp_upd_dismissed_' + updateState.latestVersion, '1');
-    if (typeof notify === 'function') notify('Você pode atualizar quando quiser na aba Configurações.');
-  };
-
-  window.fpApplySystemUpdate = async function () {
-    const btn = document.getElementById('fpUpdApplyBtn');
-    if (btn) {
-      btn.disabled = true;
-      btn.textContent = 'Atualizando...';
-    }
-    try {
-      // Garante persistência antes de recarregar
-      if (typeof persist === 'function') persist();
-
-      if (pendingWorker) {
-        pendingWorker.postMessage({ type: 'SKIP_WAITING' });
-      }
-      if ('caches' in window) {
-        const keys = await caches.keys();
-        await Promise.all(keys.map(k => caches.delete(k)));
-      }
-      if ('serviceWorker' in navigator) {
-        const reg = await navigator.serviceWorker.getRegistration();
-        if (reg) await reg.update();
-      }
-    } catch (e) {}
-
-    if (typeof notify === 'function') notify('Aplicando atualização v' + updateState.latestVersion + '...');
-    setTimeout(() => {
-      window.location.reload();
-    }, 650);
-  };
-
-  window.fpCheckForUpdates = async function (manual = false) {
-    if (updateState.checking) return;
-    updateState.checking = true;
-    if (typeof page !== 'undefined' && page === 'configuracoes' && typeof render === 'function') render();
-
-    try {
-      // 1) Verifica atualização via Service Worker
-      if ('serviceWorker' in navigator) {
-        const reg = await navigator.serviceWorker.getRegistration();
-        if (reg) {
-          await reg.update();
-          if (reg.waiting) {
-            pendingWorker = reg.waiting;
-            markUpdateAvailable(APP_VERSION + ' (Nova revisão)', ['Melhorias de desempenho e visual']);
-          }
-        }
-      }
-
-      // 2) Verifica ./version.json no GitHub Pages (com cache-busting)
-      const res = await fetch('./version.json?t=' + Date.now(), { cache: 'no-store' });
-      if (res.ok) {
-        const data = await res.json();
-        remoteVersionInfo = data;
-        if (data && data.version && String(data.version).trim() !== APP_VERSION) {
-          markUpdateAvailable(String(data.version).trim(), Array.isArray(data.notes) ? data.notes : []);
-        } else if (manual && !updateState.available && typeof notify === 'function') {
-          notify('O FrotaPro já está na versão mais recente (v' + APP_VERSION + ').');
-        }
-      } else if (manual && !updateState.available && typeof notify === 'function') {
-        notify('Verificação concluída: sistema atualizado (v' + APP_VERSION + ').');
-      }
-    } catch (err) {
-      if (manual && typeof notify === 'function') {
-        notify('Não foi possível consultar o servidor agora. Seus dados locais estão seguros.');
-      }
-    } finally {
-      updateState.checking = false;
-      updateState.lastChecked = new Date().toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
-      if (typeof page !== 'undefined' && page === 'configuracoes' && typeof render === 'function') render();
-    }
-  };
-
-  // Escuta Service Worker para detectar nova versão em segundo plano sem travar o uso
-  if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.addEventListener('load', async () => {
-      try {
-        const reg = await navigator.serviceWorker.getRegistration();
-        if (!reg) return;
-        if (reg.waiting) {
-          pendingWorker = reg.waiting;
-          markUpdateAvailable(APP_VERSION, ['Nova atualização pronta para aplicar']);
-        }
-        reg.addEventListener('updatefound', () => {
-          const nw = reg.installing;
-          if (!nw) return;
-          nw.addEventListener('statechange', () => {
-            if (nw.state === 'installed' && navigator.serviceWorker.controller) {
-              pendingWorker = nw;
-              markUpdateAvailable(APP_VERSION, ['Nova atualização pronta para aplicar']);
-            }
-          });
-        });
-      } catch (e) {}
-    });
-  }
-
-  // 3. PÁGINA COMPLETA DE CONFIGURAÇÕES
-  window.settingsPage = function () {
-    const cfg = getSettings();
-    const totalTrips = (db && Array.isArray(db.viagens)) ? db.viagens.length : 0;
-    const totalExpenses = (db && Array.isArray(db.viagens)) ? db.viagens.reduce((s, t) => s + (t.despesas || []).length, 0) : 0;
-    const totalVehicles = (db && Array.isArray(db.veiculos)) ? db.veiculos.length : 0;
-    const isInstalled = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
-
-    const statusChip = updateState.available
-      ? `<span class="fp-cfg-chip" style="background:rgba(16,185,129,0.26);border-color:rgba(52,211,153,0.5)">● Nova versão v${esc(updateState.latestVersion)} disponível</span>`
-      : `<span class="fp-cfg-chip" style="background:rgba(16,185,129,0.2);border-color:rgba(52,211,153,0.4)">✓ Sistema atualizado</span>`;
-
-    return head(
-      'Configurações do Sistema',
-      'Gerencie atualizações do aplicativo, identidade operacional, abertura desktop e segurança dos dados.',
-      `<button class="soft" onclick="fpPreviewSplash()">✦ Testar abertura do app</button>
-       <button class="primary" onclick="fpCheckForUpdates(true)">↻ Verificar atualizações</button>`
-    ) + `
-    <div class="fp-cfg-hero">
-      <div class="fp-cfg-hero-left">
-        <div class="fp-cfg-logo">
-          <svg viewBox="0 0 64 52" aria-hidden="true">
-            <path d="M4 34h34V11H4zM38 20h11l10 11v3H38z"/>
-            <path d="M13 42a6 6 0 1 0 0-12 6 6 0 0 0 0 12Zm36 0a6 6 0 1 0 0-12 6 6 0 0 0 0 12Z"/>
-            <path d="M10 18h17M10 25h22M4 47h55"/>
-            <path d="M44 7h12M50 2v10"/>
-          </svg>
-        </div>
-        <div>
-          <div style="font-size:19px;font-weight:850;letter-spacing:.3px">FrotaPro Enterprise <span style="opacity:.85;font-weight:600">v${APP_VERSION}</span></div>
-          <div style="font-size:12.5px;color:#bfd5f2;margin-top:3px">Plataforma Gerencial de Viagens, Custos por Veículo e Controle RH</div>
-          <div class="fp-cfg-badges">
-            <span class="fp-cfg-chip">Versão instalada: v${APP_VERSION}</span>
-            <span class="fp-cfg-chip">Compilação: ${APP_BUILD_DATE}</span>
-            <span class="fp-cfg-chip">${isInstalled ? 'Modo: Aplicativo Instalado (Desktop/PWA)' : 'Modo: Navegador Web'}</span>
-            ${statusChip}
-          </div>
-        </div>
-      </div>
-      <div>
-        ${updateState.available
-          ? `<button class="greenbtn" onclick="fpApplySystemUpdate()">⬇ Instalar v${esc(updateState.latestVersion)} agora</button>`
-          : `<button class="soft" onclick="fpCheckForUpdates(true)">${updateState.checking ? 'Verificando...' : 'Buscar nova versão'}</button>`}
-      </div>
-    </div>
-
-    <div class="fp-cfg-grid">
-      <div class="card fp-cfg-card">
-        <h3>Atualizações do Aplicativo</h3>
-        <p class="muted" style="margin:0 0 10px">As atualizações são baixadas em segundo plano sem interromper lançamentos em andamento.</p>
-        <ul class="fp-cfg-list">
-          <li><span class="muted">Versão atual em execução</span><b>v${APP_VERSION}</b></li>
-          <li><span class="muted">Última versão verificada</span><b>v${esc(updateState.latestVersion)}</b></li>
-          <li><span class="muted">Última verificação</span><b>${updateState.lastChecked || 'Automática ao iniciar'}</b></li>
-          <li><span class="muted">Proteção de dados na atualização</span><b style="color:#059669">100% preservados</b></li>
-        </ul>
-        <div class="fp-changelog-box">
-          <b>Novidades da versão v${APP_VERSION}:</b>
-          <ul>
-            <li>Visual Pro modernizado com botões interativos e barras de rolagem ocultas.</li>
-            <li>Tela de abertura animada exclusiva para o aplicativo instalado no computador.</li>
-            <li>Central de Configurações com verificação segura de atualizações sem travar o uso.</li>
-          </ul>
-        </div>
-        <div class="actions" style="margin-top:14px">
-          <button class="primary" onclick="fpCheckForUpdates(true)">${updateState.checking ? 'Verificando...' : 'Verificar agora'}</button>
-          ${updateState.available ? `<button class="greenbtn" onclick="fpApplySystemUpdate()">Aplicar atualização</button>` : ''}
-        </div>
-      </div>
-
-      <div class="card fp-cfg-card">
-        <h3>Personalização e Experiência</h3>
-        <p class="muted" style="margin:0 0 12px">Ajuste a identificação exibida no topo do sistema e o comportamento da abertura.</p>
-        <div class="grid" style="gap:11px">
-          <div class="field">
-            <label>Nome do perfil / operador no cabeçalho</label>
-            <input id="cfgGestorNome" type="text" value="${esc(cfg.gestorNome)}" placeholder="Ex: Gestão Frota">
-          </div>
-          <div class="field">
-            <label>Sigla do avatar (até 3 letras)</label>
-            <input id="cfgGestorSigla" type="text" maxlength="3" value="${esc(cfg.gestorSigla)}" placeholder="GP">
-          </div>
-        </div>
-        <div style="margin-top:12px">
-          <div class="fp-switch-row">
-            <div>
-              <b style="font-size:13px">Tela de abertura animada (App Desktop)</b>
-              <div class="muted" style="font-size:11.5px">Exibe a apresentação com a logo do FrotaPro ao abrir o programa instalado.</div>
-            </div>
-            <label class="fp-switch">
-              <input id="cfgSplashDesktop" type="checkbox" ${cfg.splashDesktop ? 'checked' : ''}>
-              <span class="fp-slider"></span>
-            </label>
-          </div>
-          <div class="fp-switch-row">
-            <div>
-              <b style="font-size:13px">Verificar atualizações automaticamente</b>
-              <div class="muted" style="font-size:11.5px">Notifica discretamente quando uma nova versão estiver disponível no GitHub.</div>
-            </div>
-            <label class="fp-switch">
-              <input id="cfgAutoCheck" type="checkbox" ${cfg.autoCheckUpdates ? 'checked' : ''}>
-              <span class="fp-slider"></span>
-            </label>
-          </div>
-        </div>
-        <div class="actions" style="margin-top:14px">
-          <button class="primary" onclick="fpSaveSettingsForm()">Salvar preferências</button>
-          <button class="soft" onclick="fpPreviewSplash()">Visualizar abertura</button>
-        </div>
-      </div>
-
-      <div class="card fp-cfg-card">
-        <h3>Resumo Operacional da Base</h3>
-        <p class="muted" style="margin:0 0 10px">Resumo atualizado dos lançamentos e cadastros ativos no aplicativo.</p>
-        <ul class="fp-cfg-list">
-          <li><span class="muted">Veículos cadastrados</span><b>${totalVehicles}</b></li>
-          <li><span class="muted">Viagens registradas</span><b>${totalTrips}</b></li>
-          <li><span class="muted">Despesas vinculadas</span><b>${totalExpenses}</b></li>
-          <li><span class="muted">Motoristas cadastrados</span><b>${(db && Array.isArray(db.motoristas)) ? db.motoristas.length : 0}</b></li>
-        </ul>
-        <div class="actions" style="margin-top:14px">
-          <button class="soft" onclick="go('backup')">Ir para Backup e Restauração</button>
-        </div>
-      </div>
-
-      <div class="card fp-cfg-card">
-        <h3>Instalação no Computador e Celular</h3>
-        <p class="muted" style="line-height:1.65;margin:0 0 12px">
-          O FrotaPro pode ser instalado como programa dedicado no Windows, Mac ou Android, abrindo em janela própria com ícone na área de trabalho e tela de abertura animada.
-        </p>
-        <div class="fp-changelog-box" style="margin-top:0">
-          <b>Como instalar no computador (Chrome / Edge):</b>
-          <ul>
-            <li>Clique no ícone de instalação na barra de endereço ou no botão <b>Instalar App</b> no topo.</li>
-            <li>O sistema passará a abrir como aplicativo nativo com a abertura animada FrotaPro.</li>
-          </ul>
-        </div>
-      </div>
-    </div>`;
-  };
-
-  window.fpSaveSettingsForm = function () {
-    const gestorNome = (document.getElementById('cfgGestorNome')?.value || '').trim() || 'Gestão';
-    const gestorSigla = (document.getElementById('cfgGestorSigla')?.value || '').trim() || 'GP';
-    const splashDesktop = !!document.getElementById('cfgSplashDesktop')?.checked;
-    const autoCheckUpdates = !!document.getElementById('cfgAutoCheck')?.checked;
-    saveSettings({ gestorNome, gestorSigla, splashDesktop, autoCheckUpdates });
-    if (typeof notify === 'function') notify('Configurações salvas com sucesso!');
-    render();
-  };
-
-  window.afterRenderSettings = function () {
-    applyVisualSettings();
-  };
-
-  // Inicialização segura
-  applyVisualSettings();
-  initDesktopSplash();
-  if (getSettings().autoCheckUpdates) {
-    setTimeout(() => fpCheckForUpdates(false), 2500);
-  }
-})();
-</script>
 
 </body></html>`);w.document.close();w.focus();w.print()}
 function backupPage(){return head('Backup e restauração','Proteja os dados e transfira-os quando necessário.')+`<div class="grid two"><div class="card"><h3>Baixar backup completo</h3><p class="muted">Inclui viagens, despesas vinculadas e cadastros. Os dados antigos de fretes e abastecimentos são preservados no arquivo, mas não entram nos cálculos.</p><button class="primary" onclick="backup()">Baixar JSON</button></div><div class="card"><h3>Restaurar backup</h3><p class="muted">A restauração substitui os dados atuais.</p><input id="backupFile" type="file" accept=".json"><button class="soft" style="margin-top:10px" onclick="restoreBackup()">Restaurar arquivo</button></div><div class="card"><h3>Quantidade de registros</h3>${[['Viagens',db.viagens.length],['Despesas avulsas',db.despesas.length],['Despesas dentro das viagens',db.viagens.reduce((s,t)=>s+(t.despesas||[]).length,0)],['Fretes',db.fretes.length],['Abastecimentos',db.abastecimentos.length]].map(x=>`<p style="display:flex;justify-content:space-between;border-bottom:1px solid var(--line);padding:7px 0"><span class="muted">${x[0]}</span><b>${x[1]}</b></p>`).join('')}</div><div class="card"><h3>Segurança e Portabilidade</h3><p class="muted" style="line-height:1.7">Exporte regularmente o arquivo JSON para manter cópias de segurança externas ou transferir os lançamentos entre computadores com total integridade.</p></div></div>`}
@@ -5092,6 +4698,410 @@ cpSettings=function(m,rs){let html=cpSettingsBeforeClean(m,rs);if(rs.some(x=>x.p
 const cpPresentSourcesBeforeClean=cpPresentSources;
 cpPresentSources=function(){const sources=cpPresentSourcesBeforeClean();return sources.map(s=>{if(s.body){s.body=s.body.replace(/<section class="cp-strada-special">[\s\S]*?<\/section>/gi,section=>cpCleanStradaTableColumns(section).replace(/\bArla\b[^<]*/gi,'').replace(/\bChapa\b[^<]*/gi,'').replace(/\bDi[aá]ria\b[^<]*/gi,'').replace(/\bDiesel\b/gi,'Gasolina'));}return s})};
 
+</script>
+<script id="frotapro-settings-and-updater">
+(function () {
+  const APP_VERSION = '3.1.0';
+  const APP_BUILD_DATE = '27/11/2026';
+  const SETTINGS_KEY = 'frotapro_settings_v3';
+
+  const defaultSettings = {
+    empresaNome: 'FrotaPro Transportes',
+    gestorNome: 'Gestão',
+    gestorSigla: 'GP',
+    splashDesktop: true,
+    autoCheckUpdates: true,
+    compactTables: false
+  };
+
+  function getSettings() {
+    try {
+      const saved = JSON.parse(localStorage.getItem(SETTINGS_KEY) || '{}');
+      return { ...defaultSettings, ...saved };
+    } catch (e) {
+      return { ...defaultSettings };
+    }
+  }
+
+  function saveSettings(partial) {
+    const next = { ...getSettings(), ...partial };
+    localStorage.setItem(SETTINGS_KEY, JSON.stringify(next));
+    applyVisualSettings(next);
+    return next;
+  }
+
+  function applyVisualSettings(cfg = getSettings()) {
+    const userBold = document.querySelector('.top .user b');
+    const userAvatar = document.querySelector('.top .user .avatar');
+    if (userBold && cfg.gestorNome) userBold.textContent = cfg.gestorNome;
+    if (userAvatar && cfg.gestorSigla) userAvatar.textContent = cfg.gestorSigla.slice(0, 3).toUpperCase();
+    const sideVer = document.getElementById('fpSideVer');
+    if (sideVer) sideVer.textContent = 'v' + APP_VERSION;
+  }
+
+  // 1. ABERTURA ANIMADA PARA O APP INSTALADO NO COMPUTADOR (STANDALONE / DESKTOP)
+  function initDesktopSplash() {
+    const splash = document.getElementById('fpDesktopSplash');
+    if (!splash) return;
+    const cfg = getSettings();
+    const isStandalone = window.matchMedia('(display-mode: standalone)').matches
+      || window.matchMedia('(display-mode: window-controls-overlay)').matches
+      || window.navigator.standalone === true;
+    const alreadyShownSession = sessionStorage.getItem('fp_splash_shown') === '1';
+
+    // Exibe na abertura do app instalado no computador (ou quando testado via botão)
+    if (!cfg.splashDesktop || (!isStandalone && alreadyShownSession)) {
+      splash.remove();
+      return;
+    }
+
+    sessionStorage.setItem('fp_splash_shown', '1');
+    splash.style.display = 'flex';
+    const bar = document.getElementById('fpSplashProgress');
+    const status = document.getElementById('fpSplashStatusText');
+    const verTag = document.getElementById('fpSplashVersionTag');
+    if (verTag) verTag.textContent = `Versão v${APP_VERSION} • Edição Desktop`;
+
+    const steps = [
+      { pct: 32, text: 'Carregando base operacional e frota...' },
+      { pct: 68, text: 'Sincronizando indicadores gerenciais...' },
+      { pct: 100, text: 'Sistema pronto para operação.' }
+    ];
+
+    steps.forEach((step, idx) => {
+      setTimeout(() => {
+        if (bar) bar.style.width = step.pct + '%';
+        if (status) status.textContent = step.text;
+      }, 220 * (idx + 1));
+    });
+
+    setTimeout(() => {
+      splash.classList.add('fp-splash-hide');
+      setTimeout(() => {
+        if (splash && splash.parentNode) splash.style.display = 'none';
+      }, 600);
+    }, 1350);
+  }
+
+  window.fpPreviewSplash = function () {
+    const splash = document.getElementById('fpDesktopSplash');
+    if (!splash) return;
+    splash.classList.remove('fp-splash-hide');
+    splash.style.display = 'flex';
+    const bar = document.getElementById('fpSplashProgress');
+    const status = document.getElementById('fpSplashStatusText');
+    if (bar) bar.style.width = '0%';
+    if (status) status.textContent = 'Inicializando módulos operacionais...';
+    setTimeout(() => { if (bar) bar.style.width = '45%'; if (status) status.textContent = 'Verificando integridade dos dados...'; }, 240);
+    setTimeout(() => { if (bar) bar.style.width = '100%'; if (status) status.textContent = 'Tudo pronto!'; }, 620);
+    setTimeout(() => {
+      splash.classList.add('fp-splash-hide');
+      setTimeout(() => { splash.style.display = 'none'; }, 600);
+    }, 1450);
+  };
+
+  // 2. SISTEMA INTELIGENTE DE ATUALIZAÇÃO (NÃO TRAVA O SISTEMA)
+  let pendingWorker = null;
+  let remoteVersionInfo = null;
+  let updateState = {
+    checking: false,
+    available: false,
+    latestVersion: APP_VERSION,
+    notes: [],
+    lastChecked: null
+  };
+
+  function markUpdateAvailable(versionLabel, notes = []) {
+    updateState.available = true;
+    updateState.latestVersion = versionLabel || APP_VERSION;
+    updateState.notes = notes;
+
+    const badge = document.getElementById('fpConfigBadge');
+    const sideDot = document.querySelector('.fp-ver-dot');
+    const sideStatus = document.getElementById('fpSideStatus');
+    if (badge) badge.hidden = false;
+    if (sideDot) sideDot.classList.add('has-update');
+    if (sideStatus) sideStatus.textContent = 'Atualização disponível';
+
+    const banner = document.getElementById('fpUpdateBanner');
+    const sub = document.getElementById('fpUpdSubtitle');
+    const body = document.getElementById('fpUpdBody');
+    if (sub) sub.textContent = `FrotaPro v${updateState.latestVersion} disponível`;
+    if (body && notes.length) {
+      body.textContent = `Novidades: ${notes.slice(0, 2).join(' • ')}. Seus dados permanecem intactos.`;
+    }
+    if (banner && sessionStorage.getItem('fp_upd_dismissed_' + updateState.latestVersion) !== '1') {
+      banner.classList.add('visible');
+    }
+    if (typeof page !== 'undefined' && page === 'configuracoes' && typeof render === 'function') {
+      render();
+    }
+  }
+
+  window.fpDismissUpdateBanner = function () {
+    const banner = document.getElementById('fpUpdateBanner');
+    if (banner) banner.classList.remove('visible');
+    sessionStorage.setItem('fp_upd_dismissed_' + updateState.latestVersion, '1');
+    if (typeof notify === 'function') notify('Você pode atualizar quando quiser na aba Configurações.');
+  };
+
+  window.fpApplySystemUpdate = async function () {
+    const btn = document.getElementById('fpUpdApplyBtn');
+    if (btn) {
+      btn.disabled = true;
+      btn.textContent = 'Atualizando...';
+    }
+    try {
+      // Garante persistência antes de recarregar
+      if (typeof persist === 'function') persist();
+
+      if (pendingWorker) {
+        pendingWorker.postMessage({ type: 'SKIP_WAITING' });
+      }
+      if ('caches' in window) {
+        const keys = await caches.keys();
+        await Promise.all(keys.map(k => caches.delete(k)));
+      }
+      if ('serviceWorker' in navigator) {
+        const reg = await navigator.serviceWorker.getRegistration();
+        if (reg) await reg.update();
+      }
+    } catch (e) {}
+
+    if (typeof notify === 'function') notify('Aplicando atualização v' + updateState.latestVersion + '...');
+    setTimeout(() => {
+      window.location.reload();
+    }, 650);
+  };
+
+  window.fpCheckForUpdates = async function (manual = false) {
+    if (updateState.checking) return;
+    updateState.checking = true;
+    if (typeof page !== 'undefined' && page === 'configuracoes' && typeof render === 'function') render();
+
+    try {
+      // 1) Verifica atualização via Service Worker
+      if ('serviceWorker' in navigator) {
+        const reg = await navigator.serviceWorker.getRegistration();
+        if (reg) {
+          await reg.update();
+          if (reg.waiting) {
+            pendingWorker = reg.waiting;
+            markUpdateAvailable(APP_VERSION + ' (Nova revisão)', ['Melhorias de desempenho e visual']);
+          }
+        }
+      }
+
+      // 2) Verifica ./version.json no GitHub Pages (com cache-busting)
+      const res = await fetch('./version.json?t=' + Date.now(), { cache: 'no-store' });
+      if (res.ok) {
+        const data = await res.json();
+        remoteVersionInfo = data;
+        if (data && data.version && String(data.version).trim() !== APP_VERSION) {
+          markUpdateAvailable(String(data.version).trim(), Array.isArray(data.notes) ? data.notes : []);
+        } else if (manual && !updateState.available && typeof notify === 'function') {
+          notify('O FrotaPro já está na versão mais recente (v' + APP_VERSION + ').');
+        }
+      } else if (manual && !updateState.available && typeof notify === 'function') {
+        notify('Verificação concluída: sistema atualizado (v' + APP_VERSION + ').');
+      }
+    } catch (err) {
+      if (manual && typeof notify === 'function') {
+        notify('Não foi possível consultar o servidor agora. Seus dados locais estão seguros.');
+      }
+    } finally {
+      updateState.checking = false;
+      updateState.lastChecked = new Date().toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
+      if (typeof page !== 'undefined' && page === 'configuracoes' && typeof render === 'function') render();
+    }
+  };
+
+  // Escuta Service Worker para detectar nova versão em segundo plano sem travar o uso
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.addEventListener('load', async () => {
+      try {
+        const reg = await navigator.serviceWorker.getRegistration();
+        if (!reg) return;
+        if (reg.waiting) {
+          pendingWorker = reg.waiting;
+          markUpdateAvailable(APP_VERSION, ['Nova atualização pronta para aplicar']);
+        }
+        reg.addEventListener('updatefound', () => {
+          const nw = reg.installing;
+          if (!nw) return;
+          nw.addEventListener('statechange', () => {
+            if (nw.state === 'installed' && navigator.serviceWorker.controller) {
+              pendingWorker = nw;
+              markUpdateAvailable(APP_VERSION, ['Nova atualização pronta para aplicar']);
+            }
+          });
+        });
+      } catch (e) {}
+    });
+  }
+
+  // 3. PÁGINA COMPLETA DE CONFIGURAÇÕES
+  window.settingsPage = function () {
+    const cfg = getSettings();
+    const totalTrips = (db && Array.isArray(db.viagens)) ? db.viagens.length : 0;
+    const totalExpenses = (db && Array.isArray(db.viagens)) ? db.viagens.reduce((s, t) => s + (t.despesas || []).length, 0) : 0;
+    const totalVehicles = (db && Array.isArray(db.veiculos)) ? db.veiculos.length : 0;
+    const isInstalled = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
+
+    const statusChip = updateState.available
+      ? `<span class="fp-cfg-chip" style="background:rgba(16,185,129,0.26);border-color:rgba(52,211,153,0.5)">● Nova versão v${esc(updateState.latestVersion)} disponível</span>`
+      : `<span class="fp-cfg-chip" style="background:rgba(16,185,129,0.2);border-color:rgba(52,211,153,0.4)">✓ Sistema atualizado</span>`;
+
+    return head(
+      'Configurações do Sistema',
+      'Gerencie atualizações do aplicativo, identidade operacional, abertura desktop e segurança dos dados.',
+      `<button class="soft" onclick="fpPreviewSplash()">✦ Testar abertura do app</button>
+       <button class="primary" onclick="fpCheckForUpdates(true)">↻ Verificar atualizações</button>`
+    ) + `
+    <div class="fp-cfg-hero">
+      <div class="fp-cfg-hero-left">
+        <div class="fp-cfg-logo">
+          <svg viewBox="0 0 64 52" aria-hidden="true">
+            <path d="M4 34h34V11H4zM38 20h11l10 11v3H38z"/>
+            <path d="M13 42a6 6 0 1 0 0-12 6 6 0 0 0 0 12Zm36 0a6 6 0 1 0 0-12 6 6 0 0 0 0 12Z"/>
+            <path d="M10 18h17M10 25h22M4 47h55"/>
+            <path d="M44 7h12M50 2v10"/>
+          </svg>
+        </div>
+        <div>
+          <div style="font-size:19px;font-weight:850;letter-spacing:.3px">FrotaPro Enterprise <span style="opacity:.85;font-weight:600">v${APP_VERSION}</span></div>
+          <div style="font-size:12.5px;color:#bfd5f2;margin-top:3px">Plataforma Gerencial de Viagens, Custos por Veículo e Controle RH</div>
+          <div class="fp-cfg-badges">
+            <span class="fp-cfg-chip">Versão instalada: v${APP_VERSION}</span>
+            <span class="fp-cfg-chip">Compilação: ${APP_BUILD_DATE}</span>
+            <span class="fp-cfg-chip">${isInstalled ? 'Modo: Aplicativo Instalado (Desktop/PWA)' : 'Modo: Navegador Web'}</span>
+            ${statusChip}
+          </div>
+        </div>
+      </div>
+      <div>
+        ${updateState.available
+          ? `<button class="greenbtn" onclick="fpApplySystemUpdate()">⬇ Instalar v${esc(updateState.latestVersion)} agora</button>`
+          : `<button class="soft" onclick="fpCheckForUpdates(true)">${updateState.checking ? 'Verificando...' : 'Buscar nova versão'}</button>`}
+      </div>
+    </div>
+
+    <div class="fp-cfg-grid">
+      <div class="card fp-cfg-card">
+        <h3>Atualizações do Aplicativo</h3>
+        <p class="muted" style="margin:0 0 10px">As atualizações são baixadas em segundo plano sem interromper lançamentos em andamento.</p>
+        <ul class="fp-cfg-list">
+          <li><span class="muted">Versão atual em execução</span><b>v${APP_VERSION}</b></li>
+          <li><span class="muted">Última versão verificada</span><b>v${esc(updateState.latestVersion)}</b></li>
+          <li><span class="muted">Última verificação</span><b>${updateState.lastChecked || 'Automática ao iniciar'}</b></li>
+          <li><span class="muted">Proteção de dados na atualização</span><b style="color:#059669">100% preservados</b></li>
+        </ul>
+        <div class="fp-changelog-box">
+          <b>Novidades da versão v${APP_VERSION}:</b>
+          <ul>
+            <li>Visual Pro modernizado com botões interativos e barras de rolagem ocultas.</li>
+            <li>Tela de abertura animada exclusiva para o aplicativo instalado no computador.</li>
+            <li>Central de Configurações com verificação segura de atualizações sem travar o uso.</li>
+          </ul>
+        </div>
+        <div class="actions" style="margin-top:14px">
+          <button class="primary" onclick="fpCheckForUpdates(true)">${updateState.checking ? 'Verificando...' : 'Verificar agora'}</button>
+          ${updateState.available ? `<button class="greenbtn" onclick="fpApplySystemUpdate()">Aplicar atualização</button>` : ''}
+        </div>
+      </div>
+
+      <div class="card fp-cfg-card">
+        <h3>Personalização e Experiência</h3>
+        <p class="muted" style="margin:0 0 12px">Ajuste a identificação exibida no topo do sistema e o comportamento da abertura.</p>
+        <div class="grid" style="gap:11px">
+          <div class="field">
+            <label>Nome do perfil / operador no cabeçalho</label>
+            <input id="cfgGestorNome" type="text" value="${esc(cfg.gestorNome)}" placeholder="Ex: Gestão Frota">
+          </div>
+          <div class="field">
+            <label>Sigla do avatar (até 3 letras)</label>
+            <input id="cfgGestorSigla" type="text" maxlength="3" value="${esc(cfg.gestorSigla)}" placeholder="GP">
+          </div>
+        </div>
+        <div style="margin-top:12px">
+          <div class="fp-switch-row">
+            <div>
+              <b style="font-size:13px">Tela de abertura animada (App Desktop)</b>
+              <div class="muted" style="font-size:11.5px">Exibe a apresentação com a logo do FrotaPro ao abrir o programa instalado.</div>
+            </div>
+            <label class="fp-switch">
+              <input id="cfgSplashDesktop" type="checkbox" ${cfg.splashDesktop ? 'checked' : ''}>
+              <span class="fp-slider"></span>
+            </label>
+          </div>
+          <div class="fp-switch-row">
+            <div>
+              <b style="font-size:13px">Verificar atualizações automaticamente</b>
+              <div class="muted" style="font-size:11.5px">Notifica discretamente quando uma nova versão estiver disponível no GitHub.</div>
+            </div>
+            <label class="fp-switch">
+              <input id="cfgAutoCheck" type="checkbox" ${cfg.autoCheckUpdates ? 'checked' : ''}>
+              <span class="fp-slider"></span>
+            </label>
+          </div>
+        </div>
+        <div class="actions" style="margin-top:14px">
+          <button class="primary" onclick="fpSaveSettingsForm()">Salvar preferências</button>
+          <button class="soft" onclick="fpPreviewSplash()">Visualizar abertura</button>
+        </div>
+      </div>
+
+      <div class="card fp-cfg-card">
+        <h3>Resumo Operacional da Base</h3>
+        <p class="muted" style="margin:0 0 10px">Resumo atualizado dos lançamentos e cadastros ativos no aplicativo.</p>
+        <ul class="fp-cfg-list">
+          <li><span class="muted">Veículos cadastrados</span><b>${totalVehicles}</b></li>
+          <li><span class="muted">Viagens registradas</span><b>${totalTrips}</b></li>
+          <li><span class="muted">Despesas vinculadas</span><b>${totalExpenses}</b></li>
+          <li><span class="muted">Motoristas cadastrados</span><b>${(db && Array.isArray(db.motoristas)) ? db.motoristas.length : 0}</b></li>
+        </ul>
+        <div class="actions" style="margin-top:14px">
+          <button class="soft" onclick="go('backup')">Ir para Backup e Restauração</button>
+        </div>
+      </div>
+
+      <div class="card fp-cfg-card">
+        <h3>Instalação no Computador e Celular</h3>
+        <p class="muted" style="line-height:1.65;margin:0 0 12px">
+          O FrotaPro pode ser instalado como programa dedicado no Windows, Mac ou Android, abrindo em janela própria com ícone na área de trabalho e tela de abertura animada.
+        </p>
+        <div class="fp-changelog-box" style="margin-top:0">
+          <b>Como instalar no computador (Chrome / Edge):</b>
+          <ul>
+            <li>Clique no ícone de instalação na barra de endereço ou no botão <b>Instalar App</b> no topo.</li>
+            <li>O sistema passará a abrir como aplicativo nativo com a abertura animada FrotaPro.</li>
+          </ul>
+        </div>
+      </div>
+    </div>`;
+  };
+
+  window.fpSaveSettingsForm = function () {
+    const gestorNome = (document.getElementById('cfgGestorNome')?.value || '').trim() || 'Gestão';
+    const gestorSigla = (document.getElementById('cfgGestorSigla')?.value || '').trim() || 'GP';
+    const splashDesktop = !!document.getElementById('cfgSplashDesktop')?.checked;
+    const autoCheckUpdates = !!document.getElementById('cfgAutoCheck')?.checked;
+    saveSettings({ gestorNome, gestorSigla, splashDesktop, autoCheckUpdates });
+    if (typeof notify === 'function') notify('Configurações salvas com sucesso!');
+    render();
+  };
+
+  window.afterRenderSettings = function () {
+    applyVisualSettings();
+  };
+
+  // Inicialização segura
+  applyVisualSettings();
+  initDesktopSplash();
+  if (getSettings().autoCheckUpdates) {
+    setTimeout(() => fpCheckForUpdates(false), 2500);
+  }
+})();
 </script>
 <script>
 // Patch final: manual monthly Strada trip entries and remove Transportadoras/Barreto display rows.
