@@ -3563,15 +3563,6 @@ body::-webkit-scrollbar,
 }
 </style>
 
-<style id="fp-polish-v31">
-/* Polimento visual v3.1: botões com animação suave, sem alterar regras de negócio */
-button{transition:transform .16s ease,box-shadow .2s ease,background-color .2s ease,filter .2s ease;position:relative;overflow:hidden}
-button:not(:disabled):hover{transform:translateY(-1px);filter:brightness(1.04);box-shadow:0 6px 16px rgba(16,35,63,.14)}
-button:not(:disabled):active{transform:translateY(0) scale(.98);box-shadow:0 2px 6px rgba(16,35,63,.12)}
-button:disabled{opacity:.55;cursor:not-allowed}
-button:focus-visible{outline:2px solid #2866d8;outline-offset:2px}
-@media (prefers-reduced-motion: reduce){button{transition:none!important}button:hover{transform:none!important}}
-</style>
 </head>
 <body>
 <div class="layout">
@@ -3589,7 +3580,7 @@ button:focus-visible{outline:2px solid #2866d8;outline-offset:2px}
 <button data-page="configuracoes"><span class="ico"><svg viewbox="0 0 24 24"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09a1.65 1.65 0 0 0-1-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09a1.65 1.65 0 0 0 1.51-1 1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33h.01a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82v.01a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg></span><span>Configurações</span><span class="fp-nav-badge" id="fpConfigBadge" hidden>NOVA</span></button></nav>
 <div class="sidefoot fp-version-card" onclick="go('configuracoes')" title="Abrir Configurações e Atualizações">
   <div class="fp-ver-row"><span class="fp-ver-dot"></span><b>FrotaPro Enterprise</b></div>
-  <div class="fp-ver-meta">Versão <span id="fpSideVer">v3.1.0</span> • <span id="fpSideStatus">Atualizado</span></div>
+  <div class="fp-ver-meta">Versão <span id="fpSideVer">v3.0.0</span> • <span id="fpSideStatus">Atualizado</span></div>
 </div></aside>
 <main class="main"><header class="top"><b id="crumb">Painel gerencial</b><div class="user"><span id="today"></span><span class="avatar">GP</span><b>Gestão</b></div></header><div class="content" id="view"></div></main>
 </div>
@@ -4292,7 +4283,7 @@ function printTripList(){let html=tripTable(db.viagens,false);let w=window.open(
 
 <script id="frotapro-settings-and-updater">
 (function () {
-  const APP_VERSION = '3.1.0';
+  const APP_VERSION = '3.0.0';
   const APP_BUILD_DATE = '27/11/2026';
   const SETTINGS_KEY = 'frotapro_settings_v3';
 

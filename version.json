@@ -1,10 +1,9 @@
 {
-  "version": "3.1.0",
+  "version": "3.0.0",
   "releaseDate": "2026-11-27",
   "notes": [
-    "Botões com animação suave e visual mais refinado",
-    "Aba de Configurações com versão instalada e botão de atualização",
-    "Aviso de atualização discreto para quem já tem o app instalado no computador",
-    "Abertura animada exclusiva para o app instalado no computador"
+    "Visual Pro repaginado com botões animados e barras de rolagem ocultas",
+    "Tela de abertura animada exclusiva para o app instalado no computador com a logo do FrotaPro",
+    "Nova aba de Configurações e notificação de atualização sem interrupção"
   ]
 }
