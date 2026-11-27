@@ -2815,6 +2815,754 @@ cpPresentSources=function(){
   }
 }
 </style>
+
+<style id="frotapro-pro-redesign-v3">
+/* ==========================================================================
+   FROTAPRO v3.0 — REDESIGN PRO, ANIMAÇÕES DE BOTÕES, SCROLLBARS OCULTAS,
+   SPLASH SCREEN DESKTOP & CENTRAL DE CONFIGURAÇÕES E ATUALIZAÇÕES
+   ========================================================================== */
+
+
+.fp-splash-logo-ring.fp-splash-logo-photo {
+  width: 122px;
+  height: 122px;
+  border-radius: 30px;
+  padding: 6px;
+  background: linear-gradient(135deg, #38bdf8 0%, #2563eb 52%, #0f172a 100%);
+  box-shadow:
+    0 24px 60px rgba(2, 132, 199, 0.48),
+    0 0 0 1px rgba(255, 255, 255, 0.34) inset,
+    0 0 42px rgba(56, 189, 248, 0.28);
+  overflow: visible;
+}
+.fp-splash-logo-ring.fp-splash-logo-photo::before {
+  content: "";
+  position: absolute;
+  inset: -14px;
+  border-radius: 38px;
+  border: 1.5px dashed rgba(125, 211, 252, 0.45);
+  animation: fpSplashSpinSlow 9s linear infinite;
+  pointer-events: none;
+}
+.fp-splash-logo-ring.fp-splash-logo-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 24px;
+  display: block;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+}
+@keyframes fpSplashSpinSlow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* 1. OCULTAR BARRAS DE ROLAGEM MANTENDO A ROLAGEM FUNCIONAL */
+html, body, .side, .main, .content, .tablewrap, .rh-table-wrap, .cp-present-table,
+.cp-topic-tabs, .cp-subtabs, .modal, .modalbody, .fp-dash-body, .master-list-panel,
+* {
+  scrollbar-width: none !important; /* Firefox */
+  -ms-overflow-style: none !important; /* IE / Edge Legacy */
+}
+html::-webkit-scrollbar,
+body::-webkit-scrollbar,
+.side::-webkit-scrollbar,
+.main::-webkit-scrollbar,
+.content::-webkit-scrollbar,
+.tablewrap::-webkit-scrollbar,
+.rh-table-wrap::-webkit-scrollbar,
+.cp-present-table::-webkit-scrollbar,
+.cp-topic-tabs::-webkit-scrollbar,
+.cp-subtabs::-webkit-scrollbar,
+.modal::-webkit-scrollbar,
+.modalbody::-webkit-scrollbar,
+.fp-dash-body::-webkit-scrollbar,
+.master-list-panel::-webkit-scrollbar,
+*::-webkit-scrollbar {
+  width: 0 !important;
+  height: 0 !important;
+  display: none !important;
+  background: transparent !important;
+}
+
+/* 2. ESTÉTICA PRO, PROFUNDIDADE, GLASSMORPHISM E VIDA NOS BOTÕES */
+@media screen {
+  :root {
+    --fp-navy-deep: #091729;
+    --fp-navy-mid: #102847;
+    --fp-blue-pro: #1d63dc;
+    --fp-blue-bright: #3b82f6;
+    --fp-cyan-glow: #38bdf8;
+    --fp-emerald: #10b981;
+    --fp-bg-canvas: #eef3f9;
+    --fp-card-border: rgba(203, 217, 236, 0.85);
+    --fp-shadow-sm: 0 2px 8px rgba(13, 33, 62, 0.04);
+    --fp-shadow-md: 0 10px 28px -6px rgba(13, 33, 62, 0.08), 0 2px 6px rgba(13, 33, 62, 0.04);
+    --fp-shadow-lg: 0 20px 44px -10px rgba(11, 28, 54, 0.16);
+  }
+
+  body {
+    background:
+      radial-gradient(circle at 12% 0%, rgba(56, 189, 248, 0.07), transparent 34%),
+      radial-gradient(circle at 92% 8%, rgba(37, 99, 235, 0.06), transparent 38%),
+      var(--fp-bg-canvas) !important;
+    color: #15253b !important;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Barra lateral refinada */
+  .side {
+    background:
+      radial-gradient(circle at 20% 0%, rgba(56, 189, 248, 0.14), transparent 42%),
+      linear-gradient(180deg, #0d213c 0%, #091628 55%, #06101e 100%) !important;
+    border-right: 1px solid rgba(255, 255, 255, 0.08) !important;
+    box-shadow: 6px 0 32px rgba(6, 16, 30, 0.22) !important;
+  }
+
+  .brand {
+    padding: 8px 10px 22px !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+  }
+
+  .brandicon {
+    background: linear-gradient(135deg, #2563eb 0%, #0ea5e9 100%) !important;
+    box-shadow: 0 8px 20px rgba(14, 165, 233, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.35) !important;
+    border: 1px solid rgba(255, 255, 255, 0.22) !important;
+    transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.3s ease !important;
+  }
+  .brand:hover .brandicon {
+    transform: translateY(-1px) scale(1.04) !important;
+    box-shadow: 0 12px 24px rgba(14, 165, 233, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.45) !important;
+  }
+
+  .navlabel {
+    color: #6f8bb0 !important;
+    font-weight: 800 !important;
+    letter-spacing: 1.6px !important;
+  }
+
+  .nav button {
+    position: relative !important;
+    border-radius: 11px !important;
+    padding: 11px 13px !important;
+    margin: 3px 0 !important;
+    color: #bdd0e8 !important;
+    font-weight: 600 !important;
+    transition: all 0.22s cubic-bezier(0.22, 1, 0.36, 1) !important;
+    overflow: hidden !important;
+  }
+
+  .nav button:hover {
+    background: rgba(255, 255, 255, 0.08) !important;
+    color: #ffffff !important;
+    transform: translateX(3px) !important;
+  }
+
+  .nav button.active {
+    background: linear-gradient(90deg, rgba(37, 99, 235, 0.34) 0%, rgba(14, 165, 233, 0.16) 100%) !important;
+    color: #ffffff !important;
+    font-weight: 700 !important;
+    box-shadow: inset 0 0 0 1px rgba(96, 165, 250, 0.35), 0 6px 16px rgba(6, 16, 30, 0.25) !important;
+  }
+
+  .nav button.active::before {
+    content: "" !important;
+    position: absolute !important;
+    left: 0 !important;
+    top: 20% !important;
+    bottom: 20% !important;
+    width: 3.5px !important;
+    border-radius: 0 4px 4px 0 !important;
+    background: linear-gradient(180deg, #38bdf8, #3b82f6) !important;
+    box-shadow: 0 0 10px #38bdf8 !important;
+  }
+
+  .nav button .ico svg {
+    transition: transform 0.22s ease, stroke 0.22s ease !important;
+  }
+  .nav button:hover .ico svg,
+  .nav button.active .ico svg {
+    transform: scale(1.1) !important;
+    stroke: #7dd3fc !important;
+  }
+
+  .fp-nav-badge {
+    margin-left: auto !important;
+    padding: 2px 7px !important;
+    border-radius: 999px !important;
+    font-size: 9px !important;
+    font-weight: 800 !important;
+    letter-spacing: 0.6px !important;
+    background: linear-gradient(135deg, #10b981, #059669) !important;
+    color: #ffffff !important;
+    box-shadow: 0 2px 8px rgba(16, 185, 129, 0.45) !important;
+    animation: fpPulseBadge 2s infinite !important;
+  }
+
+  @keyframes fpPulseBadge {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.07); opacity: 0.88; }
+  }
+
+  /* Cartão discreto de versão no rodapé da barra lateral */
+  .fp-version-card {
+    margin: 22px 6px 8px !important;
+    padding: 12px 13px !important;
+    border-radius: 12px !important;
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02)) !important;
+    border: 1px solid rgba(148, 184, 230, 0.16) !important;
+    cursor: pointer !important;
+    transition: all 0.22s ease !important;
+  }
+  .fp-version-card:hover {
+    background: rgba(255, 255, 255, 0.1) !important;
+    border-color: rgba(56, 189, 248, 0.4) !important;
+    transform: translateY(-1px) !important;
+  }
+  .fp-ver-row {
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    color: #f1f6fd !important;
+    font-size: 11.5px !important;
+    letter-spacing: 0.2px !important;
+  }
+  .fp-ver-dot {
+    width: 8px !important;
+    height: 8px !important;
+    border-radius: 50% !important;
+    background: #10b981 !important;
+    box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.22) !important;
+    flex-shrink: 0 !important;
+  }
+  .fp-ver-dot.has-update {
+    background: #38bdf8 !important;
+    box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.28) !important;
+  }
+  .fp-ver-meta {
+    margin-top: 5px !important;
+    font-size: 10.5px !important;
+    color: #93accb !important;
+    padding-left: 16px !important;
+  }
+
+  /* Cabeçalho superior translúcido */
+  .top {
+    background: rgba(255, 255, 255, 0.86) !important;
+    backdrop-filter: blur(14px) !important;
+    -webkit-backdrop-filter: blur(14px) !important;
+    border-bottom: 1px solid rgba(203, 217, 236, 0.75) !important;
+    box-shadow: 0 4px 20px rgba(13, 33, 62, 0.03) !important;
+  }
+
+  .avatar {
+    background: linear-gradient(135deg, #1d63dc, #0ea5e9) !important;
+    color: #ffffff !important;
+    box-shadow: 0 4px 12px rgba(29, 99, 220, 0.28) !important;
+  }
+
+  /* Vida nos botões (micro-interações, brilho, elevação e clique tátil) */
+  button {
+    position: relative;
+    border-radius: 10px !important;
+    transition:
+      transform 0.18s cubic-bezier(0.22, 1, 0.36, 1),
+      box-shadow 0.22s ease,
+      background 0.22s ease,
+      border-color 0.22s ease,
+      filter 0.18s ease !important;
+  }
+
+  button:not(:disabled):hover {
+    transform: translateY(-1.5px) !important;
+  }
+
+  button:not(:disabled):active {
+    transform: translateY(0.5px) scale(0.985) !important;
+  }
+
+  button.primary {
+    background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 55%, #1e40af 100%) !important;
+    color: #ffffff !important;
+    border: 1px solid rgba(255, 255, 255, 0.16) !important;
+    box-shadow: 0 6px 16px -3px rgba(37, 99, 235, 0.42), inset 0 1px 0 rgba(255, 255, 255, 0.25) !important;
+  }
+  button.primary:not(:disabled):hover {
+    background: linear-gradient(135deg, #3b82f6 0%, #2563eb 55%, #1d4ed8 100%) !important;
+    box-shadow: 0 10px 22px -4px rgba(37, 99, 235, 0.52), inset 0 1px 0 rgba(255, 255, 255, 0.35) !important;
+  }
+
+  button.soft {
+    background: linear-gradient(180deg, #ffffff 0%, #f1f5fb 100%) !important;
+    color: #264163 !important;
+    border: 1px solid #d3dfee !important;
+    box-shadow: 0 2px 6px rgba(15, 35, 65, 0.04), inset 0 1px 0 #ffffff !important;
+  }
+  button.soft:not(:disabled):hover {
+    background: linear-gradient(180deg, #ffffff 0%, #e6eef9 100%) !important;
+    border-color: #b4c8e2 !important;
+    color: #133157 !important;
+    box-shadow: 0 6px 14px rgba(15, 35, 65, 0.08) !important;
+  }
+
+  button.greenbtn {
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%) !important;
+    color: #ffffff !important;
+    border: 1px solid rgba(255, 255, 255, 0.18) !important;
+    box-shadow: 0 6px 16px -3px rgba(16, 185, 129, 0.38), inset 0 1px 0 rgba(255, 255, 255, 0.25) !important;
+  }
+  button.greenbtn:not(:disabled):hover {
+    background: linear-gradient(135deg, #34d399 0%, #10b981 100%) !important;
+    box-shadow: 0 10px 22px -4px rgba(16, 185, 129, 0.48) !important;
+  }
+
+  button.danger {
+    background: linear-gradient(180deg, #fff5f5 0%, #ffe4e6 100%) !important;
+    color: #be123c !important;
+    border: 1px solid #fecdd3 !important;
+    box-shadow: 0 2px 6px rgba(190, 18, 60, 0.06) !important;
+  }
+  button.danger:not(:disabled):hover {
+    background: linear-gradient(135deg, #e11d48 0%, #be123c 100%) !important;
+    color: #ffffff !important;
+    border-color: #be123c !important;
+    box-shadow: 0 8px 18px -3px rgba(225, 29, 72, 0.4) !important;
+  }
+
+  /* Cards com acabamento executivo */
+  .card {
+    background: rgba(255, 255, 255, 0.96) !important;
+    border: 1px solid var(--fp-card-border) !important;
+    border-radius: 16px !important;
+    box-shadow: var(--fp-shadow-md) !important;
+    transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease !important;
+  }
+
+  #view .dash-stats > .stat-card:hover,
+  #view .dash-secondary-stats > .stat-card:hover {
+    transform: translateY(-2.5px) !important;
+    border-color: #9ec0ea !important;
+    box-shadow: 0 14px 30px -8px rgba(29, 99, 220, 0.14) !important;
+  }
+
+  /* Inputs com foco elegante */
+  .field input:focus, .field select:focus, .field textarea:focus,
+  .filter input:focus, .filter select:focus {
+    outline: none !important;
+    border-color: #3b82f6 !important;
+    box-shadow: 0 0 0 3.5px rgba(59, 130, 246, 0.16) !important;
+  }
+
+  /* Toast mais bonito */
+  .toast {
+    background: linear-gradient(135deg, #0f2542, #163660) !important;
+    border: 1px solid rgba(96, 165, 250, 0.35) !important;
+    box-shadow: 0 16px 36px rgba(7, 19, 36, 0.32) !important;
+    border-radius: 12px !important;
+    font-weight: 600 !important;
+  }
+}
+
+/* 3. NOTIFICAÇÃO DE ATUALIZAÇÃO ELEGANTE (DESKTOP & WEB) */
+#fpUpdateBanner {
+  position: fixed;
+  right: 22px;
+  bottom: 22px;
+  z-index: 9990;
+  max-width: 410px;
+  width: calc(100vw - 32px);
+  background: linear-gradient(145deg, #0d223e 0%, #133159 100%);
+  color: #f4f8ff;
+  border: 1px solid rgba(56, 189, 248, 0.42);
+  border-radius: 16px;
+  padding: 16px 18px;
+  box-shadow: 0 22px 48px rgba(6, 16, 32, 0.42), 0 0 0 1px rgba(255, 255, 255, 0.06) inset;
+  display: none;
+  animation: fpSlideUpBanner 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+#fpUpdateBanner.visible {
+  display: block;
+}
+@keyframes fpSlideUpBanner {
+  from { opacity: 0; transform: translateY(18px) scale(0.97); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+.fp-upd-head {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+}
+.fp-upd-ico {
+  width: 38px;
+  height: 38px;
+  border-radius: 11px;
+  background: linear-gradient(135deg, #0ea5e9, #2563eb);
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  box-shadow: 0 6px 16px rgba(14, 165, 233, 0.38);
+}
+.fp-upd-title {
+  font-size: 13.5px;
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: 0.1px;
+}
+.fp-upd-sub {
+  font-size: 11.5px;
+  color: #b5cae6;
+  margin-top: 2px;
+}
+.fp-upd-body {
+  margin: 10px 0 13px;
+  font-size: 12px;
+  line-height: 1.5;
+  color: #d6e4f7;
+}
+.fp-upd-actions {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+}
+.fp-upd-later {
+  background: rgba(255, 255, 255, 0.1) !important;
+  color: #dce8f8 !important;
+  border: 1px solid rgba(255, 255, 255, 0.14) !important;
+  padding: 8px 12px !important;
+  font-size: 12px !important;
+}
+.fp-upd-now {
+  background: linear-gradient(135deg, #10b981, #059669) !important;
+  color: #ffffff !important;
+  padding: 8px 14px !important;
+  font-size: 12px !important;
+  box-shadow: 0 6px 16px rgba(16, 185, 129, 0.38) !important;
+}
+
+/* 4. ABERTURA INOVADORA DO APP INSTALADO NO COMPUTADOR (SPLASH SCREEN) */
+#fpDesktopSplash {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  background:
+    radial-gradient(circle at 25% 20%, rgba(14, 165, 233, 0.22), transparent 45%),
+    radial-gradient(circle at 80% 80%, rgba(37, 99, 235, 0.25), transparent 50%),
+    linear-gradient(160deg, #071222 0%, #0d213d 52%, #081528 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  overflow: hidden;
+  transition: opacity 0.55s cubic-bezier(0.22, 1, 0.36, 1), visibility 0.55s ease, transform 0.55s ease;
+}
+#fpDesktopSplash.fp-splash-hide {
+  opacity: 0;
+  visibility: hidden;
+  transform: scale(1.03);
+  pointer-events: none;
+}
+.fp-splash-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(56, 189, 248, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(56, 189, 248, 0.06) 1px, transparent 1px);
+  background-size: 44px 44px;
+  mask-image: radial-gradient(circle at center, black 35%, transparent 80%);
+  -webkit-mask-image: radial-gradient(circle at center, black 35%, transparent 80%);
+  animation: fpGridMove 14s linear infinite;
+}
+@keyframes fpGridMove {
+  from { transform: translateY(0); }
+  to { transform: translateY(44px); }
+}
+.fp-splash-card {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 36px 42px;
+  max-width: 440px;
+}
+.fp-splash-logo-ring {
+  position: relative;
+  width: 108px;
+  height: 108px;
+  border-radius: 28px;
+  background: linear-gradient(135deg, #2563eb 0%, #0ea5e9 100%);
+  display: grid;
+  place-items: center;
+  box-shadow:
+    0 20px 50px rgba(14, 165, 233, 0.42),
+    0 0 0 1px rgba(255, 255, 255, 0.28) inset;
+  animation: fpLogoFloat 2.4s ease-in-out infinite, fpLogoPop 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.fp-splash-logo-ring::after {
+  content: "";
+  position: absolute;
+  inset: -8px;
+  border-radius: 34px;
+  border: 1.5px solid rgba(56, 189, 248, 0.45);
+  animation: fpRingExpand 2.2s ease-out infinite;
+}
+@keyframes fpLogoPop {
+  from { opacity: 0; transform: scale(0.72) translateY(14px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+@keyframes fpLogoFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+@keyframes fpRingExpand {
+  0% { transform: scale(0.95); opacity: 0.85; }
+  100% { transform: scale(1.18); opacity: 0; }
+}
+.fp-splash-logo-ring svg {
+  width: 60px;
+  height: 50px;
+  fill: none;
+  stroke: #ffffff;
+  stroke-width: 3.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.fp-splash-road {
+  width: 160px;
+  height: 3px;
+  margin-top: 18px;
+  border-radius: 99px;
+  background: rgba(255, 255, 255, 0.12);
+  overflow: hidden;
+  position: relative;
+}
+.fp-splash-road::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  width: 45%;
+  background: linear-gradient(90deg, transparent, #38bdf8, #ffffff);
+  border-radius: 99px;
+  animation: fpRoadStreak 1.1s ease-in-out infinite;
+}
+@keyframes fpRoadStreak {
+  0% { transform: translateX(-120%); }
+  100% { transform: translateX(260%); }
+}
+.fp-splash-title {
+  margin: 22px 0 4px;
+  font-size: 30px;
+  font-weight: 900;
+  letter-spacing: 2px;
+  color: #ffffff;
+}
+.fp-splash-title span {
+  color: #38bdf8;
+}
+.fp-splash-sub {
+  font-size: 11.5px;
+  letter-spacing: 2.2px;
+  text-transform: uppercase;
+  color: #93b4dc;
+  font-weight: 700;
+}
+.fp-splash-bar {
+  width: 240px;
+  height: 5px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.1);
+  margin-top: 26px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+.fp-splash-bar-fill {
+  height: 100%;
+  width: 0%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #2563eb, #38bdf8, #10b981);
+  transition: width 0.35s ease;
+}
+.fp-splash-status {
+  margin-top: 12px;
+  font-size: 12px;
+  color: #b7cde8;
+  font-weight: 500;
+}
+.fp-splash-ver {
+  margin-top: 18px;
+  padding: 4px 12px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  font-size: 10.5px;
+  color: #8fb0d8;
+  letter-spacing: 0.6px;
+}
+
+/* 5. ESTILOS DA ABA COMPLETA DE CONFIGURAÇÕES */
+.fp-cfg-hero {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 22px 24px;
+  border-radius: 18px;
+  background: linear-gradient(135deg, #0e2442 0%, #163966 60%, #1d4f8c 100%);
+  color: #ffffff;
+  margin-bottom: 18px;
+  box-shadow: 0 14px 32px -8px rgba(13, 33, 62, 0.28);
+  border: 1px solid rgba(96, 165, 250, 0.28);
+}
+.fp-cfg-hero-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.fp-cfg-logo {
+  width: 56px;
+  height: 56px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, #2563eb, #0ea5e9);
+  display: grid;
+  place-items: center;
+  box-shadow: 0 10px 22px rgba(14, 165, 233, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  flex-shrink: 0;
+}
+.fp-cfg-logo svg {
+  width: 32px;
+  height: 26px;
+  fill: none;
+  stroke: #ffffff;
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.fp-cfg-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 8px;
+}
+.fp-cfg-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 700;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: #eaf3ff;
+}
+.fp-cfg-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+@media (max-width: 900px) {
+  .fp-cfg-grid {
+    grid-template-columns: 1fr;
+  }
+}
+.fp-cfg-card h3 {
+  margin: 0 0 6px;
+  font-size: 16px;
+  color: #132844;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.fp-cfg-list {
+  margin: 12px 0;
+  padding: 0;
+  list-style: none;
+}
+.fp-cfg-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 9px 0;
+  border-bottom: 1px solid #e6edf6;
+  font-size: 13px;
+}
+.fp-cfg-list li:last-child {
+  border-bottom: 0;
+}
+.fp-switch-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 11px 0;
+  border-bottom: 1px solid #e6edf6;
+}
+.fp-switch-row:last-child {
+  border-bottom: 0;
+}
+.fp-switch {
+  position: relative;
+  width: 44px;
+  height: 24px;
+  flex-shrink: 0;
+}
+.fp-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+.fp-slider {
+  position: absolute;
+  cursor: pointer;
+  inset: 0;
+  background: #cbd7e6;
+  border-radius: 999px;
+  transition: 0.25s;
+}
+.fp-slider::before {
+  content: "";
+  position: absolute;
+  height: 18px;
+  width: 18px;
+  left: 3px;
+  bottom: 3px;
+  background: #ffffff;
+  border-radius: 50%;
+  transition: 0.25s;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.18);
+}
+.fp-switch input:checked + .fp-slider {
+  background: linear-gradient(135deg, #2563eb, #0ea5e9);
+}
+.fp-switch input:checked + .fp-slider::before {
+  transform: translateX(20px);
+}
+.fp-changelog-box {
+  background: #f5f8fd;
+  border: 1px solid #dce6f3;
+  border-radius: 12px;
+  padding: 12px 14px;
+  margin-top: 12px;
+  font-size: 12.5px;
+  color: #314968;
+}
+.fp-changelog-box ul {
+  margin: 6px 0 0 18px;
+  padding: 0;
+  line-height: 1.6;
+}
+
+@media print {
+  #fpDesktopSplash, #fpUpdateBanner {
+    display: none !important;
+  }
+}
+</style>
+
 </head>
 <body>
 <div class="layout">
@@ -2828,8 +3576,12 @@ cpPresentSources=function(){
 <div class="navlabel">GESTÃO</div>
 <button data-page="cadastros"><span class="ico"><svg viewbox="0 0 24 24"><circle cx="12" cy="8" r="4"></circle><path d="M4 21a8 8 0 0 1 16 0"></path></svg></span><span>Cadastros</span></button>
 <button data-page="relatorios"><span class="ico"><svg viewbox="0 0 24 24"><path d="M4 20V4h16v16zM8 16v-4m4 4V8m4 8v-6"></path></svg></span><span>Relatórios PDF</span></button>
-<button data-page="backup"><span class="ico"><svg viewbox="0 0 24 24"><path d="M12 3v12m-5-5 5 5 5-5M4 20h16"></path></svg></span><span>Backup / restauração</span></button></nav>
-<div class="sidefoot">SISTEMA LOCAL<br/><b style="color:#e2ecf8">Seus dados neste navegador</b><br/>Faça backup regularmente.</div></aside>
+<button data-page="backup"><span class="ico"><svg viewbox="0 0 24 24"><path d="M12 3v12m-5-5 5 5 5-5M4 20h16"></path></svg></span><span>Backup / restauração</span></button>
+<button data-page="configuracoes"><span class="ico"><svg viewbox="0 0 24 24"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09a1.65 1.65 0 0 0-1-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09a1.65 1.65 0 0 0 1.51-1 1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33h.01a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82v.01a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg></span><span>Configurações</span><span class="fp-nav-badge" id="fpConfigBadge" hidden>NOVA</span></button></nav>
+<div class="sidefoot fp-version-card" onclick="go('configuracoes')" title="Abrir Configurações e Atualizações">
+  <div class="fp-ver-row"><span class="fp-ver-dot"></span><b>FrotaPro Enterprise</b></div>
+  <div class="fp-ver-meta">Versão <span id="fpSideVer">v3.0.0</span> • <span id="fpSideStatus">Atualizado</span></div>
+</div></aside>
 <main class="main"><header class="top"><b id="crumb">Painel gerencial</b><div class="user"><span id="today"></span><span class="avatar">GP</span><b>Gestão</b></div></header><div class="content" id="view"></div></main>
 </div>
 <div class="modalback" id="modal"><div class="modal"><div class="modalhead"><h2 id="modalTitle">Novo registro</h2><button class="soft" onclick="closeModal()">✕ Fechar</button></div><div class="modalbody" id="modalBody"></div><div class="modalfoot"><button class="soft" onclick="closeModal()">Cancelar</button><button class="primary" id="modalSave">Salvar</button></div></div></div>
@@ -2891,7 +3643,7 @@ const today=()=>{const d=new Date();return [d.getFullYear(),String(d.getMonth()+
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const blank=()=>({viagens:[],despesas:[],fretes:[],abastecimentos:[],veiculos:[],motoristas:[],fornecedores:[],clientes:[],origens:[],destinos:[],postos:[],combustiveis:[],categorias:['Combustível','Manutenção','Pedágio','Alimentação','Hospedagem','Pneus','Documentação','Seguro','Multas','Despesas diversas']});
 const cpSeed={"viagens": [{"numero": "3868973", "dataFaturamento": "2026-10-28", "saida": "2026-10-28", "chegada": "2026-10-29", "situacao": "Concluída", "receita": 90568.45, "motorista": "LUIS HENRIQUE", "placa": "TGY8D97", "veiculo": "M.BENZ/ACCELO 1317", "cliente": "FIBRASOL", "origem": "JEQUIÉ", "destino": "VCA/BA", "kmInicial": 66481, "kmFinal": 66824, "obs": "", "despesas": [{"id": "f02b6d0d-4d14-4a8e-b5aa-93d744313d7d", "data": "2026-10-28", "categoria": "DIARIA", "unidade": "UN", "quantidade": 2, "detalhe": "", "descricao": "FIBRASOL", "valor": 200, "documento": "", "status": "Pago"}, {"id": "60cff6d1-f5e3-437a-bc7b-bb1c505bae4c", "data": "2026-10-28", "categoria": "CHAPA", "unidade": "UN", "quantidade": 4, "detalhe": "", "descricao": "FIBRASOL", "valor": 675, "documento": "", "status": "Pago"}, {"id": "d7072c1d-0a90-44d8-a523-94613de9ac0b", "data": "2026-10-29", "categoria": "DIESEL S10 ADITIVADO", "unidade": "LT", "quantidade": 76.55, "detalhe": "", "descricao": "POSTO CIDADE SOL - JEQUIE", "valor": 533.55, "documento": "", "status": "Pago"}, {"id": "55cb4add-2a8d-4eea-9b1a-7258e4b7a0d6", "data": "2026-10-29", "categoria": "ARLA GRANEL", "unidade": "UN", "quantidade": 4.48, "detalhe": "", "descricao": "POSTO CIDADE SOL - JEQUIE", "valor": 13.45, "documento": "", "status": "Pago"}], "id": "13f126ec-fcc0-455a-8aa1-b5c0a1361fa0", "encerramento": "2026-10-29", "adiantamento": 875}, {"numero": "3865600", "dataFaturamento": "2026-10-19", "saida": "2026-10-19", "chegada": "2026-10-27", "situacao": "Concluída", "receita": 118061.87, "motorista": "LUIS HENRIQUE", "placa": "TGY8D97", "veiculo": "M.BENZ/ACCELO 1317", "cliente": "FIBRASOL", "origem": "JEQUIÉ", "destino": "XIQUE XIQUE", "kmInicial": 64149, "kmFinal": 66479, "obs": "", "despesas": [{"id": "137201af-493e-4e61-a6e1-860291d277b5", "data": "2026-10-26", "categoria": "DIESEL S10", "unidade": "LT", "quantidade": 100.13, "detalhe": "", "descricao": "POSTO PORTAL - MILAGRES", "valor": 699.94, "documento": "", "status": "Pago"}, {"id": "a3a00774-9289-4da0-a00a-7a1314156dd1", "data": "2026-10-23", "categoria": "DIESEL S10", "unidade": "LT", "quantidade": 84.8, "detalhe": "", "descricao": "REILSON DE OLIVEIRA - BARRA", "valor": 725, "documento": "", "status": "Pago"}, {"id": "63802343-2646-4d05-874b-005df4b28257", "data": "2026-10-20", "categoria": "DIESEL S10", "unidade": "LT", "quantidade": 150.98, "detalhe": "", "descricao": "POSTO SAO JOAO - IPIRA", "valor": 1268.23, "documento": "", "status": "Pago"}, {"id": "df1137ae-db87-4de9-b50e-593dbbfd8998", "data": "2026-10-22", "categoria": "ARLA BALDE", "unidade": "LT", "quantidade": 20, "detalhe": "", "descricao": "A CARDOZO E CIA - TANCREDO NEVES", "valor": 125, "documento": "", "status": "Pago"}, {"id": "26b367a9-0fe9-436b-85e1-a97a806db69e", "data": "2026-10-22", "categoria": "DIESEL S10", "unidade": "LT", "quantidade": 100, "detalhe": "", "descricao": "A CARDOZO E CIA - TANCREDO NEVES", "valor": 824, "documento": "", "status": "Pago"}, {"id": "deca7289-6f26-4f96-835b-547f37dd9d43", "data": "2026-10-25", "categoria": "DIESEL S10", "unidade": "LT", "quantidade": 112.79, "detalhe": "", "descricao": "POSTO PORTAL - IBITIARA", "valor": 980, "documento": "", "status": "Pago"}, {"id": "6cf397e2-f1de-4343-afeb-f490b0b8ad05", "data": "2026-10-21", "categoria": "ARLA GRANEL", "unidade": "LT", "quantidade": 7.42, "detalhe": "", "descricao": "POSTO VALE OURO", "valor": 23.37, "documento": "", "status": "Pago"}, {"id": "8064944f-7d07-4433-ab32-7fecbd9ed02e", "data": "2026-10-27", "categoria": "ARLA GRANEL", "unidade": "LT", "quantidade": 2.78, "detalhe": "", "descricao": "POSTO CIDADE SOL - JEQUIE", "valor": 8.34, "documento": "", "status": "Pago"}, {"id": "79863581-2e57-4a4a-8758-a07f00712b25", "data": "2026-10-27", "categoria": "DIESEL S10 ADITIVADO", "unidade": "LT", "quantidade": 27.1, "detalhe": "", "descricao": "POSTO CIDADE SOL - JEQUIE", "valor": 188.88, "documento": "", "status": "Pago"}, {"id": "dff9f5ce-271f-4092-b3f4-5100b056dc50", "data": "2026-10-19", "categoria": "DIARIA", "unidade": "UN", "quantidade": 9, "detalhe": "", "descricao": "FIBRASOL", "valor": 900, "documento": "", "status": "Pago"}, {"id": "5e6e69b7-efa9-4adc-88c8-c4d6201d0708", "data": "2026-10-19", "categoria": "CHAPA", "unidade": "UN", "quantidade": 32, "detalhe": "", "descricao": "FIBRASOL", "valor": 1195, "documento": "", "status": "Pago"}], "id": "2778c27b-59b7-4d66-9f94-857f72819fd6", "encerramento": "2026-10-27", "adiantamento": 2095}, {"numero": "3856810", "dataFaturamento": "2026-10-07", "saida": "2026-10-07", "chegada": "2026-10-14", "situacao": "Concluída", "receita": 97145.42, "motorista": "LUIS HENRIQUE", "placa": "SJN9G77", "veiculo": "M.BENZ/ACCELO 1317", "cliente": "FIBRASOL", "origem": "JEQUIÉ", "destino": "EUNAPOLIS", "kmInicial": 170694, "kmFinal": 171958, "obs": "PEÇAS COMPRADAS, UN 6 LAMPADAS\nSERVIÇO REALIZADO NA BUZINA ", "despesas": [{"id": "75be31be-76d6-48d3-9bd0-fd7d3b911c75", "data": "2026-10-08", "categoria": "ARLA GRANEL", "unidade": "LT", "quantidade": 4.69, "detalhe": "", "descricao": "POSTO ATALAIA - ITABUNA", "valor": 14.05, "documento": "", "status": "Pago"}, {"id": "81fec0ec-064a-4f79-8cbe-0c104744b6c7", "data": "2026-10-08", "categoria": "DIESEL S10", "unidade": "LT", "quantidade": 107.32, "detalhe": "", "descricao": "POSTO ATALAIA - ITABUNA", "valor": 782.4, "documento": "", "status": "Pago"}, {"id": "7c8d3418-91b3-4710-8ea6-e1181cf8a1ab", "data": "2026-10-14", "categoria": "ARLA GRANEL", "unidade": "LT", "quantidade": 9, "detalhe": "", "descricao": "POSTO PARAISO - MASCOTE", "valor": 33.21, "documento": "", "status": "Pago"}, {"id": "77db80b8-5eb6-484e-8984-687675282736", "data": "2026-10-14", "categoria": "DIESEL S10", "unidade": "LT", "quantidade": 173, "detalhe": "", "descricao": "POSTO PARAISO - MASCOTE", "valor": 1294.04, "documento": "", "status": "Pago"}, {"id": "7ad4d681-11a5-4150-bc86-7049aaf263a1", "data": "2026-10-14", "categoria": "ARLA GRANEL", "unidade": "LT", "quantidade": 4.12, "detalhe": "", "descricao": "POSTO CIDADE SOL - JEQUIE", "valor": 12.37, "documento": "", "status": "Pago"}, {"id": "929081e9-481d-4e65-a8ea-945904dfa501", "data": "2026-10-14", "categoria": "DIESEL S10 ADITIVADO", "unidade": "LT", "quantidade": 59.19, "detalhe": "", "descricao": "POSTO CIDADE SOL - JEQUIE", "valor": 421.43, "documento": "", "status": "Pago"}, {"id": "f5076b3f-7981-464f-9189-603c38a183d4", "data": "2026-10-09", "categoria": "SERVIÇO", "unidade": "UN", "quantidade": 1, "detalhe": "BUZINA", "descricao": "EQUIPADORA ALVES - EUNAPOLIS", "valor": 125, "documento": "", "status": "Pago"}, {"id": "e514d5f8-fc8e-4101-a8d0-2c11d60e1b3f", "data": "2026-10-09", "categoria": "PEÇAS", "unidade": "UN", "quantidade": 6, "detalhe": "LAMPADAS", "descricao": "EQUIPADORA ALVES - EUNAPOLIS", "valor": 36, "documento": "", "status": "Pago"}, {"id": "e09af68b-aac8-4019-be51-808c562320c5", "data": "2026-10-07", "categoria": "CHAPA", "unidade": "UN", "quantidade": 21, "detalhe": "", "descricao": "FIBRASOL", "valor": 1030, "documento": "", "status": "Pago"}, {"id": "c871d6e8-20cc-438e-b41b-1b71e5b6d63d", "data": "2026-10-07", "categoria": "DIARIA", "unidade": "UN", "quantidade": 8, "detalhe": "", "descricao": "FIBRASOL", "valor": 800, "documento": "", "status": "Pago"}], "id": "e947052d-fd8d-42ac-a7ab-36e19dec0390", "encerramento": "2026-10-14", "adiantamento": 1830}, {"numero": "3866108", "dataFaturamento": "2026-10-26", "saida": "2026-10-26", "chegada": "2026-10-30", "situacao": "Concluída", "receita": 56115.62, "motorista": "MARIO SERGIO", "placa": "UKS2A35", "veiculo": "FOTON AUMARK", "cliente": "FIBRASOL", "origem": "JEQUIÉ", "destino": "SALVADOR", "kmInicial": 2208, "kmFinal": 3358, "obs": "", "despesas": [{"id": "da246c03-9d06-4aa8-82a2-e5424f073d55", "data": "2026-10-30", "categoria": "ARLA GRANEL", "unidade": "LT", "quantidade": 11.95, "detalhe": "", "descricao": "POSTO CIDADE SOL - JEQUIE", "valor": 35.86, "documento": "", "status": "Pago"}, {"id": "633fae29-5631-46fe-94fb-d38299bc2d54", "data": "2026-10-30", "categoria": "DIESEL S10 ADITIVADO", "unidade": "LT", "quantidade": 237.15, "detalhe": "", "descricao": "POSTO CIDADE SOL - JEQUIE", "valor": 1674.28, "documento": "", "status": "Pago"}, {"id": "0b231f53-1f0f-44c9-b6df-539578f1e57f", "data": "2026-10-29", "categoria": "Pedágio", "unidade": "UN", "quantidade": 2, "detalhe": "", "descricao": "CONCESSIONARIA LITORAL - CAMACARI", "valor": 39.4, "documento": "", "status": "Pago"}, {"id": "c945f532-55bd-4238-acb4-b7db39377ff5", "data": "2026-10-26", "categoria": "CHAPA", "unidade": "UN", "quantidade": 19, "detalhe": "", "descricao": "FIBRASOL", "valor": 620, "documento": "", "status": "Pago"}, {"id": "e491017b-39ac-41dd-9afd-944570afcb0d", "data": "2026-10-26", "categoria": "DIARIA", "unidade": "UN", "quantidade": 5, "detalhe": "", "descricao": "FIBRASOL", "valor": 500, "documento": "", "status": "Pago"}], "id": "410057a6-54db-4bac-8647-4f3e87ebef06", "encerramento": "2026-10-30", "adiantamento": 1139.7}, {"numero": "3869567", "dataFaturamento": "2026-10-28", "saida": "2026-10-28", "chegada": "2026-10-31", "situacao": "Concluída", "receita": 102977.86, "motorista": "DOUGLAS SOUZA", "placa": "RCV8F91", "veiculo": "M.BENZ/ACCELO 1316", "cliente": "FIBRASOL", "origem": "JEQUIÉ", "destino": "JEREMOABO", "kmInicial": 291620, "kmFinal": 293302, "obs": "", "despesas": [{"id": "30481cd1-b158-4b7d-a815-4910d69d4f39", "data": "2026-10-29", "categoria": "DIESEL S10 ADITIVADO", "unidade": "LT", "quantidade": 138.23, "detalhe": "", "descricao": "POSTO CENTRAL - ALAGOINHAS BA", "valor": 980.05, "documento": "", "status": "Pago"}, {"id": "e800e00a-2814-4be5-bd58-7027fabde92d", "data": "2026-10-31", "categoria": "PEÇAS", "unidade": "UN", "quantidade": 1, "detalhe": "TAMPAS - TANQUE E DO ARLA", "descricao": "POSTO PAU DE VELA - SANTO ESTEVÃO BA", "valor": 360, "documento": "", "status": "Pago"}, {"id": "d7045337-bb33-498f-847b-c098fc81efce", "data": "2026-10-31", "categoria": "ARLA GRANEL", "unidade": "UN", "quantidade": 2, "detalhe": "", "descricao": "POSTO CIDADE SOL - JEQUIE", "valor": 6.01, "documento": "", "status": "Pago"}, {"id": "e145405c-0764-4915-bfb2-af076077e4dd", "data": "2026-10-31", "categoria": "ARLA GRANEL", "unidade": "LT", "quantidade": 13.87, "detalhe": "", "descricao": "POSTO PORTAL - MILAGRES BA", "valor": 55.34, "documento": "", "status": "Pago"}, {"id": "46c01ce7-a72f-4a99-a8be-cf7019bdbb75", "data": "2026-10-31", "categoria": "DIESEL S10", "unidade": "LT", "quantidade": 131.39, "detalhe": "", "descricao": "POSTO PORTAL - MILAGRES BA", "valor": 1091.9, "documento": "", "status": "Pago"}, {"id": "253a5709-d8a9-4e8d-9633-004139b0ed3c", "data": "2026-10-30", "categoria": "DIESEL S10", "unidade": "LT", "quantidade": 127.62, "detalhe": "", "descricao": "POSTO JORRINHO - CIPO BA", "valor": 956.01, "documento": "", "status": "Pago"}, {"id": "7f73edd8-604b-4ea3-8bbe-d3d1b473c3c1", "data": "2026-10-31", "categoria": "DIESEL S10 ADITIVADO", "unidade": "LT", "quantidade": 25.53, "detalhe": "", "descricao": "POSTO CIDADE SOL - JEQUIE", "valor": 185.09, "documento": "", "status": "Pago"}, {"id": "d7c5eec1-6dd8-4a11-9035-95c9ca8d70c9", "data": "2026-10-28", "categoria": "CHAPA", "unidade": "UN", "quantidade": 6, "detalhe": "", "descricao": "FIBRASOL", "valor": 600, "documento": "", "status": "Pago"}, {"id": "ee7dec48-8385-483d-885b-e8822df83b2a", "data": "2026-10-28", "categoria": "DIARIA", "unidade": "UN", "quantidade": 4, "detalhe": "", "descricao": "FIBRASOL", "valor": 400, "documento": "", "status": "Pago"}], "id": "b8e56d01-8f76-4ee0-a25e-d1fc8a738980", "encerramento": "2026-10-31", "adiantamento": 1000}, {"numero": "3865605", "dataFaturamento": "2026-10-20", "saida": "2026-10-20", "chegada": "2026-10-28", "situacao": "Concluída", "receita": 109272.95, "motorista": "ALESSANDRO SANTOS", "placa": "SJN9G77", "veiculo": "M.BENZ/ACCELO 1317", "cliente": "FIBRASOL", "origem": "JEQUIÉ", "destino": "PORTO SEGURO", "kmInicial": 171969, "kmFinal": 173708, "obs": "", "despesas": [{"id": "eb49870d-5e68-45e1-8d54-ac13f476b2af", "data": "2026-10-25", "categoria": "DIESEL S10", "unidade": "LT", "quantidade": 125, "detalhe": "", "descricao": "POSTO PARAISO - MASCOTE BA", "valor": 906.25, "documento": "", "status": "Pago"}, {"id": "9e5e2a88-8628-49c4-8d64-25b709c629cb", "data": "2026-10-22", "categoria": "DIESEL S10", "unidade": "LT", "quantidade": 125, "detalhe": "", "descricao": "POSTO PARAISO - MASCOTE BA", "valor": 906.25, "documento": "", "status": "Pago"}, {"id": "e6d35530-bdb7-401b-94ca-689d65897d56", "data": "2026-10-28", "categoria": "DIESEL S10 ADITIVADO", "unidade": "LT", "quantidade": 52.76, "detalhe": "", "descricao": "POSTO CIDADE SOL - JEQUIE", "valor": 367.73, "documento": "", "status": "Pago"}, {"id": "9a3c9202-bb34-4d91-b29f-57a5483fd747", "data": "2026-10-28", "categoria": "ARLA GRANEL", "unidade": "UN", "quantidade": 3.81, "detalhe": "", "descricao": "POSTO CIDADE SOL - JEQUIE", "valor": 11.45, "documento": "", "status": "Pago"}, {"id": "3956867b-a4b7-4e13-a9bf-0696414951ab", "data": "2026-10-20", "categoria": "DIESEL S10 ADITIVADO", "unidade": "LT", "quantidade": 54.27, "detalhe": "", "descricao": "POSTO CIDADE SOL - JEQUIE", "valor": 381.51, "documento": "", "status": "Pago"}, {"id": "abac3bf7-7536-4290-bb79-9cb1b6d847df", "data": "2026-10-20", "categoria": "ARLA GRANEL", "unidade": "UN", "quantidade": 20.14, "detalhe": "", "descricao": "POSTO CIDADE SOL - JEQUIE", "valor": 60.42, "documento": "", "status": "Pago"}, {"id": "e783a20c-de75-4031-8d64-debf226d3ffd", "data": "2026-10-23", "categoria": "DIESEL S10", "unidade": "LT", "quantidade": 111.59, "detalhe": "", "descricao": "POSTO LIMOEIRO  - ITAMARAJU BA", "valor": 780, "documento": "", "status": "Pago"}, {"id": "738b2dca-c252-4dee-bc04-ab446df331c7", "data": "2026-10-20", "categoria": "CHAPA", "unidade": "UN", "quantidade": 25, "detalhe": "", "descricao": "FIBRASOL", "valor": 1180, "documento": "", "status": "Pago"}, {"id": "3a98f2b3-46df-47b5-8780-c9824226323b", "data": "2026-10-20", "categoria": "DIARIA", "unidade": "UN", "quantidade": 9, "detalhe": "", "descricao": "FIBRASOL", "valor": 900, "documento": "", "status": "Pago"}], "id": "d547e805-4261-4cfd-851a-d5c92e7004dd", "encerramento": "2026-10-28", "adiantamento": 2230}, {"numero": "3865582", "dataFaturamento": "2026-10-22", "saida": "2026-10-22", "chegada": "2026-10-30", "situacao": "Concluída", "motorista": "ALDRAN BORGES", "placa": "TGX4E03", "veiculo": "M.BENZ/ACCELO 1317", "cliente": "FIBRASOL", "origem": "JEQUIÉ", "destino": "BOM JESUS DA LAPA", "kmInicial": 62889, "kmFinal": 64723, "receita": 88242.78, "adiantamento": 1795, "encerramento": "2026-10-30", "obs": "PEÇAS E OUTROS - ESTICADORES DO GAVETÃO E LUVA", "despesas": [{"id": "a3551735-d1d5-4944-8619-a517164bbc46", "data": "2026-10-26", "categoria": "DIESEL S10", "unidade": "LT", "quantidade": 103.525, "detalhe": "", "descricao": "POSTO GRUTA DA LAPA - GUANAMBI BA", "valor": 785.75, "documento": "", "status": "Pago"}, {"id": "38f2b7f3-10e5-47be-bab8-f2bc0c003cec", "data": "2026-10-26", "categoria": "ARLA GRANEL", "unidade": "UN", "quantidade": 11.73, "detalhe": "", "descricao": "POSTO GRUTA DA LAPA - GUANAMBI BA", "valor": 48.01, "documento": "", "status": "Pago"}, {"id": "bc787139-b5eb-4376-94f9-fbb53cbeb55a", "data": "2026-10-23", "categoria": "DIESEL S10 ADITIVADO", "unidade": "LT", "quantidade": 125.174, "detalhe": "", "descricao": "BDJ COMBUSTIVEIS LTDA - ARACATU BA", "valor": 900, "documento": "", "status": "Pago"}, {"id": "abb27c49-4a1b-45de-b9e7-26ce0b4b0e6a", "data": "2026-10-23", "categoria": "ARLA GRANEL", "unidade": "UN", "quantidade": 6.11, "detalhe": "", "descricao": "BDJ COMBUSTIVEIS LTDA - ARACATU BA", "valor": 21.93, "documento": "", "status": "Pago"}, {"id": "7f6dbb9c-7026-4b36-9f62-26c1bde95c94", "data": "2026-10-30", "categoria": "PEÇAS", "unidade": "UN", "quantidade": 1, "detalhe": "", "descricao": "CARROCERIAS J. CARLOS", "valor": 120, "documento": "", "status": "Pago"}, {"id": "f01a97ed-73fa-4935-93af-c3ac8c002bf5", "data": "2026-10-28", "categoria": "OUTROS", "unidade": "UN", "quantidade": 1, "detalhe": "", "descricao": "MATERIAL DE CONSTRUÇÃO - CASA E CAMPO", "valor": 10, "documento": "", "status": "Pago"}, {"id": "bc4e3d62-9bf2-473e-890d-13034fa4e6ba", "data": "2026-10-30", "categoria": "DIESEL S10 ADITIVADO", "unidade": "LT", "quantidade": 253, "detalhe": "", "descricao": "POSTO CIDADE SOL - JEQUIE", "valor": 1786.18, "documento": "", "status": "Pago"}, {"id": "e6deb071-a9f7-4dec-99cd-260789a468a4", "data": "2026-10-30", "categoria": "ARLA GRANEL", "unidade": "UN", "quantidade": 15.03, "detalhe": "", "descricao": "POSTO CIDADE SOL - JEQUIE", "valor": 45.09, "documento": "", "status": "Pago"}, {"id": "b1dc0e81-2294-4454-9058-18b85a573324", "data": "2026-10-22", "categoria": "CHAPA", "unidade": "UN", "quantidade": 27, "detalhe": "", "descricao": "FIBRASOL", "valor": 765, "documento": "", "status": "Pago"}, {"id": "4382f451-802b-4345-9aa6-bea1de143088", "data": "2026-10-22", "categoria": "DIARIA", "unidade": "UN", "quantidade": 9, "detalhe": "", "descricao": "FIBRASOL", "valor": 900, "documento": "", "status": "Pago"}], "id": "6d9e81be-8261-4943-b964-a70f176e2fcd"}, {"numero": "3864184", "dataFaturamento": "2026-10-16", "saida": "2026-10-19", "chegada": "2026-10-27", "situacao": "Concluída", "receita": 87159.13, "motorista": "LEANDRO SANTOS", "placa": "RCZ6F29", "veiculo": "VW/13.180", "cliente": "FIBRASOL", "origem": "JEQUIÉ", "destino": "GUANAMBI", "kmInicial": 267276, "kmFinal": 269254, "obs": "", "despesas": [{"id": "464010d9-81c9-4934-abd8-c5854d0d0565", "data": "2026-10-28", "categoria": "SERVIÇO", "unidade": "UN", "quantidade": 1, "detalhe": "REGENERAÇÃO DO ARLA", "descricao": "ADEILTON LEITE DA SILVA - VCA BA", "valor": 3600, "documento": "", "status": "Pago"}, {"id": "fb03cb7c-bff6-49bb-93f8-797512f3d1f2", "data": "2026-10-29", "categoria": "DIARIA", "unidade": "UN", "quantidade": 1, "detalhe": "BUSCAR VEICULO EM VCA - BA", "descricao": "FIBRASOL", "valor": 100, "documento": "", "status": "Pago"}, {"id": "b67c2818-e44d-4092-8935-934adb368bfb", "data": "2026-10-29", "categoria": "DIESEL S10", "unidade": "LT", "quantidade": 40, "detalhe": "", "descricao": "REDE DOM PEDRO - VCA", "valor": 295.6, "documento": "", "status": "Pago"}, {"id": "48355a0d-35b5-4692-9c2a-456b3dbc2556", "data": "2026-10-19", "categoria": "DIESEL S10", "unidade": "LT", "quantidade": 64, "detalhe": "", "descricao": "HL AUTO POSTO - BARRA DA ESTIVA BA", "valor": 480, "documento": "", "status": "Pago"}, {"id": "6ff6cd6d-55e7-4e7f-9ba0-5ce0bdfb53d1", "data": "2026-10-27", "categoria": "DIESEL S10", "unidade": "LT", "quantidade": 60.48, "detalhe": "", "descricao": "RAVENA AUTO POSTO - PALMAS DE MONTE ALTO BA", "valor": 501.38, "documento": "", "status": "Pago"}, {"id": "c3938c25-d9bb-4d1c-9730-4e766d36a2b1", "data": "2026-10-24", "categoria": "DIESEL S10", "unidade": "LT", "quantidade": 101.76, "detalhe": "", "descricao": "POSTO COPACABANA - CACULE BA", "valor": 801.87, "documento": "", "status": "Pago"}, {"id": "cdcc7e11-0541-411f-a860-f356419fa43a", "data": "2026-10-21", "categoria": "DIESEL S10", "unidade": "LT", "quantidade": 98.22, "detalhe": "", "descricao": "MARIA DO CARMO - BOTUPORA", "valor": 718.01, "documento": "", "status": "Pago"}, {"id": "2e8b2b16-7e99-4be4-8db2-715af13033d9", "data": "2026-10-29", "categoria": "ARLA GRANEL", "unidade": "LT", "quantidade": 18.74, "detalhe": "", "descricao": "POSTO CIDADE SOL - JEQUIE", "valor": 56.24, "documento": "", "status": "Pago"}, {"id": "28ae371e-4932-4a36-8594-eaf0f06204eb", "data": "2026-10-29", "categoria": "DIESEL S10 ADITIVADO", "unidade": "LT", "quantidade": 98.15, "detalhe": "", "descricao": "POSTO CIDADE SOL - JEQUIE", "valor": 684.11, "documento": "", "status": "Pago"}, {"id": "1bb262fc-d9b4-4deb-af9e-503a259cd4c8", "data": "2026-10-27", "categoria": "PASSAGEM DE ONIBUS", "unidade": "UN", "quantidade": 1, "detalhe": "", "descricao": "ROTA TRANSPORTES - VCA", "valor": 77.63, "documento": "", "status": "Pago"}, {"id": "5e5d75fe-e52c-4bad-bf08-4fdc49fb2738", "data": "2026-10-19", "categoria": "CHAPA", "unidade": "UN", "quantidade": 19, "detalhe": "", "descricao": "FIBRASOL", "valor": 610, "documento": "", "status": "Pago"}, {"id": "70e336f5-481f-40a2-9b16-a6cf3a3ce79a", "data": "2026-10-19", "categoria": "DIARIA", "unidade": "UN", "quantidade": 9, "detalhe": "", "descricao": "FIBRASOL", "valor": 900, "documento": "", "status": "Pago"}], "id": "06e0d739-d0e0-42e0-b03d-0095c0f6eaa0", "encerramento": "2026-10-27", "adiantamento": 1510}, {"numero": "3864989", "dataFaturamento": "2026-10-14", "saida": "2026-10-19", "chegada": "2026-10-29", "situacao": "Concluída", "receita": 103481.66, "motorista": "UELITON ARAUJO", "placa": "SJN9F73", "veiculo": "M.BENZ/ACCELO 1317", "cliente": "FIBRASOL", "origem": "JEQUIÉ", "destino": "PETROLINA - PE", "kmInicial": 164581, "kmFinal": 167219, "obs": "", "despesas": [{"id": "5aeb07a2-2f07-4c34-a2b0-0876f256f7b8", "data": "2026-10-24", "categoria": "SERVIÇO", "unidade": "UN", "quantidade": 1, "detalhe": "REGENERAÇÃO DO ARLA", "descricao": "MAVEL - PETROLINA PE", "valor": 1425, "documento": "", "status": "Pago"}, {"id": "74b4e429-950e-4a79-a092-3c1a940b0092", "data": "2026-10-23", "categoria": "POUSADA", "unidade": "UN", "quantidade": 1, "detalhe": "", "descricao": "POUSADA ITAJUIPE - PETROLINA PE", "valor": 130, "documento": "", "status": "Pago"}, {"id": "edd4bae9-03e5-4261-8b2a-c835352c30ac", "data": "2026-10-22", "categoria": "DIESEL S10", "unidade": "LT", "quantidade": 182.84, "detalhe": "", "descricao": "POSTO AROEIRA - FILADELFIA BA", "valor": 1278.09, "documento": "", "status": "Pago"}, {"id": "8118456d-f981-4652-aca3-58123267cbff", "data": "2026-10-27", "categoria": "DIESEL S10 ADITIVADO", "unidade": "LT", "quantidade": 206.77, "detalhe": "", "descricao": "POSTO JUAZEIRO - JUAZEIRO", "valor": 1497.07, "documento": "", "status": "Pago"}, {"id": "05684d3b-a169-427a-982b-f6989e4749a0", "data": "2026-10-22", "categoria": "ARLA GRANEL", "unidade": "LT", "quantidade": 9.09, "detalhe": "", "descricao": "POSTO JUAZEIRO - JUAZEIRO", "valor": 28.09, "documento": "", "status": "Pago"}, {"id": "ce0ab696-d06d-4f90-841d-b8d6bd1ee91c", "data": "2026-10-22", "categoria": "DIESEL S10 ADITIVADO", "unidade": "LT", "quantidade": 89.84, "detalhe": "", "descricao": "POSTO JUAZEIRO - JUAZEIRO", "valor": 637, "documento": "", "status": "Pago"}, {"id": "3f147344-3221-40b5-8bef-677b47cb3d1b", "data": "2026-10-27", "categoria": "ARLA GRANEL", "unidade": "LT", "quantidade": 20, "detalhe": "", "descricao": "POSTO BOA VIAGEM - CAMPO ALEGRE DE LOURDES", "valor": 105, "documento": "", "status": "Pago"}, {"id": "1b767a40-acef-4e8f-894b-4183971d0dd4", "data": "2026-10-29", "categoria": "ARLA GRANEL", "unidade": "LT", "quantidade": 4.82, "detalhe": "", "descricao": "POSTO CIDADE SOL - JEQUIE", "valor": 14.46, "documento": "", "status": "Pago"}, {"id": "d4b06ddf-b5fc-4924-8f70-d2807dea13c6", "data": "2026-10-29", "categoria": "DIESEL S10 ADITIVADO", "unidade": "LT", "quantidade": 215.45, "detalhe": "", "descricao": "POSTO CIDADE SOL - JEQUIE", "valor": 1501.69, "documento": "", "status": "Pago"}, {"id": "2756d43b-0830-47ac-8193-e1e7423f3b69", "data": "2026-10-19", "categoria": "CHAPA", "unidade": "UN", "quantidade": 30, "detalhe": "", "descricao": "FIBRASOL", "valor": 870, "documento": "", "status": "Pago"}, {"id": "de39d382-c675-418e-adc2-f36e18bd5e14", "data": "2026-10-19", "categoria": "DIARIA", "unidade": "UN", "quantidade": 11, "detalhe": "", "descricao": "FIBRASOL", "valor": 1100, "documento": "", "status": "Pago"}], "id": "02ac099f-c3ee-4c78-9e1b-c7b12daaefc7", "encerramento": "2026-10-29", "adiantamento": 1970}, {"numero": "3866166", "dataFaturamento": "2026-10-26", "saida": "2026-10-27", "chegada": "2026-11-06", "situacao": "Concluída", "motorista": "ROMARIO TOMAZ", "placa": "TGY2E60", "veiculo": "M.BENZ/ACCELO 1317", "cliente": "FIBRASOL", "origem": "JEQUIÉ", "destino": "SAO MIGUEL DOS CAMPOS - AL", "kmInicial": 72081, "kmFinal": 74137, "receita": 121798.39, "adiantamento": 2180, "encerramento": "2026-11-06", "obs": "SERVIÇO : SOLDA DO CHICOTE \nPEÇA : LAMPADA H7 UN 2", "despesas": [{"id": "40725671-2bd8-4726-ad1c-885bbf843361", "data": "2026-11-06", "categoria": "DIESEL S10 ADITIVADO", "unidade": "LT", "quantidade": 155.8, "detalhe": "", "descricao": "POSTO RANCHO ALEGRE - SAO SEBASTIAO AL", "valor": 1100, "documento": "", "status": "Pago"}, {"id": "da0c309a-d35d-43ca-95ac-50c1ccd1e188", "data": "2026-10-29", "categoria": "DIESEL S10", "unidade": "LT", "quantidade": 159.15, "detalhe": "", "descricao": "ARAUJO ROCHA - PAULO AFONSO", "valor": 1200, "documento": "", "status": "Pago"}, {"id": "0cd913f8-8177-49df-b166-409224bc4f72", "data": "2026-11-06", "categoria": "DIESEL S10", "unidade": "LT", "quantidade": 200, "detalhe": "", "descricao": "POSTO PAPA - JEQUIE", "valor": 1498, "documento": "", "status": "Pago"}, {"id": "7d998ec9-4e56-46ed-bedc-b842bfcc086e", "data": "2026-11-05", "categoria": "PEÇAS", "unidade": "UN", "quantidade": 2, "detalhe": "LAMPADA H7", "descricao": "JLK AUTO ELETRICA - SANTO ESTEVAO", "valor": 140, "documento": "", "status": "Pago"}, {"id": "04759620-5863-4281-9c24-d8345941d59b", "data": "2026-10-27", "categoria": "SERVIÇO", "unidade": "UN", "quantidade": 1, "detalhe": "SERVIÇO NO CHICOTE", "descricao": "POSTO PAU DE VELA - SANTO ESTEVAO BA", "valor": 80, "documento": "", "status": "Pago"}, {"id": "2c6588be-1787-4c13-9e3f-d0874c640060", "data": "2026-10-29", "categoria": "ARLA BALDE", "unidade": "LT", "quantidade": 20, "detalhe": "", "descricao": "POSTO NATURA - CICERO DANTAS", "valor": 100, "documento": "", "status": "Pago"}, {"id": "cda69f3a-d2f0-4a1a-ae37-1d8651bf8691", "data": "2026-10-27", "categoria": "CHAPA", "unidade": "UN", "quantidade": 17, "detalhe": "", "descricao": "FIBRASOL", "valor": 1000, "documento": "", "status": "Pago"}, {"id": "ad596611-ba62-46d2-ac66-b0e4f0ec3fba", "data": "2026-10-27", "categoria": "DIARIA", "unidade": "UN", "quantidade": 11, "detalhe": "", "descricao": "FIBRASOL", "valor": 1100, "documento": "", "status": "Pago"}], "id": "aa229e1f-e294-4fec-af6d-0e0a4ef2b84a"}, {"numero": "3869386", "dataFaturamento": "2026-10-29", "saida": "2026-10-30", "chegada": "2026-11-05", "situacao": "Concluída", "receita": 101696.02, "motorista": "ALESSANDRO SANTOS", "placa": "SJN9G77", "veiculo": "M.BENZ/ACCELO 1317", "cliente": "FIBRASOL", "origem": "JEQUIÉ", "destino": "ITABUNA", "kmInicial": 173709, "kmFinal": 174866, "obs": "", "despesas": [{"id": "c3711a56-a63e-4f0a-bdaa-eb2e430fecc5", "data": "2026-11-03", "categoria": "ARLA GRANEL", "unidade": "LT", "quantidade": 4, "detalhe": "", "descricao": "POSTO NEGO VEIO - ITABUNA", "valor": 11.96, "documento": "", "status": "Pago"}, {"id": "898ce9b3-f8de-4c26-b454-cc948549868b", "data": "2026-11-03", "categoria": "DIESEL S10", "unidade": "LT", "quantidade": 61.75, "detalhe": "", "descricao": "POSTO NEGO VEIO - ITABUNA", "valor": 460.04, "documento": "", "status": "Pago"}, {"id": "778e28b6-964e-49fd-92a4-1c92f3536223", "data": "2026-11-05", "categoria": "ARLA GRANEL", "unidade": "LT", "quantidade": 4, "detalhe": "", "descricao": "POSTO NEGO VEIO - ITABUNA", "valor": 11.96, "documento": "", "status": "Pago"}, {"id": "4fd4aea8-20b3-4e20-9c04-16656be66219", "data": "2026-11-05", "categoria": "DIESEL S10", "unidade": "LT", "quantidade": 79.9, "detalhe": "", "descricao": "POSTO NEGO VEIO - ITABUNA", "valor": 595.3, "documento": "", "status": "Pago"}, {"id": "85c1d391-37d9-4298-ac14-759e693fab96", "data": "2026-11-05", "categoria": "ARLA GRANEL", "unidade": "LT", "quantidade": 4.04, "detalhe": "", "descricao": "POSTO CIDADE SOL - JEQUIE", "valor": 12.13, "documento": "", "status": "Pago"}, {"id": "4fa03e6e-c10e-4bad-b421-b54b6003a4da", "data": "2026-11-05", "categoria": "DIESEL S10 ADITIVADO", "unidade": "LT", "quantidade": 64.13, "detalhe": "", "descricao": "POSTO CIDADE SOL - JEQUIE", "valor": 464.94, "documento": "", "status": "Pago"}, {"id": "cb4bf34c-9ae4-4868-95a7-88a2edfb5ca1", "data": "2026-11-03", "categoria": "ARLA GRANEL", "unidade": "LT", "quantidade": 5.5, "detalhe": "", "descricao": "POSTO CIDADE SOL - JEQUIE", "valor": 16.51, "documento": "", "status": "Pago"}, {"id": "7ef06e36-f3b0-4e2d-b4a6-362bf8f635e9", "data": "2026-11-03", "categoria": "DIESEL S10 ADITIVADO", "unidade": "LT", "quantidade": 102.57, "detalhe": "", "descricao": "POSTO CIDADE SOL - JEQUIE", "valor": 743.63, "documento": "", "status": "Pago"}, {"id": "d8d20797-0610-4cda-a72d-dcdc7aa44bae", "data": "2026-10-30", "categoria": "CHAPA", "unidade": "UN", "quantidade": 32, "detalhe": "", "descricao": "FIBRASOL", "valor": 930, "documento": "", "status": "Pago"}, {"id": "ec0c1b56-4539-4268-833a-99aee2795ff9", "data": "2026-10-30", "categoria": "DIARIA", "unidade": "UN", "quantidade": 5, "detalhe": "", "descricao": "FIBRASOL", "valor": 500, "documento": "", "status": "Pago"}], "id": "7d07803f-14b0-49ae-bc38-c5bdbba4b690", "encerramento": "2026-11-05", "adiantamento": 2102}, {"numero": "3866947", "dataFaturamento": "2026-10-19", "saida": "2026-10-21", "chegada": "2026-10-31", "situacao": "Concluída", "motorista": "JOACI CARVALHO", "placa": "TGX0H94", "veiculo": "M.BENZ/ACCELO 1317", "cliente": "FIBRASOL", "origem": "JEQUIÉ", "destino": "TERESINA - PI", "kmInicial": 65264, "kmFinal": 68672, "receita": 97720.61, "adiantamento": 1870, "encerramento": "2026-10-31", "obs": "", "despesas": [{"id": "0fa32c1d-791d-4a9c-8fcc-0e29d8be56da", "data": "2026-11-01", "categoria": "DIESEL S10", "unidade": "LT", "quantidade": 227.72, "detalhe": "", "descricao": "POSTO LUBRAX - CALDEIRAO GRANDE BA", "valor": 1635.04, "documento": "", "status": "Pago"}, {"id": "45a07097-7107-4595-8e66-2efd3db28f22", "data": "2026-10-30", "categoria": "ARLA GRANEL", "unidade": "LT", "quantidade": 30, "detalhe": "", "descricao": "POSTO JM II LTDA - ALTOS PI", "valor": 104.7, "documento": "", "status": "Pago"}, {"id": "cd37832d-66f0-4be4-a1c6-582908070dc9", "data": "2026-10-30", "categoria": "DIESEL S10", "unidade": "LT", "quantidade": 252.13, "detalhe": "", "descricao": "POSTO JM II LTDA - ALTOS PI", "valor": 1838.03, "documento": "", "status": "Pago"}, {"id": "a5c67d75-3612-402a-ad07-197438851b88", "data": "2026-10-27", "categoria": "DIESEL S10", "unidade": "LT", "quantidade": 218.01, "detalhe": "", "descricao": "POSTO DONA DEL - JERUMENHA PI", "valor": 1720.1, "documento": "", "status": "Pago"}, {"id": "a67ccf06-fd5b-4b06-a552-ef752b711eac", "data": "2026-10-23", "categoria": "DIESEL S10 ADITIVADO", "unidade": "LT", "quantidade": 146.5, "detalhe": "", "descricao": "NOSSO POSTO - RIACHAO DAS NEVES", "valor": 1068.05, "documento": "", "status": "Pago"}, {"id": "2bc78b85-42b5-47a2-9c4a-02e42cdd9e28", "data": "2026-10-23", "categoria": "DIESEL S500", "unidade": "LT", "quantidade": 40.07, "detalhe": "", "descricao": "NOSSO POSTO - RIACHAO DAS NEVES", "valor": 291.11, "documento": "", "status": "Pago"}, {"id": "44894f6f-a3c1-4fa9-81e0-637c1222623e", "data": "2026-10-22", "categoria": "ARLA GRANEL", "unidade": "LT", "quantidade": 28.31, "detalhe": "", "descricao": "POSTO ALTO DA SERRA - IBOTIRAMA", "valor": 93.43, "documento": "", "status": "Pago"}, {"id": "36b0c345-3f21-4e1a-a68e-1c7eb6c45c7a", "data": "2026-11-01", "categoria": "ARLA GRANEL", "unidade": "LT", "quantidade": 19.06, "detalhe": "", "descricao": "POSTO CIDADE SOL - JEQUIE", "valor": 57.2, "documento": "", "status": "Pago"}, {"id": "592fde5a-12f6-4e77-a740-16f4856b4726", "data": "2026-11-01", "categoria": "DIESEL S10 ADITIVADO", "unidade": "LT", "quantidade": 75.92, "detalhe": "", "descricao": "POSTO CIDADE SOL - JEQUIE", "valor": 550.42, "documento": "", "status": "Pago"}, {"id": "ef3a2600-8993-4865-90dc-ba3786558510", "data": "2026-10-21", "categoria": "CHAPA", "unidade": "UN", "quantidade": 16, "detalhe": "", "descricao": "FIBRASOL", "valor": 770, "documento": "", "status": "Pago"}, {"id": "7df6d9f1-2d9c-4376-8f61-3d1ae6746355", "data": "2026-10-21", "categoria": "DIARIA", "unidade": "UN", "quantidade": 11, "detalhe": "", "descricao": "FIBRASOL", "valor": 1100, "documento": "", "status": "Pago"}], "id": "63413c70-e434-44d3-976c-96e37a10efd8"}, {"numero": "3854720", "dataFaturamento": "2026-10-02", "saida": "2026-10-06", "chegada": "2026-10-14", "situacao": "Concluída", "motorista": "ALESSANDRO SANTOS", "placa": "TGY2E60", "veiculo": "M.BENZ/ACCELO 1317", "cliente": "FIBRASOL", "origem": "JEQUIÉ", "destino": "JUAZEIRO DO NORTE - CE", "kmInicial": 68645, "kmFinal": 71359, "receita": 122957.25, "adiantamento": 1760, "encerramento": "2026-10-14", "obs": "", "despesas": [{"id": "a244194f-564b-4f8e-aa9e-a7aa564427d1", "data": "2026-10-16", "categoria": "DIESEL S10", "unidade": "LT", "quantidade": 56.32, "detalhe": "", "descricao": "POSTO PADRE CICERO - MILHA CE", "valor": 450, "documento": "", "status": "Pago"}, {"id": "a3d97d67-f03c-4462-b00f-01fa1686552b", "data": "2026-10-12", "categoria": "DIESEL S10", "unidade": "LT", "quantidade": 249.3, "detalhe": "", "descricao": "JAGUARIBARA COM DE COMBUSTIVEIS - ALTO SANTO CE", "valor": 1804.98, "documento": "", "status": "Pago"}, {"id": "bbf6fe58-8d30-4f4b-9aa4-a53f9ada4686", "data": "2026-10-12", "categoria": "ARLA GRANEL", "unidade": "LT", "quantidade": 9, "detalhe": "", "descricao": "JAGUARIBARA COM DE COMBUSTIVEIS - ALTO SANTO CE", "valor": 35.91, "documento": "", "status": "Pago"}, {"id": "4d86c298-fb33-4400-946e-108af94c46a4", "data": "2026-10-14", "categoria": "DIESEL S10", "unidade": "LT", "quantidade": 255.57, "detalhe": "", "descricao": "POSTO ANDORINHAS - MILAGRES BA", "valor": 1760.93, "documento": "", "status": "Pago"}, {"id": "7b8b6175-44b5-4bb8-a518-79abb2858980", "data": "2026-10-14", "categoria": "ARLA GRANEL", "unidade": "LT", "quantidade": 6.6, "detalhe": "", "descricao": "POSTO ANDORINHAS - MILAGRE BA", "valor": 25.67, "documento": "", "status": "Pago"}, {"id": "ba0e994a-223d-45a1-92f2-2c67058f8671", "data": "2026-10-13", "categoria": "ARLA GRANEL", "unidade": "LT", "quantidade": 8.71, "detalhe": "", "descricao": "POSTO TRANSVALE - SENHOR DO BONFIM BA", "valor": 34.44, "documento": "", "status": "Pago"}, {"id": "3ca19622-a159-4c32-9863-7363f027383a", "data": "2026-10-09", "categoria": "ARLA GRANEL", "unidade": "LT", "quantidade": 7.03, "detalhe": "", "descricao": "AUTO POSTO MAIOR LTDA - MURICI PE", "valor": 27.77, "documento": "", "status": "Pago"}, {"id": "ed0c4c22-161e-4fe5-ade2-efab6f85b5f0", "data": "2026-10-07", "categoria": "ITEM AUXILIAR", "unidade": "UN", "quantidade": 1, "detalhe": "CABO DE PÁ PARA RETIRADA DAS CAIXAS", "descricao": "OURICUZEIRO MAT CONST - ARACI BA", "valor": 17, "documento": "", "status": "Pago"}, {"id": "b526da1c-3546-4b7c-a6ce-b0dc618c4b21", "data": "2026-10-14", "categoria": "CHEIRINHO", "unidade": "UN", "quantidade": 1, "detalhe": "", "descricao": "POSTO ANDORINHA - MILAGRES BA", "valor": 28, "documento": "", "status": "Pago"}, {"id": "16205564-82f3-4c48-8ee2-9e9930d482fd", "data": "2026-10-14", "categoria": "ARLA GRANEL", "unidade": "LT", "quantidade": 2.01, "detalhe": "", "descricao": "POSTO CIDADE SOL - JEQUIE", "valor": 6.05, "documento": "", "status": "Pago"}, {"id": "4b3e6a8d-ba70-42ea-9fbf-3c3799831051", "data": "2026-10-14", "categoria": "DIESEL S10 ADITIVADO", "unidade": "LT", "quantidade": 22, "detalhe": "", "descricao": "POSTO CIDADE SOL - JEQUIE", "valor": 156.64, "documento": "", "status": "Pago"}, {"id": "dc205978-8162-44de-8f1d-455c85e4eac5", "data": "2026-10-09", "categoria": "DIESEL S10", "unidade": "LT", "quantidade": 130, "detalhe": "", "descricao": "POSTO ALINE - DELMIRO GOUVEIA AL", "valor": 1142.7, "documento": "", "status": "Pago"}, {"id": "000b565e-58c1-44c4-8eff-f75ca6cc569c", "data": "2026-10-06", "categoria": "CHAPA", "unidade": "UN", "quantidade": 19, "detalhe": "", "descricao": "FIBRASOL", "valor": 860, "documento": "", "status": "Pago"}, {"id": "4f4badad-623d-4819-8e12-8089c26c65df", "data": "2026-10-06", "categoria": "DIARIA", "unidade": "UN", "quantidade": 9, "detalhe": "", "descricao": "FIBRASOL", "valor": 900, "documento": "", "status": "Pago"}], "id": "2376e4d1-772b-46cb-9186-4473886b6a23"}, {"numero": "3854817", "dataFaturamento": "2026-10-01", "saida": "2026-10-07", "chegada": "2026-10-15", "situacao": "Concluída", "receita": 119567.37, "motorista": "EDSON FARIAS", "placa": "TGY8D97", "veiculo": "M.BENZ/ACCELO 1317", "cliente": "FIBRASOL", "origem": "JEQUIÉ", "destino": "TERESINA - PI", "kmInicial": 61412, "kmFinal": 64149, "obs": "", "despesas": [{"id": "f5127867-eb7b-4254-8146-2eec0a0f7f83", "data": "2026-10-08", "categoria": "DIESEL S10 ADITIVADO", "unidade": "LT", "quantidade": 169.17, "detalhe": "", "descricao": "POSTO JUAZEIRO 1 - JUAZEIRO BA", "valor": 1273.85, "documento": "", "status": "Pago"}, {"id": "87d35016-a291-4bfe-98cc-29859588570a", "data": "2026-10-13", "categoria": "DIESEL S10", "unidade": "LT", "quantidade": 140.931, "detalhe": "", "descricao": "POSTO JBS - FLORIANO PI", "valor": 1090.83, "documento": "", "status": "Pago"}, {"id": "4ad5d4a9-f59a-449a-b1c5-de93cf49ee4c", "data": "2026-10-14", "categoria": "DIESEL S10", "unidade": "LT", "quantidade": 157.45, "detalhe": "", "descricao": "POSTO PORTELA - CALDEIRAO GRANDE BA", "valor": 1116.32, "documento": "", "status": "Pago"}, {"id": "c16cc55e-09ef-4260-905c-8c8e2b0e3390", "data": "2026-10-10", "categoria": "DIESEL S10", "unidade": "LT", "quantidade": 141.02, "detalhe": "", "descricao": "POSTO HC6 - TIMON MA", "valor": 1102.83, "documento": "", "status": "Pago"}, {"id": "71682a99-3f74-4916-b6c4-ec780d2d9452", "data": "2026-10-15", "categoria": "DIESEL S10 ADITIVADO", "unidade": "LT", "quantidade": 83.68, "detalhe": "", "descricao": "POSTO CIDADE SOL - JEQUIE", "valor": 595.8, "documento": "", "status": "Pago"}, {"id": "16b9fad8-c1b0-433f-8449-70bec8ad8436", "data": "2026-10-14", "categoria": "ARLA GRANEL", "unidade": "LT", "quantidade": 8.18, "detalhe": "", "descricao": "POSTO LUCAS 4 - SANTO ANTONIO PAULISTANA PI", "valor": 0, "documento": "", "status": "Pago"}, {"id": "97daed34-2fcb-4917-bb17-25ed277563a1", "data": "2026-10-15", "categoria": "ARLA GRANEL", "unidade": "LT", "quantidade": 7.04, "detalhe": "", "descricao": "POSTO PORTAL - MILAGRES BA", "valor": 28.1, "documento": "", "status": "Pago"}, {"id": "98877364-bc50-4ac7-902f-4d5f0808c805", "data": "2026-10-08", "categoria": "ARLA GRANEL", "unidade": "LT", "quantidade": 9, "detalhe": "", "descricao": "A M COMERCIO DE COMBUSTIVEIS - CAPIM GROSSO BA", "valor": 31.5, "documento": "", "status": "Pago"}, {"id": "d0f1c21a-ecea-4cd2-a1f9-9d856b5b9a91", "data": "2026-10-09", "categoria": "ARLA BALDE", "unidade": "LT", "quantidade": 20, "detalhe": "", "descricao": "POSTO LUCAS 5 - DOM EXPEDITO LOPES PI", "valor": 97, "documento": "", "status": "Pago"}, {"id": "7794ba5b-3271-444e-9fb9-4628b072a426", "data": "2026-10-07", "categoria": "CHAPA", "unidade": "UN", "quantidade": 7, "detalhe": "", "descricao": "FIBRASOL", "valor": 790, "documento": "", "status": "Pago"}, {"id": "a40a3a3b-6279-4b9b-9229-80c61b2ab8fd", "data": "2026-10-07", "categoria": "DIARIA", "unidade": "UN", "quantidade": 9, "detalhe": "", "descricao": "FIBRASOL", "valor": 900, "documento": "", "status": "Pago"}], "id": "7546b407-cf37-4882-8f02-ec91df02a6ba"}, {"numero": "3860807", "dataFaturamento": "2026-10-05", "saida": "2026-10-07", "chegada": "2026-10-16", "situacao": "Concluída", "receita": 110851.87, "motorista": "ALDRAN BORGES", "placa": "TGX4E03", "veiculo": "M.BENZ/ACCELO 1317", "cliente": "FIBRASOL", "origem": "JEQUIÉ", "destino": "BRUMADO BA", "kmInicial": 60925, "kmFinal": 62873, "obs": "", "despesas": [{"id": "63723db8-a750-494b-9ba6-c6772296b51a", "data": "2026-10-15", "categoria": "ARLA GRANEL", "unidade": "LT", "quantidade": 10, "detalhe": "", "descricao": "MEGA POSTO JOAQUIM - LIVRAMENTO DE NOSSA SRA BA", "valor": 34.9, "documento": "", "status": "Pago"}, {"id": "dbfafd3b-1a2e-4469-b4c9-59461c5ec2bc", "data": "2026-10-15", "categoria": "DIESEL S10", "unidade": "LT", "quantidade": 213.61, "detalhe": "", "descricao": "MEGA POSTO JOAQUIM - LIVRAMENTO DE NSRA BA", "valor": 1600.01, "documento": "", "status": "Pago"}, {"id": "5f2b7ca6-2afe-468e-b729-db900830d4aa", "data": "2026-10-10", "categoria": "ARLA GRANEL", "unidade": "LT", "quantidade": 11.74, "detalhe": "", "descricao": "POSTO MACAUBENSE III - ANAGE BA", "valor": 42.18, "documento": "", "status": "Pago"}, {"id": "e1a7802a-ba93-413f-afe6-4d9112425275", "data": "2026-10-10", "categoria": "DIESEL S10", "unidade": "LT", "quantidade": 181.04, "detalhe": "", "descricao": "POSTO MACAUBENSE III - ANAGE BA", "valor": 1301.68, "documento": "", "status": "Pago"}, {"id": "383d2373-72b1-45c7-9e39-cea1feab9be4", "data": "2026-10-19", "categoria": "ARLA GRANEL", "unidade": "LT", "quantidade": 7.4, "detalhe": "", "descricao": "POSTO CIDADE SOL - JEQUIE", "valor": 22.22, "documento": "", "status": "Pago"}, {"id": "5122f8f0-6a21-4955-aacb-5d93465cd6c2", "data": "2026-10-19", "categoria": "DIESEL S10 ADITIVADO", "unidade": "LT", "quantidade": 121.17, "detalhe": "", "descricao": "POSTO CIDADE SOL - JEQUIE", "valor": 851.82, "documento": "", "status": "Pago"}, {"id": "d2e3547e-e01a-4ac8-80af-bfa77859504e", "data": "2026-10-10", "categoria": "ARLA GRANEL", "unidade": "LT", "quantidade": 15, "detalhe": "", "descricao": "POSTO CALIFORNIA - PIRIPA BA", "valor": 40, "documento": "", "status": "Pago"}, {"id": "1c61b1b4-2c4b-4190-acd8-d7ca672733a5", "data": "2026-10-07", "categoria": "CHAPA", "unidade": "UN", "quantidade": 28, "detalhe": "", "descricao": "FIBRASOL", "valor": 829, "documento": "", "status": "Pago"}, {"id": "930e9fbc-ef67-4bce-9932-e14d133c4053", "data": "2026-10-07", "categoria": "DIARIA", "unidade": "UN", "quantidade": 10, "detalhe": "", "descricao": "FIBRASOL", "valor": 1000, "documento": "", "status": "Pago"}], "id": "979cd455-810c-41c8-a98a-737dd274e90b"}, {"numero": "3862570", "dataFaturamento": "2026-10-08", "saida": "2026-10-09", "chegada": "2026-10-10", "situacao": "Concluída", "receita": 36612.05, "motorista": "DOUGLAS SOUZA", "placa": "RCV8F91", "veiculo": "M.BENZ/ACCELO 1316", "cliente": "FIBRASOL", "origem": "JEQUIÉ", "destino": "SANTO ANTONIO DE JESUS", "kmInicial": 288308, "kmFinal": 288941, "obs": "", "despesas": [{"id": "eb471393-3c7e-49f2-a014-5250ec980bce", "data": "2026-10-10", "categoria": "DIESEL S10", "unidade": "LT", "quantidade": 13.98, "detalhe": "", "descricao": "AUTO POSTO D ONOFRIO - JAGUAQUARA BA", "valor": 100.02, "documento": "", "status": "Pago"}, {"id": "f5ab0392-95ad-4532-a5e8-a746d752663d", "data": "2026-10-09", "categoria": "SERVIÇO", "unidade": "UN", "quantidade": 1, "detalhe": "TROCA DE PNEU", "descricao": "BORRACHARIA DO MANOEL - VARZEDO BA", "valor": 50, "documento": "", "status": "Pago"}, {"id": "2b0fd937-b433-4b61-9b18-e6536df7ce56", "data": "2026-10-10", "categoria": "ARLA GRANEL", "unidade": "LT", "quantidade": 6.07, "detalhe": "", "descricao": "POSTO CIDADE SOL - JEQUIE", "valor": 18.22, "documento": "", "status": "Pago"}, {"id": "675077c4-33d2-48b8-a3e7-0734637e710d", "data": "2026-10-10", "categoria": "DIESEL S10 ADITIVADO", "unidade": "LT", "quantidade": 135.15, "detalhe": "", "descricao": "POSTO CIDADE SOL - JEQUIE", "valor": 966.32, "documento": "", "status": "Pago"}, {"id": "d3235734-b571-4984-992d-0e1a4e8d8638", "data": "2026-10-09", "categoria": "CHAPA", "unidade": "UN", "quantidade": 3, "detalhe": "", "descricao": "FIBRASOL", "valor": 200, "documento": "", "status": "Pago"}, {"id": "7e6abf6f-1885-4a8f-86d1-1933de509b43", "data": "2026-10-09", "categoria": "DIARIA", "unidade": "UN", "quantidade": 2, "detalhe": "", "descricao": "FIBRASOL", "valor": 200, "documento": "", "status": "Pago"}], "id": "3fcb1154-435a-4359-9bc1-dc4f1764522d"}, {"numero": "COLETA DE POLIETILENO", "dataFaturamento": "2026-09-22", "saida": "2026-09-22", "chegada": "2026-09-23", "situacao": "Concluída", "receita": 1431.01, "motorista": "ALDRAN BORGES", "placa": "TGX4E03", "veiculo": "M.BENZ/ACCELO 1317", "cliente": "FIBRASOL", "origem": "JEQUIÉ", "destino": "CAMACARI BA", "kmInicial": 58350, "kmFinal": 59062, "obs": "", "despesas": [{"id": "e0b7c8a6-0b5e-428d-a4d6-a5f4a102df6e", "data": "2026-09-23", "categoria": "ARLA GRANEL", "unidade": "LT", "quantidade": 9, "detalhe": "", "descricao": "POSTO CIDADE SOL - JEQUIE", "valor": 27.01, "documento": "", "status": "Pago"}, {"id": "f89fd89b-2cfa-456a-9175-eaffaf723877", "data": "2026-09-23", "categoria": "DIESEL S10 ADITIVADO", "unidade": "LT", "quantidade": 138, "detalhe": "", "descricao": "POSTO CIDADE SOL - JEQUIE", "valor": 1104, "documento": "", "status": "Pago"}, {"id": "5697c10e-669b-46b7-b82f-f9f15c9fc01d", "data": "2026-09-22", "categoria": "ENLONAMENTO", "unidade": "UN", "quantidade": 1, "detalhe": "7 TONELADAS POLIETILENO", "descricao": "CHAPA", "valor": 100, "documento": "", "status": "Pago"}, {"id": "945cadf3-12bc-4fdd-89d3-c9a0c44ce7ac", "data": "2026-09-22", "categoria": "DIARIA", "unidade": "UN", "quantidade": 2, "detalhe": "", "descricao": "FIBRASOL", "valor": 200, "documento": "", "status": "Pago"}], "id": "93e3c380-f357-413a-94df-1c1579758943"}, {"numero": "3860859", "dataFaturamento": "2026-10-02", "saida": "2026-10-05", "chegada": "2026-10-09", "situacao": "Concluída", "receita": 65116.52, "motorista": "ROMARIO TOMAZ", "placa": "RCU3G07", "veiculo": "VW/11.180", "cliente": "FIBRASOL", "origem": "JEQUIÉ", "destino": "SALVADOR", "kmInicial": 218835, "kmFinal": 220390, "obs": "", "despesas": [{"id": "c51703cb-a00c-4b52-a2f2-d6808a59ca36", "data": "2026-10-06", "categoria": "DIESEL S10", "unidade": "LT", "quantidade": 101.15, "detalhe": "", "descricao": "POSTO BOCA DA MATA - CANDEIAS BA", "valor": 700.02, "documento": "", "status": "Pago"}, {"id": "efc5e72c-1654-46bd-a283-6d077e072a6f", "data": "2026-10-08", "categoria": "DIESEL S10", "unidade": "LT", "quantidade": 97.84, "detalhe": "", "descricao": "BARRETO SOUZA - ALAGOINHAS BA", "valor": 690.78, "documento": "", "status": "Pago"}, {"id": "efd22c1e-f8ea-4da4-bcf0-38c64ce78d30", "data": "2026-10-09", "categoria": "ARLA GRANEL", "unidade": "LT", "quantidade": 12.1, "detalhe": "", "descricao": "POSTO CIDADE SOL - JEQUIE", "valor": 36.31, "documento": "", "status": "Pago"}, {"id": "df90ddfa-ae24-4949-8d7d-6b18133e4238", "data": "2026-10-09", "categoria": "DIESEL S500", "unidade": "LT", "quantidade": 99.6, "detalhe": "", "descricao": "POSTO CIDADE SOL - JEQUIE", "valor": 690.23, "documento": "", "status": "Pago"}, {"id": "6042ffa8-6341-420c-a998-602c56237906", "data": "2026-10-05", "categoria": "DIARIA", "unidade": "UN", "quantidade": 5, "detalhe": "", "descricao": "FIBRASOL", "valor": 500, "documento": "", "status": "Pago"}, {"id": "82337c88-086e-4a6e-a321-9b9dc216414c", "data": "2026-10-05", "categoria": "CHAPA", "unidade": "UN", "quantidade": 14, "detalhe": "", "descricao": "FIBRASOL", "valor": 640, "documento": "", "status": "Pago"}], "id": "e825f06d-618b-476a-a315-36495a6e03e9"}, {"numero": "3860853", "dataFaturamento": "2026-10-01", "saida": "2026-10-05", "chegada": "2026-10-14", "situacao": "Concluída", "receita": 97660.29, "motorista": "LEANDRO SANTOS", "placa": "RCZ6F29", "veiculo": "VW/13.180", "cliente": "FIBRASOL", "origem": "JEQUIÉ", "destino": "ARACAJU - SE", "kmInicial": 265676, "kmFinal": 267275, "obs": "", "despesas": [{"id": "c30c38bf-14c3-40f1-aefe-9e00c1551342", "data": "2026-10-06", "categoria": "DIESEL S10", "unidade": "LT", "quantidade": 64.16, "detalhe": "", "descricao": "AUTO POSTO REFORCO II - UMBAUBA SE", "valor": 470.94, "documento": "", "status": "Pago"}, {"id": "2e4a44c6-43db-46a7-8531-7ca077f53968", "data": "2026-10-05", "categoria": "DIESEL S10 ADITIVADO", "unidade": "LT", "quantidade": 82.73, "detalhe": "", "descricao": "CPD ENERGETICO E DER PETROLEO - ALAGOINHAS BA", "valor": 603.1, "documento": "", "status": "Pago"}, {"id": "213f2227-40e9-4985-8895-d7bf4fac6a49", "data": "2026-10-13", "categoria": "DIESEL S10", "unidade": "LT", "quantidade": 50, "detalhe": "", "descricao": "REDE HG - ITATIM BA", "valor": 344.5, "documento": "", "status": "Pago"}, {"id": "035d7468-61cf-48dc-816a-14ed335e9691", "data": "2026-10-08", "categoria": "DIESEL S10", "unidade": "LT", "quantidade": 69.41, "detalhe": "", "descricao": "POSTO BOA VIAGEM - NOSSA SRA DO SOCORRO SE", "valor": 513.68, "documento": "", "status": "Pago"}, {"id": "9d6e2622-c647-4f4e-803a-19a346c39f36", "data": "2026-10-14", "categoria": "ARLA GRANEL", "unidade": "LT", "quantidade": 4.22, "detalhe": "", "descricao": "POSTO CIDADE SOL - JEQUIE", "valor": 12.68, "documento": "", "status": "Pago"}, {"id": "e50e5ad0-892e-495a-b442-06484c8c367e", "data": "2026-10-14", "categoria": "DIESEL S10 ADITIVADO", "unidade": "LT", "quantidade": 81.09, "detalhe": "", "descricao": "POSTO CIDADE SOL - JEQUIE", "valor": 577.36, "documento": "", "status": "Pago"}, {"id": "019e4077-d158-475d-be01-9f917ef72468", "data": "2026-10-05", "categoria": "CHAPA", "unidade": "UN", "quantidade": 22, "detalhe": "", "descricao": "FIBRASOL", "valor": 660, "documento": "", "status": "Pago"}, {"id": "2e10464e-a67a-4a67-9ee4-1b1679d6fccd", "data": "2026-10-05", "categoria": "DIARIA", "unidade": "UN", "quantidade": 10, "detalhe": "", "descricao": "FIBRASOL", "valor": 1000, "documento": "", "status": "Pago"}], "id": "aeeec6b5-c24f-42ca-8b89-0bb74130de9e"}, {"numero": "3865577", "dataFaturamento": "2026-10-16", "saida": "2026-10-20", "chegada": "2026-10-22", "situacao": "Concluída", "receita": 60342.18, "motorista": "MARIO SERGIO", "placa": "UKS2A35", "veiculo": "FOTON AUMARK", "cliente": "FIBRASOL", "origem": "JEQUIÉ", "destino": "FEIRA DE SANTANA", "kmInicial": 1479, "kmFinal": 2208, "obs": "", "despesas": [{"id": "4a86a743-a0f3-4aea-ab30-0ffd2c56f462", "data": "2026-10-22", "categoria": "ARLA GRANEL", "unidade": "LT", "quantidade": 9.19, "detalhe": "", "descricao": "POSTO CIDADE SOL - JEQUIE", "valor": 27.59, "documento": "", "status": "Pago"}, {"id": "c9e68333-f915-4d54-8bc2-9d713816bd21", "data": "2026-10-22", "categoria": "DIESEL S10 ADITIVADO", "unidade": "LT", "quantidade": 170.67, "detalhe": "", "descricao": "POSTO CIDADE SOL - JEQUIE", "valor": 1199.81, "documento": "", "status": "Pago"}, {"id": "d20c3fc2-c579-477b-9c74-4b2d5afd31ad", "data": "2026-10-20", "categoria": "ITEM AUXILIAR", "unidade": "UN", "quantidade": 1, "detalhe": "GARRAFA TERMICA", "descricao": "I H COMERCIO - SANTO ESTEVAO BA", "valor": 49, "documento": "", "status": "Pago"}, {"id": "df1f063c-8f16-47e4-912b-0020a4ff0535", "data": "2026-10-20", "categoria": "CHAPA", "unidade": "UN", "quantidade": 5, "detalhe": "", "descricao": "FIBRASOL", "valor": 300, "documento": "", "status": "Pago"}, {"id": "82d8c9fd-0fe4-4e26-a301-f7be8af17675", "data": "2026-10-20", "categoria": "DIARIA", "unidade": "UN", "quantidade": 3, "detalhe": "", "descricao": "FIBRASOL", "valor": 300, "documento": "", "status": "Pago"}], "id": "85365605-6d59-4574-bfa6-e4e12f3f095f"}, {"numero": "3861407", "dataFaturamento": "2026-10-09", "saida": "2026-10-14", "chegada": "2026-10-19", "situacao": "Concluída", "receita": 58126.77, "motorista": "MARIO SERGIO", "placa": "RCU3G07", "veiculo": "VW/11.180", "cliente": "FIBRASOL", "origem": "JEQUIÉ", "destino": "FEIRA DE SANTANA", "kmInicial": 220390, "kmFinal": 221371, "obs": "", "despesas": [{"id": "b5eb9683-8a42-4ba0-a31a-632dddbda447", "data": "2026-10-19", "categoria": "ARLA GRANEL", "unidade": "LT", "quantidade": 3.6, "detalhe": "", "descricao": "POSTO CIDADE SOL - JEQUIE", "valor": 10.8, "documento": "", "status": "Pago"}, {"id": "2d0e8066-7cf7-4b0f-ab67-b8598aa7d71e", "data": "2026-10-19", "categoria": "DIESEL S10 ADITIVADO", "unidade": "LT", "quantidade": 72.15, "detalhe": "", "descricao": "POSTO CIDADE SOL - JEQUIE", "valor": 507.22, "documento": "", "status": "Pago"}, {"id": "e4d07450-82a4-4470-8ffc-d1cf1fecb9d4", "data": "2026-10-16", "categoria": "ARLA GRANEL", "unidade": "LT", "quantidade": 4.06, "detalhe": "", "descricao": "COMERCIAL BAHIA BR 06 - CON. DO JACUIPE BA", "valor": 12.99, "documento": "", "status": "Pago"}, {"id": "5acb70c9-f797-49ef-ae1d-a2a92cbfb573", "data": "2026-10-16", "categoria": "DIESEL S10", "unidade": "LT", "quantidade": 124.82, "detalhe": "", "descricao": "COMERCIAL BAHIA BR 06 - CON. DO JACUIPE BA", "valor": 860.02, "documento": "", "status": "Pago"}, {"id": "b6cd9514-887a-45ea-bcbf-7549410c85ea", "data": "2026-10-14", "categoria": "CHAPA", "unidade": "UN", "quantidade": 17, "detalhe": "", "descricao": "FIBRASOL", "valor": 460, "documento": "", "status": "Pago"}, {"id": "5b9fbd4e-b036-4875-969e-e809a8432249", "data": "2026-10-14", "categoria": "DIARIA", "unidade": "UN", "quantidade": 6, "detalhe": "", "descricao": "FIBRASOL", "valor": 600, "documento": "", "status": "Pago"}], "id": "64792941-447f-42bc-8db7-bc2a3ce6c71b"}, {"numero": "3863463", "dataFaturamento": "2026-10-09", "saida": "2026-10-14", "chegada": "2026-10-23", "situacao": "Concluída", "receita": 114773.42, "motorista": "PAULO SERGIO", "placa": "RPN3F57", "veiculo": "M.BENZ/ACCELO 1316", "cliente": "FIBRASOL", "origem": "JEQUIÉ", "destino": "EUNAPOLIS", "kmInicial": 192373, "kmFinal": 194118, "obs": "", "despesas": [{"id": "b153d596-1d75-4d82-88c3-50564f1a1b81", "data": "2026-10-19", "categoria": "ARLA GRANEL", "unidade": "LT", "quantidade": 7.54, "detalhe": "", "descricao": "POSTO BENTIVI - ITAMARAJU BA", "valor": 29.35, "documento": "", "status": "Pago"}, {"id": "e4396d7a-cbf5-4055-bed3-68c5c642ed45", "data": "2026-10-19", "categoria": "DIESEL S10 ADITIVADO", "unidade": "LT", "quantidade": 223.53, "detalhe": "", "descricao": "POSTO BENTIVI - ITAMARAJU BA", "valor": 1575.89, "documento": "", "status": "Pago"}, {"id": "b32836b0-1a4b-439d-8470-59ea86546dc3", "data": "2026-10-23", "categoria": "ARLA GRANEL", "unidade": "LT", "quantidade": 8.33, "detalhe": "", "descricao": "POSTO CIDADE SOL - JEQUIE", "valor": 24.99, "documento": "", "status": "Pago"}, {"id": "c4e7b7ba-43e0-4e20-a2c0-5a6962dccbb6", "data": "2026-10-23", "categoria": "DIESEL S10 ADITIVADO", "unidade": "LT", "quantidade": 197.63, "detalhe": "", "descricao": "POSTO CIDADE SOL - JEQUIE", "valor": 1389.33, "documento": "", "status": "Pago"}, {"id": "c670b2ed-ca9b-4a88-85f3-06227917efea", "data": "2026-11-23", "categoria": "ITEM AUXILIAR", "unidade": "UN", "quantidade": 1, "detalhe": "MARRETA DE BORRACHA", "descricao": "SKINA MAT CONST - PORTO SEGURO BA", "valor": 27.03, "documento": "", "status": "Pago"}, {"id": "8532d6c6-4820-4dc7-9b91-25ddd80ea21b", "data": "2026-10-14", "categoria": "CHAPA", "unidade": "UN", "quantidade": 21, "detalhe": "", "descricao": "FIBRASOL", "valor": 980, "documento": "", "status": "Pago"}, {"id": "4d0bf4c7-59d7-42d1-ba27-4384d9eb43cc", "data": "2026-10-14", "categoria": "DIARIA", "unidade": "UN", "quantidade": 10, "detalhe": "", "descricao": "FIBRASOL", "valor": 1000, "documento": "", "status": "Pago"}], "id": "9066b219-2d5f-4f1c-bd69-f3e8586e691a"}, {"numero": "3862489", "dataFaturamento": "2026-10-15", "saida": "2026-10-19", "chegada": "2026-10-26", "situacao": "Concluída", "receita": 102421.26, "motorista": "EDSON FARIAS", "placa": "RPG6I58", "veiculo": "M.BENZ/ACCELO 1316", "cliente": "FIBRASOL", "origem": "JEQUIÉ", "destino": "IRECE", "kmInicial": 224142, "kmFinal": 225936, "obs": "", "despesas": [{"id": "bbc5e8c6-5060-4f6f-b38c-0a83ede89fa8", "data": "2026-10-26", "categoria": "ARLA GRANEL", "unidade": "LT", "quantidade": 7.24, "detalhe": "", "descricao": "POSTO SANTA HELENA - ITABERABA BA", "valor": 23.9, "documento": "", "status": "Pago"}, {"id": "613e375d-4967-478f-a44e-2ecd4fb628cb", "data": "2026-10-23", "categoria": "DIESEL S10", "unidade": "LT", "quantidade": 167.05, "detalhe": "", "descricao": "GRUPO COSTA - CANARANA BA", "valor": 1318.02, "documento": "", "status": "Pago"}, {"id": "cd16e044-3e5a-4120-88f7-af624fb4568d", "data": "2026-10-26", "categoria": "DIESEL S10", "unidade": "LT", "quantidade": 101.88, "detalhe": "", "descricao": "POSTO PORTAL - MILAGRES BA", "valor": 732.53, "documento": "", "status": "Pago"}, {"id": "0786ada9-da0b-4da6-8f44-f33c07a6a7ce", "data": "2026-10-19", "categoria": "PEÇAS", "unidade": "UN", "quantidade": 22, "detalhe": "PORCA E PARAFUSOS", "descricao": "DIESEL ZOI - ITABERABA BA", "valor": 25, "documento": "", "status": "Pago"}, {"id": "8c691a98-4474-4fbf-ae3f-5c9d47a7e409", "data": "2026-10-26", "categoria": "CHEIRINHO", "unidade": "UN", "quantidade": 1, "detalhe": "", "descricao": "SANTA HELENA - ITABERABA BA", "valor": 40, "documento": "", "status": "Pago"}, {"id": "b067a328-993f-4db3-9670-c90e8940dc2f", "data": "2026-10-21", "categoria": "ARLA GRANEL", "unidade": "LT", "quantidade": 8.71, "detalhe": "", "descricao": "COSTA MENDONCA - IRECE BA", "valor": 39.19, "documento": "", "status": "Pago"}, {"id": "12705b2c-a114-4890-9ac6-4d2060738e5a", "data": "2026-10-20", "categoria": "DIESEL S10", "unidade": "LT", "quantidade": 141.71, "detalhe": "", "descricao": "POSTO IRECE - BAIXA GRANDE BA", "valor": 1033.03, "documento": "", "status": "Pago"}, {"id": "69f600d4-aaac-463e-b240-93852c73ccb5", "data": "2026-10-26", "categoria": "DIESEL S10 ADITIVADO", "unidade": "LT", "quantidade": 31.2, "detalhe": "", "descricao": "POSTO CIDADE SOL - JEQUIE", "valor": 217.47, "documento": "", "status": "Pago"}, {"id": "f4233e17-c8ce-45ce-ae88-d9ff5d3b8437", "data": "2026-10-19", "categoria": "CHAPA", "unidade": "UN", "quantidade": 26, "detalhe": "", "descricao": "FIBRASOL", "valor": 680, "documento": "", "status": "Pago"}, {"id": "a7a03b6a-699a-4238-9550-50aacbfc3244", "data": "2026-10-19", "categoria": "DIARIA", "unidade": "UN", "quantidade": 8, "detalhe": "", "descricao": "FIBRASOL", "valor": 800, "documento": "", "status": "Pago"}], "id": "b6e033c6-ab76-4565-aa14-9baaa4f5d4ec"}, {"numero": "3856706", "dataFaturamento": "2026-10-02", "saida": "2026-10-06", "chegada": "2026-10-16", "situacao": "Concluída", "receita": 111052.94, "motorista": "JOACI CARVALHO", "placa": "TGX0H94", "veiculo": "M.BENZ/ACCELO 1317", "cliente": "FIBRASOL", "origem": "JEQUIÉ", "destino": "PAULO AFONSO", "kmInicial": 63041, "kmFinal": 65261, "obs": "", "despesas": [{"id": "7d21b280-1bb4-4388-8238-9dab41215bc7", "data": "2026-10-09", "categoria": "DIESEL S10", "unidade": "LT", "quantidade": 204.28, "detalhe": "", "descricao": "POSTO TREVO - QUIJINGUE BA", "valor": 1448.4, "documento": "", "status": "Pago"}, {"id": "cbbf0884-8235-4dee-88f5-8eb80d7d16f0", "data": "2026-10-15", "categoria": "DIESEL S10", "unidade": "LT", "quantidade": 229.75, "detalhe": "", "descricao": "POSTO IMPERIAL - OLINDINA BA", "valor": 1711.7, "documento": "", "status": "Pago"}, {"id": "4cbad9e9-e335-4d84-a97f-281c6506b262", "data": "2026-10-16", "categoria": "ARLA GRANEL", "unidade": "LT", "quantidade": 8.81, "detalhe": "", "descricao": "POSTO CIDADE SOL - JEQUIE", "valor": 26.43, "documento": "", "status": "Pago"}, {"id": "b04c70ee-3468-4f9d-ae4d-376221ab7a04", "data": "2026-10-16", "categoria": "DIESEL S10 ADITIVADO", "unidade": "LT", "quantidade": 130.53, "detalhe": "", "descricao": "POSTO CIDADE SOL - JEQUIE", "valor": 917.62, "documento": "", "status": "Pago"}, {"id": "64979133-3924-4ff1-959f-f5ae37df8d35", "data": "2026-10-07", "categoria": "ARLA GRANEL", "unidade": "LT", "quantidade": 24.01, "detalhe": "", "descricao": "POSTO PAYAYA - ARACI BA", "valor": 86.45, "documento": "", "status": "Pago"}, {"id": "d19ea07c-e5f1-4d72-8149-5f44413ed5ff", "data": "2026-10-06", "categoria": "CHAPA", "unidade": "UN", "quantidade": 28, "detalhe": "", "descricao": "FIBRASOL", "valor": 1160, "documento": "", "status": "Pago"}, {"id": "29785ab2-c1d3-432b-9cdb-59d254ff2b38", "data": "2026-10-06", "categoria": "DIARIA", "unidade": "UN", "quantidade": 11, "detalhe": "", "descricao": "FIBRASOL", "valor": 1100, "documento": "", "status": "Pago"}], "id": "319d782c-c431-4aea-b424-3890dea96d0a"}, {"numero": "3862917", "dataFaturamento": "2026-10-13", "saida": "2026-10-15", "chegada": "2026-10-24", "situacao": "Concluída", "receita": 100598.43, "motorista": "DOUGLAS SOUZA", "placa": "RCV8F91", "veiculo": "M.BENZ/ACCELO 1316", "cliente": "FIBRASOL", "origem": "JEQUIÉ", "destino": "BARREIRAS", "kmInicial": 288942, "kmFinal": 291619, "obs": "", "despesas": [{"id": "3f61211f-fe21-4eea-9afe-294f21600a36", "data": "2026-10-26", "categoria": "DIESEL S10", "unidade": "LT", "quantidade": 46.05, "detalhe": "", "descricao": "POSTO MEIRA - VCA BA", "valor": 329.26, "documento": "", "status": "Pago"}, {"id": "c7e61df3-53c0-4baf-a238-2f6197f2519d", "data": "2026-10-21", "categoria": "DIESEL S10", "unidade": "LT", "quantidade": 150.28, "detalhe": "", "descricao": "REDE DOM PEDRO - BARREIRAS BA", "valor": 1065.52, "documento": "", "status": "Pago"}, {"id": "e1078cb5-81aa-445f-8561-64c44ab225f0", "data": "2026-10-16", "categoria": "DIESEL S10", "unidade": "LT", "quantidade": 106, "detalhe": "", "descricao": "ARM DERIVADOS DE PETROLEO - CAETITE BA", "valor": 804.54, "documento": "", "status": "Pago"}, {"id": "8f9332a4-1f5b-4710-b17b-1a5fe5e7595e", "data": "2026-10-23", "categoria": "DIESEL S10", "unidade": "LT", "quantidade": 124.46, "detalhe": "", "descricao": "POSTO SEABRA - IBOTIRAMA BA", "valor": 909.2, "documento": "", "status": "Pago"}, {"id": "abb00694-2a33-4106-b6fd-4db52a9edbf2", "data": "2026-10-23", "categoria": "ARLA GRANEL", "unidade": "LT", "quantidade": 12.6, "detalhe": "", "descricao": "POSTO SEABRA - IBOTIRAMA BA", "valor": 47.17, "documento": "", "status": "Pago"}, {"id": "98c00f53-54d1-4683-b5c4-a93bdc51810a", "data": "2026-10-24", "categoria": "ARLA GRANEL", "unidade": "LT", "quantidade": 10.57, "detalhe": "", "descricao": "POSTO CIDADE SOL - JEQUIE", "valor": 31.73, "documento": "", "status": "Pago"}, {"id": "02d0f1e3-7e00-44f5-98fc-a6c71cbf1ef6", "data": "2026-10-24", "categoria": "DIESEL S10 ADITIVADO", "unidade": "LT", "quantidade": 137.15, "detalhe": "", "descricao": "POSTO CIDADE SOL - JEQUIE", "valor": 964.17, "documento": "", "status": "Pago"}, {"id": "2f74c0d3-bd4f-44c1-b73f-a482319d70e5", "data": "2026-10-15", "categoria": "CHAPA", "unidade": "UN", "quantidade": 27, "detalhe": "", "descricao": "FIBRASOL", "valor": 970.46, "documento": "", "status": "Pago"}, {"id": "ba374b8b-adf7-485b-b07d-d68b5184732d", "data": "2026-10-15", "categoria": "DIARIA", "unidade": "UN", "quantidade": 10, "detalhe": "", "descricao": "FIBRASOL", "valor": 1000, "documento": "", "status": "Pago"}], "id": "2b3e92d4-1d8d-47c6-b3e8-974ca7208e4d"}, {"numero": "3868983", "dataFaturamento": "2026-10-28", "saida": "2026-10-29", "chegada": "2026-11-07", "situacao": "Concluída", "receita": 85329.08, "motorista": "EDSON FARIAS", "placa": "RPG6I58", "veiculo": "M.BENZ/ACCELO 1316", "cliente": "FIBRASOL", "origem": "JEQUIÉ", "destino": "JUAZEIRO - BA", "kmInicial": 225974, "kmFinal": 228382, "obs": "", "despesas": [{"id": "4c6bd608-5f06-4139-a90b-15ce951cc911", "data": "2026-11-05", "categoria": "DIESEL S10", "unidade": "LT", "quantidade": 122.22, "detalhe": "", "descricao": "A M COMERCIO DE COMBUSTIVEIS - CAPIM GROSSO BA", "valor": 871.43, "documento": "", "status": "Pago"}, {"id": "24f25e23-3c43-4643-b589-f5197c7b0d63", "data": "2026-11-04", "categoria": "DIESEL S10", "unidade": "LT", "quantidade": 158.39, "detalhe": "", "descricao": "POSTO ARARINHA - CURACA BA", "valor": 1156.31, "documento": "", "status": "Pago"}, {"id": "894679b9-c362-4b8c-8057-15ce4d764d75", "data": "2026-10-30", "categoria": "SERVIÇO", "unidade": "UN", "quantidade": 1, "detalhe": "MANGUEIRA DE AR", "descricao": "OFICINA DO PEDRINHO - EUCLIDES DA CUNHA BA", "valor": 30, "documento": "", "status": "Pago"}, {"id": "018443bb-dd4d-4021-8b75-6fcde053e634", "data": "2026-11-07", "categoria": "DIESEL S10 ADITIVADO", "unidade": "LT", "quantidade": 134.58, "detalhe": "", "descricao": "POSTO CIDADE SOL - JEQUIE", "valor": 975.7, "documento": "", "status": "Pago"}, {"id": "75812e3f-f6bc-4128-846a-9fae3de5e707", "data": "2026-11-04", "categoria": "PEÇAS", "unidade": "UN", "quantidade": 4, "detalhe": "LAMPADAS", "descricao": "AUTO AR - CAMPO FORMOSO BA", "valor": 30, "documento": "", "status": "Pago"}, {"id": "4a2c685f-f0e1-4bf6-8fe3-55b9ffce4d78", "data": "2026-11-06", "categoria": "ARLA GRANEL", "unidade": "LT", "quantidade": 9.47, "detalhe": "", "descricao": "ITABERABA COM DE COMBUSTIVEIS - ITABERABA BA", "valor": 31.27, "documento": "", "status": "Pago"}, {"id": "585f2c35-cf87-4381-b29e-c52c953b327d", "data": "2026-10-30", "categoria": "DIESEL S10", "unidade": "LT", "quantidade": 200, "detalhe": "", "descricao": "AUTO POSTO CEARA - NORDESTINA BA", "valor": 1758, "documento": "", "status": "Pago"}, {"id": "8de75453-ce0a-489e-a7fb-f3099e12a84e", "data": "2026-10-31", "categoria": "ARLA GRANEL", "unidade": "LT", "quantidade": 20, "detalhe": "", "descricao": "POSTO CAJUEIRO - NORDESTINA BA", "valor": 115, "documento": "", "status": "Pago"}, {"id": "7691e4d3-5781-4327-89d9-c4b5f543631d", "data": "2026-10-29", "categoria": "CHAPA", "unidade": "UN", "quantidade": 28, "detalhe": "", "descricao": "FIBRASOL", "valor": 756, "documento": "", "status": "Pago"}, {"id": "a74ce135-85d2-4080-9a80-685c1adc1831", "data": "2026-10-29", "categoria": "DIARIA", "unidade": "UN", "quantidade": 10, "detalhe": "", "descricao": "FIBRASOL", "valor": 1000, "documento": "", "status": "Pago"}], "id": "c2a89648-ef92-4c76-9de2-3f5e92d2c6c4"}, {"numero": "3865591", "dataFaturamento": "2026-10-27", "saida": "2026-10-28", "chegada": "2026-11-07", "situacao": "Concluída", "receita": 101930.66, "motorista": "PAULO SERGIO", "placa": "RPN3F57", "veiculo": "M.BENZ/ACCELO 1316", "cliente": "FIBRASOL", "origem": "JEQUIÉ", "destino": "ARACAJU - SE", "kmInicial": 194119, "kmFinal": 195922, "obs": "", "despesas": [{"id": "164b7d0d-e398-4f73-8ae9-f936926b2375", "data": "2026-11-03", "categoria": "ARLA GRANEL", "unidade": "UN", "quantidade": 6.92, "detalhe": "", "descricao": "POSTO ELITE - MARUIM SE", "valor": 24.93, "documento": "", "status": "Pago"}, {"id": "e4e35cb2-8a9d-4ab1-a7e8-81abe0f0e8d0", "data": "2026-11-03", "categoria": "DIESEL S10", "unidade": "LT", "quantidade": 220.92, "detalhe": "", "descricao": "POSTO ELITE - MARUIM SE", "valor": 1610.51, "documento": "", "status": "Pago"}, {"id": "8356c160-138e-4eae-94cd-51c4eed29148", "data": "2026-11-09", "categoria": "ARLA GRANEL", "unidade": "LT", "quantidade": 8.42, "detalhe": "", "descricao": "POSTO CIDADE SOL - JEQUIE", "valor": 25.26, "documento": "", "status": "Pago"}, {"id": "71eab807-a50f-49cb-a864-7a9cf98e693c", "data": "2026-11-09", "categoria": "DIESEL S10 ADITIVADO", "unidade": "LT", "quantidade": 212, "detalhe": "", "descricao": "POSTO CIDADE SOL - JEQUIE", "valor": 1537, "documento": "", "status": "Pago"}, {"id": "a059ee05-4e5f-43dc-b647-5d5a06dc2599", "data": "2026-11-05", "categoria": "ESTACIONAMENTO", "unidade": "UN", "quantidade": 1, "detalhe": "", "descricao": "ISSAU SOUZA DE QUEIROZ - SIMOES FILHO BA", "valor": 40, "documento": "", "status": "Pago"}, {"id": "1ffda065-15d4-4451-9346-54683c93e932", "data": "2026-10-28", "categoria": "CHAPA", "unidade": "UN", "quantidade": 22, "detalhe": "", "descricao": "FIBRASOL", "valor": 900, "documento": "", "status": "Pago"}, {"id": "02b6f065-5fd8-47a0-be9d-c43b4bc90248", "data": "2026-10-28", "categoria": "DIARIA", "unidade": "UN", "quantidade": 11, "detalhe": "", "descricao": "FIBRASOL", "valor": 1100, "documento": "", "status": "Pago"}], "id": "b4437e80-7b0d-42a4-9b1a-b9e6327a0f38"}, {"numero": "3869573", "dataFaturamento": "2026-10-27", "saida": "2026-11-03", "chegada": "2026-11-07", "situacao": "Concluída", "receita": 44452.61, "motorista": "RODRIGO BARRETO", "placa": "RCU3G07", "veiculo": "VW/11.180", "cliente": "FIBRASOL", "origem": "JEQUIÉ", "destino": "SALVADOR", "kmInicial": 221375, "kmFinal": 222473, "obs": "", "despesas": [{"id": "daca1f0c-30a9-4957-aa02-5d4b110cfb67", "data": "2026-11-05", "categoria": "DIESEL S10", "unidade": "LT", "quantidade": 119.07, "detalhe": "", "descricao": "POSTO ABO - SALVADOR BA", "valor": 927.62, "documento": "", "status": "Pago"}, {"id": "22bf7520-4c82-4e1d-bdf2-b6f5ed42b2e0", "data": "2026-11-07", "categoria": "ARLA GRANEL", "unidade": "LT", "quantidade": 34.08, "detalhe": "", "descricao": "POSTO CIDADE SOL - JEQUIE", "valor": 102.24, "documento": "", "status": "Pago"}, {"id": "8bad234f-b5e5-4850-af5f-76f2b83f4b1d", "data": "2026-11-07", "categoria": "DIESEL S10 ADITIVADO", "unidade": "LT", "quantidade": 95.79, "detalhe": "", "descricao": "POSTO CIDADE SOL - JEQUIE", "valor": 694.48, "documento": "", "status": "Pago"}, {"id": "ea3908a7-3c40-494d-b55a-9079e6bc5b22", "data": "2026-11-05", "categoria": "ESTACIONAMENTO", "unidade": "UN", "quantidade": 2, "detalhe": "(04/11-05/11 ) ( 05/11 Á 06/11)", "descricao": "CIA ARACATU - SIMOES FILHO BA", "valor": 80, "documento": "", "status": "Pago"}, {"id": "e77211cc-7978-44f1-94c5-1b834402e01d", "data": "2026-11-03", "categoria": "CHAPA", "unidade": "UN", "quantidade": 9, "detalhe": "", "descricao": "FIBRASOL", "valor": 450, "documento": "", "status": "Pago"}, {"id": "fc2aa1a3-5d8f-4068-ba32-55e906b3c619", "data": "2026-11-03", "categoria": "DIARIA", "unidade": "UN", "quantidade": 5, "detalhe": "", "descricao": "FIBRASOL", "valor": 500, "documento": "", "status": "Pago"}], "id": "42e46a29-1ac0-4bc6-b9fe-bf4a18afb61e"}, {"numero": "3869474", "dataFaturamento": "2026-10-30", "saida": "2026-11-03", "chegada": "2026-11-10", "situacao": "Concluída", "receita": 87705.86, "motorista": "LEANDRO SANTOS", "placa": "RCZ6F29", "veiculo": "VW/13.180", "cliente": "FIBRASOL", "origem": "JEQUIÉ", "destino": "VALE BA", "kmInicial": 269254, "kmFinal": 270295, "obs": "", "despesas": [{"id": "c68cf3da-524d-4fb2-9b26-a0875f40dfb7", "data": "2026-11-07", "categoria": "DIESEL S10", "unidade": "LT", "quantidade": 48.67, "detalhe": "", "descricao": "MARIA DE FATIMA SOUZA DE JESUS - JAGUARIPE BA", "valor": 350, "documento": "", "status": "Pago"}, {"id": "86600ccf-1e40-4642-8476-7bf0ce35bb00", "data": "2026-11-05", "categoria": "DIESEL S10", "unidade": "LT", "quantidade": 34.36, "detalhe": "", "descricao": "POSTO EMBIRA - CRUZ DAS ALMAS", "valor": 250.52, "documento": "", "status": "Pago"}, {"id": "7583a83a-ff43-44d6-8b8f-51fa16147ce6", "data": "2026-11-04", "categoria": "DIESEL S10", "unidade": "LT", "quantidade": 77.29, "detalhe": "", "descricao": "REDE HG - BREJOES BA", "valor": 570.4, "documento": "", "status": "Pago"}, {"id": "c4183a2e-2a0e-4f26-8799-be9f741bd6a4", "data": "2026-11-10", "categoria": "DIESEL S10 ADITIVADO", "unidade": "LT", "quantidade": 93.05, "detalhe": "", "descricao": "POSTO CIDADE SOL - JEQUIE", "valor": 660.66, "documento": "", "status": "Pago"}, {"id": "a83c1537-cc48-42b2-9edd-aba69c3de0b1", "data": "2026-11-03", "categoria": "CHAPA", "unidade": "UN", "quantidade": 22, "detalhe": "", "descricao": "FIBRASOL", "valor": 680, "documento": "", "status": "Pago"}, {"id": "c96dde03-3a13-486d-9b89-27e35aae439c", "data": "2026-11-03", "categoria": "DIARIA", "unidade": "UN", "quantidade": 8, "detalhe": "", "descricao": "FIBRASOL", "valor": 800, "documento": "", "status": "Pago"}], "id": "d627bf6e-53b5-405a-bdd4-580e77560c6c"}, {"numero": "3868990", "dataFaturamento": "2026-10-30", "saida": "2026-11-04", "chegada": "2026-11-12", "situacao": "Concluída", "receita": 121854.74, "motorista": "UELITON ARAUJO", "placa": "SJN9F73", "veiculo": "M.BENZ/ACCELO 1317", "cliente": "FIBRASOL", "origem": "JEQUIÉ", "destino": "BARREIRAS", "kmInicial": 167220, "kmFinal": 169791, "obs": "", "despesas": [{"id": "337aee4c-4972-4c56-830d-f850c70a2c54", "data": "2026-11-05", "categoria": "ARLA GRANEL", "unidade": "LT", "quantidade": 20, "detalhe": "", "descricao": "SANTA BARBARA - SANTANA BA", "valor": 120, "documento": "", "status": "Pago"}, {"id": "384039c6-acab-421b-a2dd-fb7ad28f938f", "data": "2026-11-05", "categoria": "DIESEL S10", "unidade": "LT", "quantidade": 181.49, "detalhe": "", "descricao": "SANTA  BARBARA - SANTANA BA", "valor": 1377.51, "documento": "", "status": "Pago"}, {"id": "43f990bd-e329-4783-a463-267ba8f8049b", "data": "2026-11-07", "categoria": "DIESEL S10", "unidade": "LT", "quantidade": 165.04, "detalhe": "", "descricao": "DECIO - BARREIRAS BA", "valor": 1219.66, "documento": "", "status": "Pago"}, {"id": "9c006bf1-8989-4bdc-ac23-d9a93663492c", "data": "2026-11-12", "categoria": "DIESEL S10 ADITIVADO", "unidade": "LT", "quantidade": 283.07, "detalhe": "", "descricao": "AUTO POSTO KAROLINE - TANQUE NOVO BA", "valor": 2290.06, "documento": "", "status": "Pago"}, {"id": "51e29ffb-6b4e-4921-8980-0cea0107be68", "data": "2026-11-12", "categoria": "ARLA GRANEL", "unidade": "LT", "quantidade": 6.61, "detalhe": "", "descricao": "POSTO CIDADE SOL - JEQUIE", "valor": 19.83, "documento": "", "status": "Pago"}, {"id": "118d9a4f-99f2-4473-8db0-0ee239c2e0f9", "data": "2026-11-12", "categoria": "DIESEL S10 ADITIVADO", "unidade": "LT", "quantidade": 104.2, "detalhe": "", "descricao": "POSTO CIDADE SOL - JEQUIE", "valor": 734.61, "documento": "", "status": "Pago"}, {"id": "ed6f3391-b0da-4d03-a3ab-17f6db3c7f82", "data": "2026-11-11", "categoria": "ARLA GRANEL", "unidade": "LT", "quantidade": 20, "detalhe": "", "descricao": "AUTO POSTO BEIRA RIO - OLIV DOS BREJINHOS", "valor": 110, "documento": "", "status": "Pago"}, {"id": "ea73919e-b34c-4888-ad08-5df637c3eb7e", "data": "2026-11-08", "categoria": "ITEM AUXILIAR", "unidade": "UN", "quantidade": 1, "detalhe": "CABO P/CHUPETA 200A", "descricao": "DECIO COM DE SERV  - BARREIRAS BA", "valor": 49.9, "documento": "", "status": "Pago"}, {"id": "cf2229b0-42ce-481e-975d-e673a2eb1b00", "data": "2026-11-08", "categoria": "ITEM AUXILIAR", "unidade": "UN", "quantidade": 1, "detalhe": "CABO P/CHUPETA 600A", "descricao": "DECIO COM DE SERV  - BARREIRAS BA", "valor": 99, "documento": "", "status": "Pago"}, {"id": "fd963fc5-1425-44b0-9b56-373081960a1a", "data": "2026-11-04", "categoria": "CHAPA", "unidade": "UN", "quantidade": 20, "detalhe": "", "descricao": "FIBRASOL", "valor": 890, "documento": "", "status": "Pago"}, {"id": "e6e5497a-2f4f-4f35-b72d-74705ebf8344", "data": "2026-11-04", "categoria": "DIARIA", "unidade": "UN", "quantidade": 9, "detalhe": "", "descricao": "FIBRASOL", "valor": 900, "documento": "", "status": "Pago"}], "id": "e52fe275-e110-46b2-a9f1-a96da9502498"}, {"numero": "3869552", "dataFaturamento": "2026-10-30", "saida": "2026-11-03", "chegada": "2026-11-13", "situacao": "Concluída", "receita": 86006.08, "motorista": "DOUGLAS SOUZA", "placa": "TGY8D97", "veiculo": "M.BENZ/ACCELO 1317", "cliente": "FIBRASOL", "origem": "JEQUIÉ", "destino": "BOM JESUS DA LAPA", "kmInicial": 66824, "kmFinal": 69071, "obs": "", "despesas": [{"id": "1be55858-2295-4c14-a734-c12d9e64fece", "data": "2026-11-09", "categoria": "DIESEL S10", "unidade": "LT", "quantidade": 157, "detalhe": "", "descricao": "POSTO GRUTA DA LAPA - BOM JESUS DA LAPA BA", "valor": 1270.18, "documento": "", "status": "Pago"}, {"id": "4d9ff203-73b0-4fae-abed-9153eacafdaa", "data": "2026-11-09", "categoria": "ARLA GRANEL", "unidade": "LT", "quantidade": 9.22, "detalhe": "", "descricao": "POSTO GRUTA DA LAPA - BOM JESUS DA LAPA BA", "valor": 37.71, "documento": "", "status": "Pago"}, {"id": "3b415411-31f8-4b2c-bf93-0e90485c84e2", "data": "2026-11-12", "categoria": "ARLA GRANEL", "unidade": "LT", "quantidade": 10.01, "detalhe": "", "descricao": "AUTO POSTO RADAR - CACULE BA", "valor": 35.06, "documento": "", "status": "Pago"}, {"id": "a047ff1c-8c69-45b0-8c8c-d1e16e169f8a", "data": "2026-11-12", "categoria": "DIESEL S10", "unidade": "LT", "quantidade": 175, "detalhe": "", "descricao": "AUTO POSTO RADAR - CACULE BA", "valor": 1310.75, "documento": "", "status": "Pago"}, {"id": "f51ea466-fa84-40f7-9203-c6920f67f827", "data": "2026-11-05", "categoria": "ARLA GRANEL", "unidade": "LT", "quantidade": 8.9, "detalhe": "", "descricao": "POSTO MEIRA III - BRUMADO BA", "valor": 38, "documento": "", "status": "Pago"}, {"id": "f9231961-d5ba-438c-a8a5-30381b1a4773", "data": "2026-11-05", "categoria": "DIESEL S10", "unidade": "LT", "quantidade": 154.59, "detalhe": "", "descricao": "POSTO MEIRA III - BRUMADO BA", "valor": 1266.09, "documento": "", "status": "Pago"}, {"id": "903a058b-83c1-4b21-906f-8f753f346991", "data": "2026-11-05", "categoria": "ITEM AUXILIAR", "unidade": "UN", "quantidade": 3, "detalhe": "TINTA SPRAY / SPRAY TEKBOND / FITA ADESIVA", "descricao": "ESMACON MAT CONST - BRUMADO BA", "valor": 51.9, "documento": "", "status": "Pago"}, {"id": "fe0561bd-7c82-41ce-b301-563440bee018", "data": "2026-11-05", "categoria": "SERVIÇO", "unidade": "UN", "quantidade": 1, "detalhe": "RETROVISOR", "descricao": "RALLY AUTO PEÇAS - BRUMADO BA", "valor": 60, "documento": "", "status": "Pago"}, {"id": "bc1e625e-e95a-4c04-86f8-d7eb205f0332", "data": "2026-11-04", "categoria": "AROMATIZANTE", "unidade": "UN", "quantidade": 1, "detalhe": "", "descricao": "ILTON ACESSORIOS - IBICOARA BA", "valor": 25, "documento": "", "status": "Pago"}, {"id": "e4eb1cff-e501-4ec2-a44d-228036524c8e", "data": "2026-11-04", "categoria": "PEÇAS", "unidade": "UN", "quantidade": 12, "detalhe": "CAPA DE PORCA", "descricao": "ILTO ACESSORIOS - IBICOARA BA", "valor": 48, "documento": "", "status": "Pago"}, {"id": "100af699-a316-440f-b65b-32541d525e3b", "data": "2026-11-03", "categoria": "PEÇAS", "unidade": "LT", "quantidade": 1, "detalhe": "ESPELHO RETROVISOR", "descricao": "AUTO PEÇAS RONY - JEQUIE BA", "valor": 468.23, "documento": "", "status": "Pago"}, {"id": "5d0a5779-4731-4ee4-a8bb-e54c7d29c241", "data": "2026-11-13", "categoria": "ARLA GRANEL", "unidade": "LT", "quantidade": 6.29, "detalhe": "", "descricao": "POSTO CIDADE SOL - JEQUIE", "valor": 18.87, "documento": "", "status": "Pago"}, {"id": "2a3a88f2-f86d-40e9-81a2-9d11ed7216ad", "data": "2026-11-13", "categoria": "DIESEL S10 ADITIVADO", "unidade": "LT", "quantidade": 94.04, "detalhe": "", "descricao": "POSTO CIDADE SOL - JEQUIE", "valor": 662.96, "documento": "", "status": "Pago"}, {"id": "a6b2a5dc-c0f5-4c34-b429-1aec8e6fc73f", "data": "2026-11-03", "categoria": "ITEM AUXILIAR", "unidade": "UN", "quantidade": 95, "detalhe": "CABO USB E SUPORTE", "descricao": "OUTROS", "valor": 95, "documento": "", "status": "Pago"}, {"id": "1530f84d-0ce0-4f81-a943-018e3975e8d4", "data": "2026-11-03", "categoria": "CHAPA", "unidade": "UN", "quantidade": 24, "detalhe": "", "descricao": "FIBRASOL", "valor": 800, "documento": "", "status": "Pago"}, {"id": "67878d4c-4800-41f3-ad69-1bb7ce02f02e", "data": "2026-11-03", "categoria": "DIARIA", "unidade": "UN", "quantidade": 11, "detalhe": "", "descricao": "FIBRASOL", "valor": 1100, "documento": "", "status": "Pago"}], "id": "721f5a5d-7f08-4a5e-b557-06b46575f3be"}], "despesas": [], "fretes": [], "abastecimentos": [], "veiculos": [{"placa": "TGY8D97", "modelo": "M.BENZ/ACCELO 1317", "ano": "", "id": "c1eedb7e-c3a9-4b23-a7d7-7637d7d6acc2"}, {"placa": "TGX4E03", "modelo": "M.BENZ/ACCELO 1317", "ano": "", "id": "b463c66c-b8bd-4d74-b9f1-ba8e69f179b1"}, {"id": "900ddfe7-7d3d-4734-9b7c-8794e3297216", "placa": "SJN9G77", "modelo": "M.BENZ/ACCELO 1317", "ano": ""}, {"id": "891ade7e-348e-45b8-894b-6f7ab72b31a9", "placa": "UKS2A35", "modelo": "FOTON AUMARK", "ano": ""}, {"id": "dc50c2f2-62d5-4c44-964f-d946ea8a6145", "placa": "RCV8F91", "modelo": "M.BENZ/ACCELO 1316", "ano": ""}, {"id": "ce66fbe8-3478-43ee-8942-65982ae5a058", "placa": "RCZ6F29", "modelo": "VW/13.180", "ano": ""}, {"id": "519363da-5eac-422f-90cb-bb21c7ec3e39", "placa": "SJN9F73", "modelo": "M.BENZ/ACCELO 1317", "ano": ""}, {"id": "c8afd47f-b8b0-4fc1-89e9-84d21ccabe7f", "placa": "TGY2E60", "modelo": "M.BENZ/ACCELO 1317", "ano": ""}, {"id": "b0c6f664-f1b3-4360-be13-e09a338aff81", "placa": "TGX0H94", "modelo": "M.BENZ/ACCELO 1317", "ano": ""}, {"id": "9464c381-53a9-483c-8855-73858641c096", "placa": "RCU3G07", "modelo": "VW/11.180", "ano": ""}, {"id": "b95496fd-1dbb-4f02-8175-4c03e3f43f61", "placa": "RPN3F57", "modelo": "M.BENZ/ACCELO 1316", "ano": ""}, {"id": "db8730d4-6945-4d39-9341-b5114f833f61", "placa": "RPG6I58", "modelo": "M.BENZ/ACCELO 1316", "ano": ""}], "motoristas": [{"id": "2575fc5e-05d8-4d39-852a-cc29f0d37346", "nome": "LUIS HENRIQUE"}, {"id": "c2ad2363-496b-4e5f-83a1-2d7943a1558a", "nome": "MARIO SERGIO"}, {"id": "bd670c11-65de-42af-badb-e3eb3c9988b3", "nome": "DOUGLAS SOUZA"}, {"id": "6acdabb5-c428-4a94-b121-be99b0adf27d", "nome": "ALESSANDRO SANTOS"}, {"id": "5be9c965-38c5-4c25-8d63-f4f5051250ce", "nome": "ALDRAN BORGES"}, {"id": "2e1882b7-4ed4-4c3c-956a-a38d9ca1cfab", "nome": "LEANDRO SANTOS"}, {"id": "e28cc25d-0703-41c4-80bf-f5001852694f", "nome": "UELITON ARAUJO"}, {"id": "54fc4a5f-2b71-40d4-914d-0beca5e4bbef", "nome": "ROMARIO TOMAZ"}, {"id": "1e5594a9-d97c-4cb8-a321-d36f870bfc37", "nome": "JOACI CARVALHO"}, {"id": "e70f5ea3-e833-4e5a-85f3-1cb2d3cfc1bc", "nome": "EDSON FARIAS"}, {"id": "20760283-9502-4655-9e8b-a77892bb1d50", "nome": "PAULO SERGIO"}, {"id": "e23b546f-4541-4951-8c27-8d0fb6bb49d2", "nome": "RODRIGO BARRETO"}, {"id": "1074eaf5-3ac5-4cf0-80ca-61e24bad045a", "nome": "MARCELO CERQUEIRA"}], "fornecedores": [{"id": "bce04816-c40b-40b7-8267-f068b65e8891", "nome": "FIBRASOL"}, {"id": "7d5d3c2b-f840-4b95-84f7-aee7967fd2de", "nome": "POSTO ATALAIA - ITABUNA"}, {"id": "a918f27c-c534-4612-a5d9-965390c6b926", "nome": "POSTO PARAISO - MASCOTE"}, {"id": "298f9dff-3d0b-48af-bab5-148a015d631d", "nome": "POSTO CIDADE SOL - JEQUIE", "cnpj": "", "telefone": ""}, {"id": "dc49a6d8-f9f2-470b-82ea-fd6cda205782", "nome": "EQUIPADORA ALVES - EUNAPOLIS"}, {"id": "8d486fcf-c4f1-4b89-be2d-69613d35ad4f", "nome": "CONCESSIONARIA LITORAL - CAMACARI"}, {"id": "472d49e1-eba2-4ac8-a950-f045f6257c73", "nome": "POSTO CENTRAL - ALAGOINHAS BA", "cnpj": "", "telefone": ""}, {"id": "6eadf86f-bc94-4436-ab10-fa16ccd8657f", "nome": "POSTO PAU DE VELA - SANTO ESTEVÃO BA", "cnpj": "", "telefone": ""}, {"id": "b5b4392a-fafb-4742-a3a1-3e17d5b0a7f0", "nome": "POSTO PORTAL - MILAGRES BA", "cnpj": "", "telefone": ""}, {"id": "f077ee6a-ce43-4875-a197-6067e8d7446f", "nome": "POSTO CENTRAL - ALAGOINHAS BA"}, {"id": "e708c109-db33-4516-829e-8767d34d04cf", "nome": "POSTO PAU DE VELA - SANTO ESTEVÃO BA"}, {"id": "815a51f3-dfa5-4eb8-b0d0-43cbcb899f7f", "nome": "POSTO PORTAL - MILAGRES BA"}, {"id": "e0ec8a9f-4c0e-4fbb-b1e7-ce20fc3b1a92", "nome": "POSTO JORRINHO - CIPO BA"}, {"id": "00d4eb78-cb45-4f38-a18b-d313a605e413", "nome": "POSTO PARAISO - MASCOTE BA"}, {"id": "39fc7e6b-9517-405e-8a06-a8da1a508417", "nome": "POSTO LIMOEIRO  - ITAMARAJU BA"}, {"id": "88912468-fb6b-47b8-ac79-e1ff1056e2a6", "nome": "POSTO GRUTA DA LAPA - GUANAMBI BA"}, {"id": "2ca30bd7-0df0-4db8-b8f5-44a47c47d316", "nome": "BDJ COMBUSTIVEIS LTDA - ARACATU BA"}, {"id": "06ab35d1-b649-4a79-8626-654895083915", "nome": "CARROCERIAS J. CARLOS - VCA", "cnpj": "", "telefone": ""}, {"id": "35a2336e-7e53-468b-822f-d2c5bd51d29f", "nome": "MATERIAL DE CONSTRUÇÃO - CASA E CAMPO"}, {"id": "c3d33076-6f40-4b0a-8e69-4e4a828ca142", "nome": "REDE DOM PEDRO - VCA"}, {"id": "a61e48c2-9c8f-4a67-9d26-1c7d5a04e9c0", "nome": "HL AUTO POSTO - BARRA DA ESTIVA BA"}, {"id": "8fc1f5e5-08d5-4510-abc7-cef8aab90d38", "nome": "RAVENA AUTO POSTO - PALMAS DE MONTE ALTO BA"}, {"id": "74734ac4-82b5-4b8a-b294-2163e735efde", "nome": "POSTO COPACABANA - CACULE BA"}, {"id": "e943e11a-3d2c-4d52-94df-5da380c1b95e", "nome": "MARIA DO CARMO - BOTUPORA"}, {"id": "d72e934f-bb60-45a4-9586-70e581efad67", "nome": "ROTA TRANSPORTES - VCA"}, {"id": "d50f470d-116d-4842-8355-2b2353ab38cc", "nome": "CARROCERIAS J. CARLOS"}, {"id": "3ef70813-b113-4c48-a2d5-238242e6a5e5", "nome": "POSTO PORTAL - MILAGRES"}, {"id": "ea35490a-a430-49b8-8644-f881e7dc09e0", "nome": "REILSON DE OLIVEIRA - BARRA"}, {"id": "d92399c4-4630-4cca-bbb6-c74be7bce394", "nome": "POSTO SAO JOAO - IPIRA"}, {"id": "fd9610ee-2235-410e-a309-dcb9a3d2b46c", "nome": "A CARDOZO E CIA - TANCREDO NEVES"}, {"id": "59ca42ae-7732-427f-a68b-3f2df94a36c8", "nome": "POSTO PORTAL - IBITIARA"}, {"id": "e7c06c91-40db-451b-b0fb-bbdd30d1fa4f", "nome": "POSTO VALE OURO"}, {"id": "06b2a5c0-686d-4e8f-94dc-e029440b4766", "nome": "MAVEL - PETROLINA PE"}, {"id": "b4bacf0a-c516-424b-a8e1-99469b233377", "nome": "POUSADA ITAJUIPE - PETROLINA PE"}, {"id": "33a36e19-1b01-48de-abd9-e8d7e0209d07", "nome": "POSTO AROEIRA - FILADELFIA BA"}, {"id": "514bc4bd-4c47-4bf7-ad03-68222d230027", "nome": "POSTO JUAZEIRO - JUAZEIRO"}, {"id": "2e6ed0d3-f4bf-4953-bfa9-6424b59372cf", "nome": "POSTO BOA VIAGEM - CAMPO ALEGRE DE LOURDES"}, {"id": "a24928ff-0e20-494c-bd1e-d892d32a8769", "nome": "POSTO RANCHO ALEGRE - SAO SEBASTIAO AL"}, {"id": "f6d898c6-b9fa-41dc-8f27-5560800388dd", "nome": "ARAUJO ROCHA - PAULO AFONSO"}, {"id": "59b87cc1-90c9-4756-9dce-9c3fe017d927", "nome": "POSTO PAPA - JEQUIE"}, {"id": "b9e2a4d4-ad4d-47bc-a74c-f0e832a97c7d", "nome": "JLK AUTO ELETRICA - SANTO ESTEVAO"}, {"id": "7a5ca2b9-d57f-4732-b703-f03b30719044", "nome": "POSTO PAU DE VELA - SANTO ESTEVAO BA"}, {"id": "8d27bb3e-f83d-4b13-8d78-5f0c8e9bd873", "nome": "POSTO NATURA - CICERO DANTAS"}, {"id": "3c347672-229c-4ec3-b9ca-2c724d9f2667", "nome": "POSTO NEGO VEIO - ITABUNA"}, {"id": "1009833c-32c1-4a4a-b305-539d210d23de", "nome": "POSTO LUBRAX - CALDEIRAO GRANDE BA"}, {"id": "ac66e7f3-097a-471d-81a8-ac55b8bfc4ba", "nome": "POSTO JM II LTDA - ALTOS PI"}, {"id": "25767724-1ce1-43a1-8185-878eeaba206b", "nome": "POSTO DONA DEL - JERUMENHA PI"}, {"id": "86ce88bd-a1b3-4135-bb3a-0590cad09b7e", "nome": "NOSSO POSTO - RIACHAO DAS NEVES"}, {"id": "6fab008d-2da7-4bfd-997b-a52db54f691c", "nome": "POSTO ALTO DA SERRA - IBOTIRAMA"}, {"id": "6a0c71cd-4a73-40ec-b20f-de27664fd42a", "nome": "POSTO PADRE CICERO - MILHA CE"}, {"id": "105c35d4-8b0c-4d43-98ca-b1c81ecba30b", "nome": "JAGUARIBARA COM DE COMBUSTIVEIS - ALTO SANTO CE"}, {"id": "a7299b62-99f8-414f-8546-2e3c3356a999", "nome": "POSTO ANDORINHAS - MILAGRES BA"}, {"id": "8232c8cd-a049-4a6a-976a-07e68def39ad", "nome": "POSTO ANDORINHAS - MILAGRE BA"}, {"id": "d5da5776-ba14-4c4b-aea3-f324de0bd25c", "nome": "POSTO TRANSVALE - SENHOR DO BONFIM BA"}, {"id": "6c59d6da-f98e-4b0f-a465-64f27c22dd37", "nome": "AUTO POSTO MAIOR LTDA - MURICI PE"}, {"id": "3b48746e-5985-4af3-8346-34bf2bc1ebeb", "nome": "OURICUZEIRO MAT CONST - ARACI BA"}, {"id": "d46fd1e1-5763-4e33-b45f-29c4b8794ba2", "nome": "POSTO ANDORINHA - MILAGRES BA"}, {"id": "6049d8d8-1426-4a10-935f-3250612791d8", "nome": "POSTO ALINE - DELMIRO GOUVEIA AL"}, {"id": "c956f0d4-c258-49d3-b7d5-b9fcee55dc2d", "nome": "POSTO JUAZEIRO 1 - JUAZEIRO BA"}, {"id": "1eaa5b7f-6e38-43c6-aa7c-e9deb7cb78de", "nome": "POSTO JBS - FLORIANO PI"}, {"id": "04c9ffac-0b4a-4ca8-a81a-581af41d9150", "nome": "POSTO PORTELA - CALDEIRAO GRANDE BA"}, {"id": "162d97cc-dbdb-48f4-9bcb-969fc4a46d26", "nome": "POSTO HC6 - TIMON MA"}, {"id": "4a770718-1e62-42d7-85e2-239748ed49dc", "nome": "POSTO LUCAS 4 - SANTO ANTONIO PAULISTANA PI"}, {"id": "05f0cbfe-478d-4ebc-b587-a3918674c535", "nome": "A M COMERCIO DE COMBUSTIVEIS - CAPIM GROSSO BA"}, {"id": "95af673b-32c7-4179-b6af-c770f9c76438", "nome": "POSTO LUCAS 5 - DOM EXPEDITO LOPES PI"}, {"id": "8db2f5fa-4495-4b92-8daf-ee68a90b64dc", "nome": "MEGA POSTO JOAQUIM - LIVRAMENTO DE NOSSA SRA BA"}, {"id": "b0641b00-18cd-43bd-96ff-6ebd83e59cd7", "nome": "MEGA POSTO JOAQUIM - LIVRAMENTO DE NSRA BA"}, {"id": "33e16135-b7d6-4232-9cdc-394b184a841c", "nome": "POSTO MACAUBENSE III - ANAGE BA"}, {"id": "1f2119fc-83e3-47f0-9a79-4d65559dc611", "nome": "POSTO CALIFORNIA - PIRIPA BA"}, {"id": "d0608ebc-fad8-483b-b672-ac2173c5b7b0", "nome": "AUTO POSTO D ONOFRIO - JAGUAQUARA BA"}, {"id": "fd3519a3-9da9-4847-bf37-004bc061088d", "nome": "BORRACHARIA DO MANOEL - VARZEDO BA"}, {"id": "7f17926d-f0fc-4c52-b90f-0aed302eefb4", "nome": "CHAPA"}, {"id": "28eee906-6dc4-495d-af9d-0d22416c3d00", "nome": "POSTO BOCA DA MATA - CANDEIAS BA"}, {"id": "91a8326a-e0bc-4003-b5d2-9e131196c1a6", "nome": "BARRETO SOUZA - ALAGOINHAS BA"}, {"id": "c3fff656-2541-4f9c-9c48-1ebc4b97c737", "nome": "AUTO POSTO REFORCO II - UMBAUBA SE"}, {"id": "7616d775-2b12-4a84-937e-d170a6d0ffc1", "nome": "CPD ENERGETICO E DER PETROLEO - ALAGOINHAS BA"}, {"id": "b8a1354b-451a-45e2-9677-14188ba9c553", "nome": "REDE HG - ITATIM BA"}, {"id": "3d79b699-6772-4042-843b-cba5db6f7dfd", "nome": "POSTO BOA VIAGEM - NOSSA SRA DO SOCORRO SE"}, {"id": "52b6e5c4-73eb-498a-82ce-0e4dab42f045", "nome": "I H COMERCIO - SANTO ESTEVAO BA"}, {"id": "65ca225f-4cff-4ef8-848e-173de877eb5f", "nome": "COMERCIAL BAHIA BR 06 - CON. DO JACUIPE BA"}, {"id": "30293e5b-7177-483a-97a4-c7e8e1f9e84f", "nome": "POSTO BENTIVI - ITAMARAJU BA"}, {"id": "1ae537c3-14a0-4b0a-a113-120d8170c210", "nome": "SKINA MAT CONST - PORTO SEGURO BA"}, {"id": "43898e59-7891-4e7f-afbd-32d9341497c0", "nome": "POSTO SANTA HELENA - ITABERABA BA"}, {"id": "fdf66a81-7003-4743-9def-ac88cbea993c", "nome": "GRUPO COSTA - CANARANA BA"}, {"id": "892c1120-b442-456e-86c4-d919b6ad5a9f", "nome": "DIESEL ZOI - ITABERABA BA"}, {"id": "ec627294-3769-4317-8b13-1c479b34b343", "nome": "SANTA HELENA - ITABERABA BA"}, {"id": "7aaf154d-2603-4a4f-8e18-4b44a078a830", "nome": "COSTA MENDONCA - IRECE BA"}, {"id": "c6187f31-708c-4562-a1c1-9d2cf33ea48a", "nome": "POSTO IRECE - BAIXA GRANDE BA"}, {"id": "d22672a3-c184-4bd1-a86c-1f150971a8c9", "nome": "POSTO TREVO - QUIJINGUE BA"}, {"id": "0ecf31f8-7c88-47d7-b737-4eb947a0b1f5", "nome": "POSTO IMPERIAL - OLINDINA BA"}, {"id": "2cdd7118-1738-48d0-82fe-a95a8208e1ba", "nome": "POSTO PAYAYA - ARACI BA"}, {"id": "b0e6252a-5a63-4597-b027-871490cb991a", "nome": "POSTO SEABRA - IBOTIRAMA BA"}, {"id": "4e8cf9c6-d565-4ac9-89ea-33c48bc22087", "nome": "POSTO MEIRA - VCA BA"}, {"id": "3e1d21d2-d434-4e65-b387-6da180f64aa6", "nome": "REDE DOM PEDRO - BARREIRAS BA"}, {"id": "72f3bb8e-3c1c-4c33-b795-7b3db7804126", "nome": "ARM DERIVADOS DE PETROLEO - CAETITE BA"}, {"id": "4b4dcf42-ea0b-46ac-8b96-0bcf8cd7b08f", "nome": "POSTO ARARINHA - CURACA BA"}, {"id": "5a69721e-d209-463c-ba7d-66e2885a75ff", "nome": "OFICINA DO PEDRINHO - EUCLIDES DA CUNHA BA"}, {"id": "0b055822-a68a-42a4-9eca-eea8c38f6f43", "nome": "AUTO AR - CAMPO FORMOSO BA"}, {"id": "71aa2da6-a45d-42c4-9ee1-f25c634003d6", "nome": "ITABERABA COM DE COMBUSTIVEIS - ITABERABA BA"}, {"id": "8c93101a-4319-4001-9906-5af583518b44", "nome": "AUTO POSTO CEARA - NORDESTINA BA"}, {"id": "2b797c64-cc60-4672-828e-cb382e4c667c", "nome": "POSTO CAJUEIRO - NORDESTINA BA"}, {"id": "be5605b5-0130-4ab8-822a-16e334116d58", "nome": "POSTO ELITE - MARUIM SE"}, {"id": "a21fe5e8-2806-4c0d-814f-cb453382adae", "nome": "ISSAU SOUZA DE QUEIROZ - SIMOES FILHO BA"}, {"id": "637b40ce-3099-49d2-bdba-283c2a5857d7", "nome": "POSTO ABO - SALVADOR BA"}, {"id": "065264e8-d736-4a27-8538-9518ca99a5b8", "nome": "CIA ARACATU - SIMOES FILHO BA"}, {"id": "6aeca8f8-ddf1-47b4-beca-66a5061059ed", "nome": "MARIA DE FATIMA SOUZA DE JESUS - JAGUARIPE BA"}, {"id": "3bca6cfe-8930-442d-9ace-6495cc350d1b", "nome": "POSTO EMBIRA - CRUZ DAS ALMAS"}, {"id": "5bd7cac8-52e4-4250-97dd-45d66e0138f4", "nome": "REDE HG - BREJOES BA"}, {"id": "e841c5a1-3ed1-456e-968f-aaae290b31f8", "nome": "DECIO COM DE SERV  - BARREIRAS BA"}, {"id": "5df131b5-80cb-45fb-bf7c-25f8be1c8e78", "nome": "SANTA BARBARA - SANTANA BA"}, {"id": "6a08feda-6b7e-4ce8-8e18-ff40d8e014cd", "nome": "SANTA  BARBARA - SANTANA BA"}, {"id": "6d21ddb7-684a-4d78-af2c-7ac1bdcb3527", "nome": "DECIO - BARREIRAS BA"}, {"id": "e6c2ee4c-f66f-4356-b657-dff00f96aa1c", "nome": "AUTO POSTO KAROLINE - TANQUE NOVO BA"}, {"id": "aa853d9d-f0ea-4f8c-9cc2-c7807ea0d700", "nome": "AUTO POSTO BEIRA RIO - OLIV DOS BREJINHOS"}, {"id": "a81607a5-8d07-4da4-922b-a5237dce0b45", "nome": "POSTO GRUTA DA LAPA - BOM JESUS DA LAPA BA"}, {"id": "4e319e82-ec8e-46b1-8168-71cfc8669882", "nome": "AUTO POSTO RADAR - CACULE BA"}, {"id": "8cce3638-c77c-478b-8e00-a7a94c88f077", "nome": "POSTO MEIRA III - BRUMADO BA"}, {"id": "aafc78c3-2dec-4122-83b1-b8e99925c3d3", "nome": "ESMACON MAT CONST - BRUMADO BA"}, {"id": "20036a48-d167-4b7d-9806-3b288a89da13", "nome": "RALLY AUTO PEÇAS - BRUMADO BA"}, {"id": "34b1e97d-5c2b-457e-8cec-b24ea6e9e67f", "nome": "ILTON ACESSORIOS - IBICOARA BA"}, {"id": "9aaf43d2-3111-45f6-a96d-5fbbf5c7dd9b", "nome": "ILTO ACESSORIOS - IBICOARA BA"}, {"id": "6b2cb391-ce8d-426e-b374-a837bc81ba2f", "nome": "AUTO PEÇAS RONY - JEQUIE BA"}, {"id": "68fb0b92-bedc-4561-9daa-a0e0250f51b9", "nome": "OUTROS"}, {"id": "7c9814aa-fb25-4104-af52-7c28a1df1ece", "nome": "ADEILTON LEITE DA SILVA - VCA BA"}], "categorias": ["Combustível", "Manutenção", "Pedágio", "Alimentação", "Hospedagem", "Pneus", "Documentação", "Seguro", "Multas", "Despesas diversas", "DIARIA", "CHAPA", "DIESEL S10", "ARLA GRANEL", "ARLA BALDE", "Sem categoria", "SERVIÇO", "PEÇAS", "DIESEL S10 ADITIVADO", "OUTROS", "PASSAGEM DE ONIBUS", "POUSADA", "DIESEL S500", "pneu", "ITEM AUXILIAR", "CHEIRINHO", "ENLONAMENTO", "ESTACIONAMENTO", "AROMATIZANTE"], "clientes": [{"id": "10e3efb8-965d-4663-9bee-a2de89190404", "nome": "FIBRASOL"}], "origens": [{"id": "92efb864-e482-433d-9aeb-f14dafbd391c", "nome": "JEQUIÉ"}], "destinos": [{"id": "be7f709b-2986-4e27-812e-fb7fa4846a4c", "nome": "VCA - BA"}, {"id": "1e5209a6-a175-4cdd-823e-6eb02fa9aa26", "nome": "EUNAPOLIS"}, {"id": "a596a8d0-ea85-42c6-9438-f00f0548bf2f", "nome": "SALVADOR"}, {"id": "d7756a0e-9f8c-439e-91e3-c771954b98c7", "nome": "JEREMOABO"}, {"id": "778a3028-bbeb-438e-9b49-90c9e10416aa", "nome": "PORTO SEGURO"}, {"id": "ab774b5d-01eb-4f73-84d4-d9ca32dbb02b", "nome": "BOM JESUS DA LAPA"}, {"id": "5f9ab7b8-f941-49f6-98ad-eff133d8c2a5", "nome": "GUANAMBI"}, {"id": "320d07de-b917-461c-b3d7-5392a5723b98", "nome": "XIQUE XIQUE"}, {"id": "34ba40f2-6efd-405d-903b-911288e5b56c", "nome": "PETROLINA - PE"}, {"id": "12b88531-763e-4822-b8cb-f9628220c22e", "nome": "SAO MIGUEL DOS CAMPOS - AL"}, {"id": "05aebdae-6be4-4e20-9743-41a3abad04b2", "nome": "ITABUNA"}, {"id": "9a83ba23-c5c1-47d0-b5dc-f3fd6bb9922e", "nome": "TERESINA - PI"}, {"id": "6626224a-8ce8-4a88-8fbf-db4912868986", "nome": "JUAZEIRO DO NORTE - CE"}, {"id": "f9e9dc7f-b40b-4f77-90aa-33e7b54f45bd", "nome": "BRUMADO BA"}, {"id": "34843508-4bf9-41b0-93ca-cf07ec907549", "nome": "SANTO ANTONIO DE JESUS"}, {"id": "1a69c517-8833-48ce-a532-8b99cb45d10a", "nome": "CAMACARI BA"}, {"id": "79b448b6-115f-4259-857c-3758a3b7e6df", "nome": "ARACAJU - SE"}, {"id": "edc3e802-848e-407c-942e-8d75c9017085", "nome": "FEIRA DE SANTANA"}, {"id": "aba76588-5438-45e4-bf34-9ecb06c35b25", "nome": "IRECE"}, {"id": "94427b98-cccd-4004-aa68-19511a731d6f", "nome": "PAULO AFONSO"}, {"id": "a8e619f1-2944-4228-8517-dc218acbb8a6", "nome": "BARREIRAS"}, {"id": "a97e4f45-98b4-41d9-92c9-55e869237a2e", "nome": "VCA/BA"}, {"id": "9dd1270d-4c83-41f6-b65c-c6edf24e81dc", "nome": "JUAZEIRO - BA"}, {"id": "4e249205-0da5-4086-beed-4cb17bad7acf", "nome": "VALE BA"}], "postos": [], "combustiveis": [], "rhFechamentos": {"2026-11": {"rows": [{"motorista": "ALDRAN BORGES", "diarias": 23, "chapa": 1935}, {"motorista": "ALESSANDRO SANTOS", "diarias": 22, "chapa": 1630}, {"motorista": "DOUGLAS SOUZA", "diarias": 22, "chapa": 1850}, {"motorista": "EDSON FARIAS", "diarias": 23, "chapa": 1606}, {"motorista": "JOACI CARVALHO", "diarias": 21, "chapa": 1780}, {"motorista": "LEANDRO SANTOS", "diarias": 21, "chapa": 1320}, {"motorista": "LUIS HENRIQUE", "diarias": 9, "chapa": 675}, {"motorista": "MARIO SERGIO", "diarias": 18, "chapa": 1830}, {"motorista": "PAULO SERGIO", "diarias": 22, "chapa": 1600}, {"motorista": "RODRIGO BARRETO", "diarias": 14, "chapa": 1260}, {"motorista": "ROMARIO TOMAZ", "diarias": 21, "chapa": 1790}, {"motorista": "UELITON ARAUJO", "diarias": 21, "chapa": 1400}, {"motorista": "MARCELO CERQUEIRA", "diarias": 12, "chapa": 860}], "calculationVersion": 2, "updatedAt": "2026-11-24T19:14:48.502Z"}}};
-let db;try{const raw=localStorage.getItem('frotapro_pro_v2');db=raw?JSON.parse(raw):structuredClone(cpSeed)}catch(e){throw new Error('Dados locais inválidos. Preserve o armazenamento antes de restaurar um backup.')}
+let db;try{const raw=localStorage.getItem('frotapro_pro_v2');db=raw?JSON.parse(raw):structuredClone(cpSeed)}catch(e){throw new Error('Base de dados inválida. Preserve o armazenamento antes de restaurar um backup.')}
 
 if(!db.viagens)db.viagens=[];if(!db.despesas)db.despesas=[];if(!db.fretes)db.fretes=[];if(!db.abastecimentos)db.abastecimentos=[];if(!db.categorias)db.categorias=blank().categorias;['veiculos','motoristas','fornecedores','clientes','origens','destinos','postos','combustiveis'].forEach(k=>{if(!Array.isArray(db[k]))db[k]=[]});
 // Postos são fornecedores: migra registros antigos para a lista única de fornecedores.
@@ -2921,7 +3673,7 @@ $('#today').textContent=new Date().toLocaleDateString('pt-BR',{day:'2-digit',mon
 function head(t,d,buttons=''){return `<div class="head"><div><h1>${t}</h1><p>${d}</p></div><div class="actions">${buttons}</div></div>`}
 function dashboardIcon(key){const p={trips:'<rect x="3" y="7" width="18" height="12" rx="2"/><path d="M7 7V5h10v2M7 19v2m10-2v2M7 12h10"/>',revenue:'<path d="M12 2v20M17 6H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>',expenses:'<path d="M5 3h14v18H5zM8 7h8M8 11h8M8 15h5"/><path d="m15 17 2 2 4-4"/>',balance:'<path d="M3 17l6-6 4 3 8-9"/><path d="M15 5h6v6"/>',distance:'<path d="M4 19 19 4M7 4h12v12"/><circle cx="5" cy="19" r="2"/>',average:'<path d="M4 18V6m0 12h16M7 14l4-4 3 2 5-6"/>',fleet:'<path d="M2 7h13v11H2zM15 11h4l3 4v3h-7z"/><circle cx="6" cy="19" r="2"/><circle cx="18" cy="19" r="2"/><path d="M4 10h8M4 13h6"/>',route:'<path d="M1 5h5M1 9h3" stroke-dasharray="1.5 2"/><path d="M4 11h10V7h4l4 5v6H4z"/><path d="M14 11h8M18 7v4"/><circle cx="8" cy="19" r="2"/><circle cx="18" cy="19" r="2"/><path d="M2 15h2"/>',income:'<circle cx="12" cy="12" r="9"/><path d="M12 7v10m4-7H10a2 2 0 0 0 0 4h4a2 2 0 0 1 0 4H8"/>'};return `<svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">${p[key]||p.trips}</svg>`}
 function stat(l,v,i,n,c=''){return `<div class="card stat-card"><div class="statlabel"><span>${l}</span><span class="staticon stat-icon icon-${i}">${dashboardIcon(i)}</span></div><div class="statvalue ${c}">${v}</div><div class="statnote">${n}</div><span class="stat-accent" aria-hidden="true"></span></div>`}
-function render(){let names={custos:'Custo por veículo',dashboard:'Painel gerencial',viagens:'Viagens',despesas:'Despesas das viagens',rh:'Controle RH · Chapas e diárias',cadastros:'Cadastros',relatorios:'Relatórios gerenciais',backup:'Backup e restauração'};if(!names[page])page='dashboard';$('#crumb').textContent=names[page];let v=$('#view');v.innerHTML=({custos:cpPage,dashboard:dashboard,viagens:tripsPage,despesas:expensesPage,rh:rhPage,cadastros:registerPage,relatorios:reportsPage,backup:backupPage})[page]()}
+function render(){let names={custos:'Custo por veículo',dashboard:'Painel gerencial',viagens:'Viagens',despesas:'Despesas das viagens',rh:'Controle RH · Chapas e diárias',cadastros:'Cadastros',relatorios:'Relatórios gerenciais',backup:'Backup e restauração',configuracoes:'Configurações do Sistema'};if(!names[page])page='dashboard';$('#crumb').textContent=names[page];let v=$('#view');v.innerHTML=({custos:cpPage,dashboard:dashboard,viagens:tripsPage,despesas:expensesPage,rh:rhPage,cadastros:registerPage,relatorios:reportsPage,backup:backupPage,configuracoes:typeof settingsPage==='function'?settingsPage:dashboard})[page]();if(typeof afterRenderSettings==='function'&&page==='configuracoes')afterRenderSettings();}
 function dashboard(){
  // O mês do painel segue a DATA DE FATURAMENTO da viagem; despesas vinculadas acompanham a viagem.
  const period=dashMonth||month();
@@ -3412,7 +4164,7 @@ function updateReportPreview(){
 }
 function categorySummary(ds){let c={};ds.forEach(x=>c[x.categoria||'Sem categoria']=(c[x.categoria||'Sem categoria']||0)+Number(x.valor||0));let a=Object.entries(c).sort((x,y)=>y[1]-x[1]);return a.length?`<div class="tablewrap"><table><thead><tr><th>Categoria</th><th>Quantidade</th><th>Total</th><th>Participação</th></tr></thead><tbody>${a.map(([k,v])=>`<tr><td>${esc(k)}</td><td>${ds.filter(x=>(x.categoria||'Sem categoria')===k).length}</td><td class="money">${money(v)}</td><td>${total(ds)?(v/total(ds)*100).toFixed(1):0}%</td></tr>`).join('')}</tbody></table></div>`:'<div class="empty">Sem despesas no período.</div>'}
 function printGeneralReport(){if(reportStart&&reportEnd&&reportStart>reportEnd){fpMessage('A data inicial não pode ser posterior à data final.',$('#reportStart'));return}window.print()}
-function printTripList(){let html=tripTable(db.viagens,false);let w=window.open('','_blank');if(!w){fpMessage('O navegador bloqueou a abertura do relatório. Permita pop-ups para este arquivo e tente novamente.');return}w.document.write(`<html><head><title>Relatório de viagens</title><meta name="viewport" content="width=device-width, initial-scale=1"><style>@page{size:A4 portrait;margin:9mm}*{box-sizing:border-box}body{font:9px Arial,sans-serif;padding:0;color:#17243a}h1{font-size:16px;margin:0 0 6px}p{font-size:9px;margin:0 0 12px}.tablewrap{width:100%;overflow:visible}table{width:100%;min-width:0!important;table-layout:fixed;border-collapse:collapse}td,th{border:1px solid #cfd7e2;padding:4px 3px;text-align:left;font-size:7.5px;white-space:normal;overflow-wrap:anywhere;vertical-align:top}th{background:#eef2f7;font-size:7px}tr{break-inside:avoid}button{display:none!important}@media print{body{padding:0}}
+function printTripList(){let html=tripTable(db.viagens,false);let w=window.open('','_blank');if(!w){fpMessage('A janela de impressão foi bloqueada. Permita pop-ups para abrir o relatório e tente novamente.');return}w.document.write(`<html><head><title>Relatório de viagens</title><meta name="viewport" content="width=device-width, initial-scale=1"><style>@page{size:A4 portrait;margin:9mm}*{box-sizing:border-box}body{font:9px Arial,sans-serif;padding:0;color:#17243a}h1{font-size:16px;margin:0 0 6px}p{font-size:9px;margin:0 0 12px}.tablewrap{width:100%;overflow:visible}table{width:100%;min-width:0!important;table-layout:fixed;border-collapse:collapse}td,th{border:1px solid #cfd7e2;padding:4px 3px;text-align:left;font-size:7.5px;white-space:normal;overflow-wrap:anywhere;vertical-align:top}th{background:#eef2f7;font-size:7px}tr{break-inside:avoid}button{display:none!important}@media print{body{padding:0}}
 /* Ícones semânticos e legíveis do painel */
 .dash-stats .statlabel{align-items:center;gap:10px}.dash-stats .staticon,.dash-secondary-stats .staticon{width:42px;height:42px;min-width:42px;display:grid;place-items:center;padding:0;border-radius:13px;background:linear-gradient(145deg,rgba(255,255,255,.94),rgba(232,241,253,.78));border:1px solid rgba(184,204,231,.72);box-shadow:0 4px 12px rgba(34,67,108,.08),inset 0 1px 0 #fff}.dash-stats .staticon svg,.dash-secondary-stats .staticon svg{width:22px;height:22px;display:block;stroke:currentColor;fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}.dash-stats .icon-trips,.dash-secondary-stats .icon-distance{color:#3475cf}.dash-stats .icon-revenue,.dash-secondary-stats .icon-income{color:#16835e}.dash-stats .icon-expenses{color:#bd8128}.dash-stats .icon-balance,.dash-secondary-stats .icon-average{color:#7658bd}.dash-secondary-stats .statlabel{align-items:center;gap:10px}.dash-secondary-stats .statlabel>span:first-child{font-size:10px;line-height:1.4;letter-spacing:.35px}.dash-secondary-stats .staticon{width:36px;height:36px;min-width:36px;border-radius:11px}.dash-secondary-stats .staticon svg{width:19px;height:19px}
 
@@ -3487,8 +4239,455 @@ function printTripList(){let html=tripTable(db.viagens,false);let w=window.open(
 </head><body><h1>FROTAPRO — RELATÓRIO DE VIAGENS</h1><p>Emitido em ${dateBR(today())}</p>${html}
 
 
+
+<!-- ABERTURA INOVADORA PARA O APP INSTALADO NO COMPUTADOR -->
+<div id="fpDesktopSplash" aria-hidden="true" style="display:none">
+  <div class="fp-splash-grid"></div>
+  <div class="fp-splash-card">
+    <div class="fp-splash-logo-ring fp-splash-logo-photo">
+      <img src="./icons/frotapro-icon-512.png" alt="Logo FrotaPro" onerror="this.onerror=null;this.src='data:image/png;base64,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';" />
+    </div>
+    <div class="fp-splash-road"></div>
+    <div class="fp-splash-title">FROTA<span>PRO</span></div>
+    <div class="fp-splash-sub">Gestão Inteligente de Frotas</div>
+    <div class="fp-splash-bar"><div class="fp-splash-bar-fill" id="fpSplashProgress"></div></div>
+    <div class="fp-splash-status" id="fpSplashStatusText">Inicializando módulos operacionais...</div>
+    <div class="fp-splash-ver" id="fpSplashVersionTag">Versão v3.0.0 • Edição Desktop</div>
+  </div>
+</div>
+
+<!-- NOTIFICAÇÃO DE ATUALIZAÇÃO NÃO INTRUSIVA (NÃO TRAVA O SISTEMA) -->
+<aside id="fpUpdateBanner" role="region" aria-label="Atualização do FrotaPro">
+  <div class="fp-upd-head">
+    <div class="fp-upd-ico">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 12a9 9 0 0 0-9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/>
+        <path d="M3 3v5h5"/>
+        <path d="M3 12a9 9 0 0 0 9 9 9.75 9.75 0 0 0 6.74-2.74L21 16"/>
+        <path d="M16 16h5v5"/>
+      </svg>
+    </div>
+    <div>
+      <div class="fp-upd-title" id="fpUpdTitle">Nova versão disponível</div>
+      <div class="fp-upd-sub" id="fpUpdSubtitle">FrotaPro v3.0.0 pronto para instalar</div>
+    </div>
+  </div>
+  <div class="fp-upd-body" id="fpUpdBody">
+    Uma melhoria foi publicada. Você pode continuar trabalhando normalmente e aplicar a atualização quando finalizar seu lançamento.
+  </div>
+  <div class="fp-upd-actions">
+    <button type="button" class="fp-upd-later" onclick="fpDismissUpdateBanner()">Continuar trabalhando</button>
+    <button type="button" class="fp-upd-now" id="fpUpdApplyBtn" onclick="fpApplySystemUpdate()">Atualizar agora</button>
+  </div>
+</aside>
+
+<script id="frotapro-settings-and-updater">
+(function () {
+  const APP_VERSION = '3.0.0';
+  const APP_BUILD_DATE = '27/11/2026';
+  const SETTINGS_KEY = 'frotapro_settings_v3';
+
+  const defaultSettings = {
+    empresaNome: 'FrotaPro Transportes',
+    gestorNome: 'Gestão',
+    gestorSigla: 'GP',
+    splashDesktop: true,
+    autoCheckUpdates: true,
+    compactTables: false
+  };
+
+  function getSettings() {
+    try {
+      const saved = JSON.parse(localStorage.getItem(SETTINGS_KEY) || '{}');
+      return { ...defaultSettings, ...saved };
+    } catch (e) {
+      return { ...defaultSettings };
+    }
+  }
+
+  function saveSettings(partial) {
+    const next = { ...getSettings(), ...partial };
+    localStorage.setItem(SETTINGS_KEY, JSON.stringify(next));
+    applyVisualSettings(next);
+    return next;
+  }
+
+  function applyVisualSettings(cfg = getSettings()) {
+    const userBold = document.querySelector('.top .user b');
+    const userAvatar = document.querySelector('.top .user .avatar');
+    if (userBold && cfg.gestorNome) userBold.textContent = cfg.gestorNome;
+    if (userAvatar && cfg.gestorSigla) userAvatar.textContent = cfg.gestorSigla.slice(0, 3).toUpperCase();
+    const sideVer = document.getElementById('fpSideVer');
+    if (sideVer) sideVer.textContent = 'v' + APP_VERSION;
+  }
+
+  // 1. ABERTURA ANIMADA PARA O APP INSTALADO NO COMPUTADOR (STANDALONE / DESKTOP)
+  function initDesktopSplash() {
+    const splash = document.getElementById('fpDesktopSplash');
+    if (!splash) return;
+    const cfg = getSettings();
+    const isStandalone = window.matchMedia('(display-mode: standalone)').matches
+      || window.matchMedia('(display-mode: window-controls-overlay)').matches
+      || window.navigator.standalone === true;
+    const alreadyShownSession = sessionStorage.getItem('fp_splash_shown') === '1';
+
+    // Exibe na abertura do app instalado no computador (ou quando testado via botão)
+    if (!cfg.splashDesktop || (!isStandalone && alreadyShownSession)) {
+      splash.remove();
+      return;
+    }
+
+    sessionStorage.setItem('fp_splash_shown', '1');
+    splash.style.display = 'flex';
+    const bar = document.getElementById('fpSplashProgress');
+    const status = document.getElementById('fpSplashStatusText');
+    const verTag = document.getElementById('fpSplashVersionTag');
+    if (verTag) verTag.textContent = `Versão v${APP_VERSION} • Edição Desktop`;
+
+    const steps = [
+      { pct: 32, text: 'Carregando base operacional e frota...' },
+      { pct: 68, text: 'Sincronizando indicadores gerenciais...' },
+      { pct: 100, text: 'Sistema pronto para operação.' }
+    ];
+
+    steps.forEach((step, idx) => {
+      setTimeout(() => {
+        if (bar) bar.style.width = step.pct + '%';
+        if (status) status.textContent = step.text;
+      }, 220 * (idx + 1));
+    });
+
+    setTimeout(() => {
+      splash.classList.add('fp-splash-hide');
+      setTimeout(() => {
+        if (splash && splash.parentNode) splash.style.display = 'none';
+      }, 600);
+    }, 1350);
+  }
+
+  window.fpPreviewSplash = function () {
+    const splash = document.getElementById('fpDesktopSplash');
+    if (!splash) return;
+    splash.classList.remove('fp-splash-hide');
+    splash.style.display = 'flex';
+    const bar = document.getElementById('fpSplashProgress');
+    const status = document.getElementById('fpSplashStatusText');
+    if (bar) bar.style.width = '0%';
+    if (status) status.textContent = 'Inicializando módulos operacionais...';
+    setTimeout(() => { if (bar) bar.style.width = '45%'; if (status) status.textContent = 'Verificando integridade dos dados...'; }, 240);
+    setTimeout(() => { if (bar) bar.style.width = '100%'; if (status) status.textContent = 'Tudo pronto!'; }, 620);
+    setTimeout(() => {
+      splash.classList.add('fp-splash-hide');
+      setTimeout(() => { splash.style.display = 'none'; }, 600);
+    }, 1450);
+  };
+
+  // 2. SISTEMA INTELIGENTE DE ATUALIZAÇÃO (NÃO TRAVA O SISTEMA)
+  let pendingWorker = null;
+  let remoteVersionInfo = null;
+  let updateState = {
+    checking: false,
+    available: false,
+    latestVersion: APP_VERSION,
+    notes: [],
+    lastChecked: null
+  };
+
+  function markUpdateAvailable(versionLabel, notes = []) {
+    updateState.available = true;
+    updateState.latestVersion = versionLabel || APP_VERSION;
+    updateState.notes = notes;
+
+    const badge = document.getElementById('fpConfigBadge');
+    const sideDot = document.querySelector('.fp-ver-dot');
+    const sideStatus = document.getElementById('fpSideStatus');
+    if (badge) badge.hidden = false;
+    if (sideDot) sideDot.classList.add('has-update');
+    if (sideStatus) sideStatus.textContent = 'Atualização disponível';
+
+    const banner = document.getElementById('fpUpdateBanner');
+    const sub = document.getElementById('fpUpdSubtitle');
+    const body = document.getElementById('fpUpdBody');
+    if (sub) sub.textContent = `FrotaPro v${updateState.latestVersion} disponível`;
+    if (body && notes.length) {
+      body.textContent = `Novidades: ${notes.slice(0, 2).join(' • ')}. Seus dados permanecem intactos.`;
+    }
+    if (banner && sessionStorage.getItem('fp_upd_dismissed_' + updateState.latestVersion) !== '1') {
+      banner.classList.add('visible');
+    }
+    if (typeof page !== 'undefined' && page === 'configuracoes' && typeof render === 'function') {
+      render();
+    }
+  }
+
+  window.fpDismissUpdateBanner = function () {
+    const banner = document.getElementById('fpUpdateBanner');
+    if (banner) banner.classList.remove('visible');
+    sessionStorage.setItem('fp_upd_dismissed_' + updateState.latestVersion, '1');
+    if (typeof notify === 'function') notify('Você pode atualizar quando quiser na aba Configurações.');
+  };
+
+  window.fpApplySystemUpdate = async function () {
+    const btn = document.getElementById('fpUpdApplyBtn');
+    if (btn) {
+      btn.disabled = true;
+      btn.textContent = 'Atualizando...';
+    }
+    try {
+      // Garante persistência antes de recarregar
+      if (typeof persist === 'function') persist();
+
+      if (pendingWorker) {
+        pendingWorker.postMessage({ type: 'SKIP_WAITING' });
+      }
+      if ('caches' in window) {
+        const keys = await caches.keys();
+        await Promise.all(keys.map(k => caches.delete(k)));
+      }
+      if ('serviceWorker' in navigator) {
+        const reg = await navigator.serviceWorker.getRegistration();
+        if (reg) await reg.update();
+      }
+    } catch (e) {}
+
+    if (typeof notify === 'function') notify('Aplicando atualização v' + updateState.latestVersion + '...');
+    setTimeout(() => {
+      window.location.reload();
+    }, 650);
+  };
+
+  window.fpCheckForUpdates = async function (manual = false) {
+    if (updateState.checking) return;
+    updateState.checking = true;
+    if (typeof page !== 'undefined' && page === 'configuracoes' && typeof render === 'function') render();
+
+    try {
+      // 1) Verifica atualização via Service Worker
+      if ('serviceWorker' in navigator) {
+        const reg = await navigator.serviceWorker.getRegistration();
+        if (reg) {
+          await reg.update();
+          if (reg.waiting) {
+            pendingWorker = reg.waiting;
+            markUpdateAvailable(APP_VERSION + ' (Nova revisão)', ['Melhorias de desempenho e visual']);
+          }
+        }
+      }
+
+      // 2) Verifica ./version.json no GitHub Pages (com cache-busting)
+      const res = await fetch('./version.json?t=' + Date.now(), { cache: 'no-store' });
+      if (res.ok) {
+        const data = await res.json();
+        remoteVersionInfo = data;
+        if (data && data.version && String(data.version).trim() !== APP_VERSION) {
+          markUpdateAvailable(String(data.version).trim(), Array.isArray(data.notes) ? data.notes : []);
+        } else if (manual && !updateState.available && typeof notify === 'function') {
+          notify('O FrotaPro já está na versão mais recente (v' + APP_VERSION + ').');
+        }
+      } else if (manual && !updateState.available && typeof notify === 'function') {
+        notify('Verificação concluída: sistema atualizado (v' + APP_VERSION + ').');
+      }
+    } catch (err) {
+      if (manual && typeof notify === 'function') {
+        notify('Não foi possível consultar o servidor agora. Seus dados locais estão seguros.');
+      }
+    } finally {
+      updateState.checking = false;
+      updateState.lastChecked = new Date().toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
+      if (typeof page !== 'undefined' && page === 'configuracoes' && typeof render === 'function') render();
+    }
+  };
+
+  // Escuta Service Worker para detectar nova versão em segundo plano sem travar o uso
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.addEventListener('load', async () => {
+      try {
+        const reg = await navigator.serviceWorker.getRegistration();
+        if (!reg) return;
+        if (reg.waiting) {
+          pendingWorker = reg.waiting;
+          markUpdateAvailable(APP_VERSION, ['Nova atualização pronta para aplicar']);
+        }
+        reg.addEventListener('updatefound', () => {
+          const nw = reg.installing;
+          if (!nw) return;
+          nw.addEventListener('statechange', () => {
+            if (nw.state === 'installed' && navigator.serviceWorker.controller) {
+              pendingWorker = nw;
+              markUpdateAvailable(APP_VERSION, ['Nova atualização pronta para aplicar']);
+            }
+          });
+        });
+      } catch (e) {}
+    });
+  }
+
+  // 3. PÁGINA COMPLETA DE CONFIGURAÇÕES
+  window.settingsPage = function () {
+    const cfg = getSettings();
+    const totalTrips = (db && Array.isArray(db.viagens)) ? db.viagens.length : 0;
+    const totalExpenses = (db && Array.isArray(db.viagens)) ? db.viagens.reduce((s, t) => s + (t.despesas || []).length, 0) : 0;
+    const totalVehicles = (db && Array.isArray(db.veiculos)) ? db.veiculos.length : 0;
+    const isInstalled = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
+
+    const statusChip = updateState.available
+      ? `<span class="fp-cfg-chip" style="background:rgba(16,185,129,0.26);border-color:rgba(52,211,153,0.5)">● Nova versão v${esc(updateState.latestVersion)} disponível</span>`
+      : `<span class="fp-cfg-chip" style="background:rgba(16,185,129,0.2);border-color:rgba(52,211,153,0.4)">✓ Sistema atualizado</span>`;
+
+    return head(
+      'Configurações do Sistema',
+      'Gerencie atualizações do aplicativo, identidade operacional, abertura desktop e segurança dos dados.',
+      `<button class="soft" onclick="fpPreviewSplash()">✦ Testar abertura do app</button>
+       <button class="primary" onclick="fpCheckForUpdates(true)">↻ Verificar atualizações</button>`
+    ) + `
+    <div class="fp-cfg-hero">
+      <div class="fp-cfg-hero-left">
+        <div class="fp-cfg-logo">
+          <svg viewBox="0 0 64 52" aria-hidden="true">
+            <path d="M4 34h34V11H4zM38 20h11l10 11v3H38z"/>
+            <path d="M13 42a6 6 0 1 0 0-12 6 6 0 0 0 0 12Zm36 0a6 6 0 1 0 0-12 6 6 0 0 0 0 12Z"/>
+            <path d="M10 18h17M10 25h22M4 47h55"/>
+            <path d="M44 7h12M50 2v10"/>
+          </svg>
+        </div>
+        <div>
+          <div style="font-size:19px;font-weight:850;letter-spacing:.3px">FrotaPro Enterprise <span style="opacity:.85;font-weight:600">v${APP_VERSION}</span></div>
+          <div style="font-size:12.5px;color:#bfd5f2;margin-top:3px">Plataforma Gerencial de Viagens, Custos por Veículo e Controle RH</div>
+          <div class="fp-cfg-badges">
+            <span class="fp-cfg-chip">Versão instalada: v${APP_VERSION}</span>
+            <span class="fp-cfg-chip">Compilação: ${APP_BUILD_DATE}</span>
+            <span class="fp-cfg-chip">${isInstalled ? 'Modo: Aplicativo Instalado (Desktop/PWA)' : 'Modo: Navegador Web'}</span>
+            ${statusChip}
+          </div>
+        </div>
+      </div>
+      <div>
+        ${updateState.available
+          ? `<button class="greenbtn" onclick="fpApplySystemUpdate()">⬇ Instalar v${esc(updateState.latestVersion)} agora</button>`
+          : `<button class="soft" onclick="fpCheckForUpdates(true)">${updateState.checking ? 'Verificando...' : 'Buscar nova versão'}</button>`}
+      </div>
+    </div>
+
+    <div class="fp-cfg-grid">
+      <div class="card fp-cfg-card">
+        <h3>Atualizações do Aplicativo</h3>
+        <p class="muted" style="margin:0 0 10px">As atualizações são baixadas em segundo plano sem interromper lançamentos em andamento.</p>
+        <ul class="fp-cfg-list">
+          <li><span class="muted">Versão atual em execução</span><b>v${APP_VERSION}</b></li>
+          <li><span class="muted">Última versão verificada</span><b>v${esc(updateState.latestVersion)}</b></li>
+          <li><span class="muted">Última verificação</span><b>${updateState.lastChecked || 'Automática ao iniciar'}</b></li>
+          <li><span class="muted">Proteção de dados na atualização</span><b style="color:#059669">100% preservados</b></li>
+        </ul>
+        <div class="fp-changelog-box">
+          <b>Novidades da versão v${APP_VERSION}:</b>
+          <ul>
+            <li>Visual Pro modernizado com botões interativos e barras de rolagem ocultas.</li>
+            <li>Tela de abertura animada exclusiva para o aplicativo instalado no computador.</li>
+            <li>Central de Configurações com verificação segura de atualizações sem travar o uso.</li>
+          </ul>
+        </div>
+        <div class="actions" style="margin-top:14px">
+          <button class="primary" onclick="fpCheckForUpdates(true)">${updateState.checking ? 'Verificando...' : 'Verificar agora'}</button>
+          ${updateState.available ? `<button class="greenbtn" onclick="fpApplySystemUpdate()">Aplicar atualização</button>` : ''}
+        </div>
+      </div>
+
+      <div class="card fp-cfg-card">
+        <h3>Personalização e Experiência</h3>
+        <p class="muted" style="margin:0 0 12px">Ajuste a identificação exibida no topo do sistema e o comportamento da abertura.</p>
+        <div class="grid" style="gap:11px">
+          <div class="field">
+            <label>Nome do perfil / operador no cabeçalho</label>
+            <input id="cfgGestorNome" type="text" value="${esc(cfg.gestorNome)}" placeholder="Ex: Gestão Frota">
+          </div>
+          <div class="field">
+            <label>Sigla do avatar (até 3 letras)</label>
+            <input id="cfgGestorSigla" type="text" maxlength="3" value="${esc(cfg.gestorSigla)}" placeholder="GP">
+          </div>
+        </div>
+        <div style="margin-top:12px">
+          <div class="fp-switch-row">
+            <div>
+              <b style="font-size:13px">Tela de abertura animada (App Desktop)</b>
+              <div class="muted" style="font-size:11.5px">Exibe a apresentação com a logo do FrotaPro ao abrir o programa instalado.</div>
+            </div>
+            <label class="fp-switch">
+              <input id="cfgSplashDesktop" type="checkbox" ${cfg.splashDesktop ? 'checked' : ''}>
+              <span class="fp-slider"></span>
+            </label>
+          </div>
+          <div class="fp-switch-row">
+            <div>
+              <b style="font-size:13px">Verificar atualizações automaticamente</b>
+              <div class="muted" style="font-size:11.5px">Notifica discretamente quando uma nova versão estiver disponível no GitHub.</div>
+            </div>
+            <label class="fp-switch">
+              <input id="cfgAutoCheck" type="checkbox" ${cfg.autoCheckUpdates ? 'checked' : ''}>
+              <span class="fp-slider"></span>
+            </label>
+          </div>
+        </div>
+        <div class="actions" style="margin-top:14px">
+          <button class="primary" onclick="fpSaveSettingsForm()">Salvar preferências</button>
+          <button class="soft" onclick="fpPreviewSplash()">Visualizar abertura</button>
+        </div>
+      </div>
+
+      <div class="card fp-cfg-card">
+        <h3>Resumo Operacional da Base</h3>
+        <p class="muted" style="margin:0 0 10px">Resumo atualizado dos lançamentos e cadastros ativos no aplicativo.</p>
+        <ul class="fp-cfg-list">
+          <li><span class="muted">Veículos cadastrados</span><b>${totalVehicles}</b></li>
+          <li><span class="muted">Viagens registradas</span><b>${totalTrips}</b></li>
+          <li><span class="muted">Despesas vinculadas</span><b>${totalExpenses}</b></li>
+          <li><span class="muted">Motoristas cadastrados</span><b>${(db && Array.isArray(db.motoristas)) ? db.motoristas.length : 0}</b></li>
+        </ul>
+        <div class="actions" style="margin-top:14px">
+          <button class="soft" onclick="go('backup')">Ir para Backup e Restauração</button>
+        </div>
+      </div>
+
+      <div class="card fp-cfg-card">
+        <h3>Instalação no Computador e Celular</h3>
+        <p class="muted" style="line-height:1.65;margin:0 0 12px">
+          O FrotaPro pode ser instalado como programa dedicado no Windows, Mac ou Android, abrindo em janela própria com ícone na área de trabalho e tela de abertura animada.
+        </p>
+        <div class="fp-changelog-box" style="margin-top:0">
+          <b>Como instalar no computador (Chrome / Edge):</b>
+          <ul>
+            <li>Clique no ícone de instalação na barra de endereço ou no botão <b>Instalar App</b> no topo.</li>
+            <li>O sistema passará a abrir como aplicativo nativo com a abertura animada FrotaPro.</li>
+          </ul>
+        </div>
+      </div>
+    </div>`;
+  };
+
+  window.fpSaveSettingsForm = function () {
+    const gestorNome = (document.getElementById('cfgGestorNome')?.value || '').trim() || 'Gestão';
+    const gestorSigla = (document.getElementById('cfgGestorSigla')?.value || '').trim() || 'GP';
+    const splashDesktop = !!document.getElementById('cfgSplashDesktop')?.checked;
+    const autoCheckUpdates = !!document.getElementById('cfgAutoCheck')?.checked;
+    saveSettings({ gestorNome, gestorSigla, splashDesktop, autoCheckUpdates });
+    if (typeof notify === 'function') notify('Configurações salvas com sucesso!');
+    render();
+  };
+
+  window.afterRenderSettings = function () {
+    applyVisualSettings();
+  };
+
+  // Inicialização segura
+  applyVisualSettings();
+  initDesktopSplash();
+  if (getSettings().autoCheckUpdates) {
+    setTimeout(() => fpCheckForUpdates(false), 2500);
+  }
+})();
+</script>
+
 </body></html>`);w.document.close();w.focus();w.print()}
-function backupPage(){return head('Backup e restauração','Proteja os dados e transfira-os quando necessário.')+`<div class="grid two"><div class="card"><h3>Baixar backup completo</h3><p class="muted">Inclui viagens, despesas vinculadas e cadastros. Os dados antigos de fretes e abastecimentos são preservados no arquivo, mas não entram nos cálculos.</p><button class="primary" onclick="backup()">Baixar JSON</button></div><div class="card"><h3>Restaurar backup</h3><p class="muted">A restauração substitui os dados atuais.</p><input id="backupFile" type="file" accept=".json"><button class="soft" style="margin-top:10px" onclick="restoreBackup()">Restaurar arquivo</button></div><div class="card"><h3>Quantidade de registros</h3>${[['Viagens',db.viagens.length],['Despesas avulsas',db.despesas.length],['Despesas dentro das viagens',db.viagens.reduce((s,t)=>s+(t.despesas||[]).length,0)],['Fretes',db.fretes.length],['Abastecimentos',db.abastecimentos.length]].map(x=>`<p style="display:flex;justify-content:space-between;border-bottom:1px solid var(--line);padding:7px 0"><span class="muted">${x[0]}</span><b>${x[1]}</b></p>`).join('')}</div><div class="card"><h3>Importante</h3><p class="muted" style="line-height:1.7">Este arquivo funciona localmente no navegador e não sincroniza automaticamente entre computadores. Faça backup frequente e guarde o JSON fora do computador.</p></div></div>`}
+function backupPage(){return head('Backup e restauração','Proteja os dados e transfira-os quando necessário.')+`<div class="grid two"><div class="card"><h3>Baixar backup completo</h3><p class="muted">Inclui viagens, despesas vinculadas e cadastros. Os dados antigos de fretes e abastecimentos são preservados no arquivo, mas não entram nos cálculos.</p><button class="primary" onclick="backup()">Baixar JSON</button></div><div class="card"><h3>Restaurar backup</h3><p class="muted">A restauração substitui os dados atuais.</p><input id="backupFile" type="file" accept=".json"><button class="soft" style="margin-top:10px" onclick="restoreBackup()">Restaurar arquivo</button></div><div class="card"><h3>Quantidade de registros</h3>${[['Viagens',db.viagens.length],['Despesas avulsas',db.despesas.length],['Despesas dentro das viagens',db.viagens.reduce((s,t)=>s+(t.despesas||[]).length,0)],['Fretes',db.fretes.length],['Abastecimentos',db.abastecimentos.length]].map(x=>`<p style="display:flex;justify-content:space-between;border-bottom:1px solid var(--line);padding:7px 0"><span class="muted">${x[0]}</span><b>${x[1]}</b></p>`).join('')}</div><div class="card"><h3>Segurança e Portabilidade</h3><p class="muted" style="line-height:1.7">Exporte regularmente o arquivo JSON para manter cópias de segurança externas ou transferir os lançamentos entre computadores com total integridade.</p></div></div>`}
 function backup(){let b=new Blob([JSON.stringify(db,null,2)],{type:'application/json'}),a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='FrotaPro-backup-'+today()+'.json';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000);notify('Backup baixado.')}
 function restoreBackup(){if(fpRestoreBusy)return;const anchor=fpGetAnchor();let f=$('#backupFile').files[0];if(!f){notify('Selecione um arquivo primeiro.');return}fpRestoreBusy=true;let r=new FileReader();r.onload=async()=>{try{let d=JSON.parse(r.result);if(!d||typeof d!=='object'||Array.isArray(d)||!Array.isArray(d.viagens)||!Array.isArray(d.despesas))throw 0;if(d.viagens.some(t=>!t||typeof t!=='object'||(t.despesas!==undefined&&!Array.isArray(t.despesas))))throw 0;if(!await fpConfirm('Este backup substituirá todos os dados atuais do sistema. A substituição não pode ser desfeita sem um backup dos dados atuais. Faça uma cópia antes de continuar. Deseja substituir os dados?',{title:'Restaurar backup',confirmText:'Sim, substituir dados',cancelText:'Não',anchor}))return;db={...blank(),...d};['viagens','despesas','fretes','abastecimentos','veiculos','motoristas','fornecedores','clientes','origens','destinos','postos','combustiveis','categorias'].forEach(k=>{if(!Array.isArray(db[k]))db[k]=blank()[k]});db.viagens.forEach(t=>{if(!Array.isArray(t.despesas))t.despesas=[];t.despesas.forEach(normalizeFuelExpense)});db.despesas.forEach(normalizeFuelExpense);ensureStradaVehicle();persist();render();notify('Backup restaurado.')}catch(e){await fpMessage('Arquivo inválido ou incompatível.',anchor)}finally{fpRestoreBusy=false}};r.onerror=async()=>{await fpMessage('Não foi possível ler o arquivo de backup. Tente selecionar o arquivo novamente.',anchor);fpRestoreBusy=false};try{r.readAsText(f)}catch(e){fpRestoreBusy=false;fpMessage('Não foi possível ler o arquivo de backup.',anchor)}}
 // Enter avança para o próximo campo de preenchimento, sem exigir clique do mouse.
