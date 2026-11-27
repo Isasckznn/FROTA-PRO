@@ -3271,6 +3271,40 @@ function printTripList(){let html=tripTable(db.viagens,false);let w=window.open(
 </head><body><h1>FROTAPRO — RELATÓRIO DE VIAGENS</h1><p>Emitido em ${dateBR(today())}</p>${html}
 
 
+
+<style id="frotapro-mobile-navigation-stability">
+/* Final mobile layout: menu fixed and content independent from navigation. */
+@media (max-width:700px){
+ html,body{width:100%;max-width:100%;overflow-x:hidden!important}
+ .layout{display:block!important;width:100%!important;min-height:100dvh!important}
+ .side{position:fixed!important;left:0!important;right:0!important;bottom:0!important;top:auto!important;transform:none!important;width:100%!important;height:auto!important;max-height:none!important;min-width:0!important;z-index:10000!important;margin:0!important;padding:7px 6px calc(7px + env(safe-area-inset-bottom))!important;overflow:visible!important;box-sizing:border-box!important;border-radius:18px 18px 0 0!important;background:rgba(12,29,49,.98)!important;box-shadow:0 -8px 28px rgba(0,0,0,.20)!important}
+ .side .brand,.side .navlabel,.sidefoot{display:none!important}
+ .side .nav{display:flex!important;flex-direction:row!important;width:100%!important;min-width:0!important;gap:4px!important;margin:0!important;padding:0!important;overflow-x:auto!important;overflow-y:hidden!important;scrollbar-width:none!important}
+ .side .nav::-webkit-scrollbar{display:none!important}
+ .side .nav button{display:flex!important;flex:1 0 70px!important;min-width:70px!important;max-width:120px!important;width:auto!important;min-height:62px!important;height:auto!important;flex-direction:column!important;align-items:center!important;justify-content:center!important;margin:0!important;padding:6px 4px!important;gap:5px!important;white-space:normal!important;overflow:visible!important;font-size:10px!important;line-height:1.2!important;text-align:center!important}
+ .side .nav button span:not(.ico){display:block!important;max-width:100%!important;white-space:normal!important;overflow-wrap:anywhere!important}
+ .side .nav button .ico{display:flex!important;justify-content:center!important;align-items:center!important;min-width:0!important;height:22px!important;font-size:19px!important}
+ .side .nav button.active:before{display:none!important}
+ .main{display:block!important;width:100%!important;max-width:100%!important;min-width:0!important;margin:0!important;padding:0!important}
+ .top{position:relative!important;top:auto!important;width:100%!important;box-sizing:border-box!important}
+ .content{display:block!important;width:100%!important;max-width:100%!important;min-width:0!important;box-sizing:border-box!important;padding:14px 12px calc(105px + env(safe-area-inset-bottom))!important;margin:0!important}
+ #view{display:block!important;width:100%!important;max-width:100%!important;min-width:0!important;box-sizing:border-box!important}
+ #view>*{min-width:0!important;max-width:100%!important;box-sizing:border-box!important}
+ #view .grid.two,#view .formgrid,#view .two,#view .report-filter-grid,#view .custom-date-grid{grid-template-columns:minmax(0,1fr)!important}
+ #view .grid:not(.stats):not(.dash-stats):not(.dash-secondary-stats):not(.three){grid-template-columns:minmax(0,1fr)!important}
+ #view .dash-stats,.dash-stats{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:10px!important}
+ #view .dash-secondary-stats,.dash-secondary-stats,#view .dash-insights,.dash-insights{grid-template-columns:minmax(0,1fr)!important;gap:10px!important}
+ #view .filter{display:flex!important;flex-direction:column!important;align-items:stretch!important;gap:10px!important}
+ #view .filter>*{width:100%!important;min-width:0!important;max-width:100%!important}
+ #view input,#view select,#view textarea,#modal input,#modal select,#modal textarea{width:100%!important;max-width:100%!important;min-width:0!important;box-sizing:border-box!important;font-size:16px!important}
+ #view input[type=checkbox],#view input[type=radio]{width:auto!important}
+ .tablewrap,#view .tablewrap{width:100%!important;max-width:100%!important;overflow-x:auto!important;-webkit-overflow-scrolling:touch!important}
+ .modalback{padding:10px!important;box-sizing:border-box!important}
+ .modal{width:100%!important;max-width:100%!important;max-height:90dvh!important;overflow:auto!important}
+}
+@media(max-width:390px){.content{padding-left:10px!important;padding-right:10px!important}.side .nav button{flex-basis:64px!important;min-width:64px!important;font-size:9px!important}}
+</style>
+
 </body></html>`);w.document.close();w.focus();w.print()}
 function backupPage(){return head('Backup e restauração','Proteja os dados e transfira-os quando necessário.')+`<div class="grid two"><div class="card"><h3>Baixar backup completo</h3><p class="muted">Inclui viagens, despesas vinculadas e cadastros. Os dados antigos de fretes e abastecimentos são preservados no arquivo, mas não entram nos cálculos.</p><button class="primary" onclick="backup()">Baixar JSON</button></div><div class="card"><h3>Restaurar backup</h3><p class="muted">A restauração substitui os dados atuais.</p><input id="backupFile" type="file" accept=".json"><button class="soft" style="margin-top:10px" onclick="restoreBackup()">Restaurar arquivo</button></div><div class="card"><h3>Quantidade de registros</h3>${[['Viagens',db.viagens.length],['Despesas avulsas',db.despesas.length],['Despesas dentro das viagens',db.viagens.reduce((s,t)=>s+(t.despesas||[]).length,0)],['Fretes',db.fretes.length],['Abastecimentos',db.abastecimentos.length]].map(x=>`<p style="display:flex;justify-content:space-between;border-bottom:1px solid var(--line);padding:7px 0"><span class="muted">${x[0]}</span><b>${x[1]}</b></p>`).join('')}</div><div class="card"><h3>Importante</h3><p class="muted" style="line-height:1.7">Este arquivo funciona localmente no navegador e não sincroniza automaticamente entre computadores. Faça backup frequente e guarde o JSON fora do computador.</p></div></div>`}
 function backup(){let b=new Blob([JSON.stringify(db,null,2)],{type:'application/json'}),a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='FrotaPro-backup-'+today()+'.json';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000);notify('Backup baixado.')}
@@ -4420,6 +4454,40 @@ if(typeof original==='function')try{window.render()}catch(e){console.error('Rend
 #view .fp-fleet-grid>div:nth-child(2) svg{color:#3981b8}
 #view .fp-fleet-grid>div:nth-child(3) svg{color:#c27b32}
 @media(max-width:600px){#view .fp-recent-trip{grid-template-columns:38px minmax(0,1fr);gap:9px;padding:11px;min-height:0}#view .fp-recent-meta{grid-column:2;display:flex;justify-content:space-between;align-items:center;width:100%;padding-left:0}#view .fp-recent-truck{width:36px;height:36px}#view .fp-recent-truck svg{width:27px;height:27px}}
+</style>
+
+
+<style id="frotapro-mobile-navigation-stability">
+/* Final mobile layout: menu fixed and content independent from navigation. */
+@media (max-width:700px){
+ html,body{width:100%;max-width:100%;overflow-x:hidden!important}
+ .layout{display:block!important;width:100%!important;min-height:100dvh!important}
+ .side{position:fixed!important;left:0!important;right:0!important;bottom:0!important;top:auto!important;transform:none!important;width:100%!important;height:auto!important;max-height:none!important;min-width:0!important;z-index:10000!important;margin:0!important;padding:7px 6px calc(7px + env(safe-area-inset-bottom))!important;overflow:visible!important;box-sizing:border-box!important;border-radius:18px 18px 0 0!important;background:rgba(12,29,49,.98)!important;box-shadow:0 -8px 28px rgba(0,0,0,.20)!important}
+ .side .brand,.side .navlabel,.sidefoot{display:none!important}
+ .side .nav{display:flex!important;flex-direction:row!important;width:100%!important;min-width:0!important;gap:4px!important;margin:0!important;padding:0!important;overflow-x:auto!important;overflow-y:hidden!important;scrollbar-width:none!important}
+ .side .nav::-webkit-scrollbar{display:none!important}
+ .side .nav button{display:flex!important;flex:1 0 70px!important;min-width:70px!important;max-width:120px!important;width:auto!important;min-height:62px!important;height:auto!important;flex-direction:column!important;align-items:center!important;justify-content:center!important;margin:0!important;padding:6px 4px!important;gap:5px!important;white-space:normal!important;overflow:visible!important;font-size:10px!important;line-height:1.2!important;text-align:center!important}
+ .side .nav button span:not(.ico){display:block!important;max-width:100%!important;white-space:normal!important;overflow-wrap:anywhere!important}
+ .side .nav button .ico{display:flex!important;justify-content:center!important;align-items:center!important;min-width:0!important;height:22px!important;font-size:19px!important}
+ .side .nav button.active:before{display:none!important}
+ .main{display:block!important;width:100%!important;max-width:100%!important;min-width:0!important;margin:0!important;padding:0!important}
+ .top{position:relative!important;top:auto!important;width:100%!important;box-sizing:border-box!important}
+ .content{display:block!important;width:100%!important;max-width:100%!important;min-width:0!important;box-sizing:border-box!important;padding:14px 12px calc(105px + env(safe-area-inset-bottom))!important;margin:0!important}
+ #view{display:block!important;width:100%!important;max-width:100%!important;min-width:0!important;box-sizing:border-box!important}
+ #view>*{min-width:0!important;max-width:100%!important;box-sizing:border-box!important}
+ #view .grid.two,#view .formgrid,#view .two,#view .report-filter-grid,#view .custom-date-grid{grid-template-columns:minmax(0,1fr)!important}
+ #view .grid:not(.stats):not(.dash-stats):not(.dash-secondary-stats):not(.three){grid-template-columns:minmax(0,1fr)!important}
+ #view .dash-stats,.dash-stats{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:10px!important}
+ #view .dash-secondary-stats,.dash-secondary-stats,#view .dash-insights,.dash-insights{grid-template-columns:minmax(0,1fr)!important;gap:10px!important}
+ #view .filter{display:flex!important;flex-direction:column!important;align-items:stretch!important;gap:10px!important}
+ #view .filter>*{width:100%!important;min-width:0!important;max-width:100%!important}
+ #view input,#view select,#view textarea,#modal input,#modal select,#modal textarea{width:100%!important;max-width:100%!important;min-width:0!important;box-sizing:border-box!important;font-size:16px!important}
+ #view input[type=checkbox],#view input[type=radio]{width:auto!important}
+ .tablewrap,#view .tablewrap{width:100%!important;max-width:100%!important;overflow-x:auto!important;-webkit-overflow-scrolling:touch!important}
+ .modalback{padding:10px!important;box-sizing:border-box!important}
+ .modal{width:100%!important;max-width:100%!important;max-height:90dvh!important;overflow:auto!important}
+}
+@media(max-width:390px){.content{padding-left:10px!important;padding-right:10px!important}.side .nav button{flex-basis:64px!important;min-width:64px!important;font-size:9px!important}}
 </style>
 
 </body>
