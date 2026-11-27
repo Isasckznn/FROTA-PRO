@@ -2,7 +2,16 @@
 
 <html lang="pt-BR">
 <head>
-<meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta charset="utf-8"/><meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
+<meta name="theme-color" content="#11283f"/>
+<meta name="mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+<meta name="apple-mobile-web-app-title" content="FrotaPro"/>
+<link rel="manifest" href="./manifest.webmanifest"/>
+<link rel="icon" type="image/png" sizes="512x512" href="./icons/frotapro-icon-512.png"/>
+<link rel="icon" type="image/png" sizes="180x180" href="./icons/frotapro-icon-180.png"/>
+<link rel="apple-touch-icon" sizes="180x180" href="./icons/frotapro-icon-180.png"/>
 <title>FrotaPro | Gestão de Viagens e Despesas</title>
 <style>
 :root{--navy:#10233f;--navy2:#193a62;--blue:#2866d8;--bg:#f3f6fb;--ink:#17243a;--muted:#708098;--line:#e2e9f2;--green:#12845c;--red:#c9414d;--amber:#a96d0b}
@@ -2527,6 +2536,285 @@ cpPresentSources=function(){
  #view .fp-period-control input[type="month"]{width:100%!important;min-width:0!important;max-width:100%!important}
 }
 </style>
+<style id="frotapro-rh-print-e-pwa">
+/* ===== MELHORIAS VISUAIS PARA PWA INSTALADO (DESKTOP E CELULAR) ===== */
+@media screen {
+  body {
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  .top {
+    padding-top: env(safe-area-inset-top, 0px);
+  }
+  #fpInstallPwaBtn {
+    display: none;
+    align-items: center;
+    gap: 6px;
+    min-height: 34px;
+    padding: 6px 12px;
+    border-radius: 8px;
+    background: linear-gradient(135deg, #2468cf, #164b9e);
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    border: 1px solid #4c8ce5;
+    box-shadow: 0 3px 10px rgba(24, 91, 189, 0.22);
+  }
+  #fpInstallPwaBtn.visible { display: inline-flex; }
+
+  @media (max-width: 760px) {
+    .side {
+      padding-top: calc(18px + env(safe-area-inset-top, 0px)) !important;
+      padding-bottom: calc(20px + env(safe-area-inset-bottom, 0px)) !important;
+      box-shadow: 12px 0 38px rgba(4, 15, 28, 0.45) !important;
+    }
+    .rh-kpis {
+      grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+      gap: 10px !important;
+    }
+    .rh-kpi {
+      padding: 13px !important;
+    }
+    .rh-kpi b {
+      font-size: 16px !important;
+    }
+  }
+}
+
+.rh-print-header,
+.rh-print-signatures {
+  display: none;
+}
+
+/* ===== LAYOUT DE IMPRESSÃO EXCLUSIVO: CONTROLE RH · CHAPAS E DIÁRIAS ===== */
+@media print {
+  body.rh-printing {
+    background: #ffffff !important;
+    color: #162b42 !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+  body.rh-printing * {
+    visibility: hidden !important;
+  }
+  body.rh-printing #rhReport,
+  body.rh-printing #rhReport * {
+    visibility: visible !important;
+  }
+  body.rh-printing #rhReport {
+    position: absolute !important;
+    left: 0 !important;
+    top: 0 !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: #ffffff !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 10px !important;
+  }
+  body.rh-printing .no-print,
+  body.rh-printing .rh-alert,
+  body.rh-printing .rh-period-picker,
+  body.rh-printing .rh-status {
+    display: none !important;
+  }
+
+  /* 1. Cabeçalho Executivo do Documento RH */
+  body.rh-printing .rh-print-header {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: flex-end !important;
+    border-bottom: 2.5px solid #14385e !important;
+    padding-bottom: 10px !important;
+    margin-bottom: 4px !important;
+  }
+  body.rh-printing .rh-print-header-brand {
+    font-size: 9px !important;
+    font-weight: 800 !important;
+    letter-spacing: 1.6px !important;
+    color: #2468cf !important;
+    text-transform: uppercase !important;
+  }
+  body.rh-printing .rh-print-header h1 {
+    font-size: 18px !important;
+    font-weight: 800 !important;
+    color: #10263f !important;
+    margin: 3px 0 2px !important;
+    letter-spacing: -0.3px !important;
+  }
+  body.rh-printing .rh-print-header p {
+    font-size: 9px !important;
+    color: #52677e !important;
+    margin: 0 !important;
+  }
+  body.rh-printing .rh-print-badge {
+    border: 1.5px solid #bfd1e5 !important;
+    background: #f3f7fc !important;
+    padding: 6px 10px !important;
+    border-radius: 5px !important;
+    text-align: right !important;
+    font-size: 8.5px !important;
+    line-height: 1.45 !important;
+    color: #224468 !important;
+  }
+
+  /* 2. Faixa de Período compacta */
+  body.rh-printing .rh-period-card {
+    padding: 9px 12px !important;
+    border: 1px solid #cbd9e8 !important;
+    border-left: 4px solid #1b5ec4 !important;
+    border-radius: 6px !important;
+    background: #f7faff !important;
+    box-shadow: none !important;
+  }
+  body.rh-printing .rh-period-copy .eyebrow {
+    font-size: 7.5px !important;
+    color: #366291 !important;
+  }
+  body.rh-printing .rh-period-copy h2 {
+    font-size: 13px !important;
+    margin: 2px 0 !important;
+    color: #102a46 !important;
+  }
+  body.rh-printing .rh-period-copy p {
+    font-size: 8px !important;
+    color: #4f667f !important;
+  }
+
+  /* 3. KPIs em 4 colunas fixas na folha A4 */
+  body.rh-printing .rh-kpis {
+    display: grid !important;
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+    gap: 8px !important;
+  }
+  body.rh-printing .rh-kpi {
+    padding: 9px 10px !important;
+    border: 1px solid #cbd9e8 !important;
+    border-radius: 6px !important;
+    background: #ffffff !important;
+    box-shadow: none !important;
+  }
+  body.rh-printing .rh-kpi small {
+    font-size: 7.5px !important;
+    color: #526880 !important;
+  }
+  body.rh-printing .rh-kpi b {
+    font-size: 13px !important;
+    margin: 4px 0 2px !important;
+    color: #102a46 !important;
+  }
+  body.rh-printing .rh-kpi span {
+    font-size: 7.5px !important;
+    color: #647a91 !important;
+  }
+  body.rh-printing .rh-kpi-total {
+    background: #eef5ff !important;
+    border-color: #9cbce0 !important;
+    border-top: 2.5px solid #1b5ec4 !important;
+  }
+
+  /* 4. Tabela de Demonstrativo Individual */
+  body.rh-printing .rh-table-card {
+    padding: 10px 12px !important;
+    border: 1px solid #cbd9e8 !important;
+    border-radius: 6px !important;
+    box-shadow: none !important;
+  }
+  body.rh-printing .rh-table-head {
+    margin-bottom: 8px !important;
+  }
+  body.rh-printing .rh-table-head h3 {
+    font-size: 11px !important;
+    margin: 2px 0 !important;
+  }
+  body.rh-printing .rh-table-head p {
+    display: none !important;
+  }
+  body.rh-printing .rh-table-wrap {
+    border: 1px solid #bccde0 !important;
+    border-radius: 4px !important;
+    overflow: visible !important;
+  }
+  body.rh-printing .rh-table {
+    width: 100% !important;
+    min-width: 0 !important;
+    table-layout: fixed !important;
+    border-collapse: collapse !important;
+  }
+  body.rh-printing .rh-table th,
+  body.rh-printing .rh-table td {
+    padding: 6px 8px !important;
+    font-size: 9px !important;
+    border-bottom: 1px solid #d5e0ec !important;
+    border-right: 1px solid #dde6f0 !important;
+    vertical-align: middle !important;
+  }
+  body.rh-printing .rh-table th:last-child,
+  body.rh-printing .rh-table td:last-child {
+    border-right: 0 !important;
+  }
+  body.rh-printing .rh-table thead th {
+    background: #173f67 !important;
+    color: #ffffff !important;
+    font-size: 8px !important;
+    letter-spacing: 0.4px !important;
+  }
+  body.rh-printing .rh-table tbody tr:nth-child(even) td {
+    background: #f6f9fd !important;
+  }
+  body.rh-printing .rh-table tbody tr {
+    break-inside: avoid !important;
+  }
+  body.rh-printing .rh-table th:first-child,
+  body.rh-printing .rh-table td:first-child {
+    width: 34% !important;
+  }
+  body.rh-printing .rh-table input {
+    display: none !important;
+  }
+  body.rh-printing .rh-print-value {
+    display: inline-block !important;
+    font-weight: 700 !important;
+    color: #16324f !important;
+    font-size: 9px !important;
+    font-variant-numeric: tabular-nums !important;
+  }
+  body.rh-printing .rh-table tfoot th {
+    background: #e6eff9 !important;
+    color: #102b48 !important;
+    border-top: 2px solid #8eaed0 !important;
+    border-bottom: 0 !important;
+    font-size: 9.5px !important;
+  }
+
+  /* 5. Bloco de Assinaturas e Conferência RH */
+  body.rh-printing .rh-print-signatures {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 24px !important;
+    margin-top: 26px !important;
+    padding-top: 8px !important;
+    break-inside: avoid !important;
+  }
+  body.rh-printing .rh-sig-box {
+    border-top: 1px solid #6b829b !important;
+    padding-top: 5px !important;
+    text-align: center !important;
+    font-size: 8px !important;
+    color: #465d75 !important;
+  }
+  body.rh-printing .rh-print-footer {
+    display: flex !important;
+    justify-content: space-between !important;
+    margin-top: 10px !important;
+    padding-top: 6px !important;
+    border-top: 1px solid #ccd7e4 !important;
+    color: #62788f !important;
+    font-size: 7.5px !important;
+  }
+}
+</style>
 </head>
 <body>
 <div class="layout">
@@ -2809,6 +3097,17 @@ function rhPage(){
  const periodLabel=dateBR(period.start)+' até '+dateBR(period.end);
  return head('Controle RH · Chapas e diárias','Fechamento mensal por motorista para conferência dos valores enviados à folha de pagamento.',`<button class="soft" onclick="rhResetPeriod()">↻ Recalcular lançamentos</button><button class="primary" onclick="printRH()">▧ Imprimir relatório RH</button>`)
  +`<section class="rh-module" id="rhReport" data-period="${esc(ym)}">
+ <div class="rh-print-header">
+  <div>
+   <div class="rh-print-header-brand">FROTAPRO · GESTÃO DE FROTAS E OPERAÇÕES</div>
+   <h1>FECHAMENTO DE CHAPAS E DIÁRIAS (RH)</h1>
+   <p>Demonstrativo consolidado para conferência e lançamento em folha de pagamento</p>
+  </div>
+  <div class="rh-print-badge">
+   <b>COMPETÊNCIA: ${esc(ym)}</b><br/>
+   Emissão: ${new Date().toLocaleDateString('pt-BR')}
+  </div>
+ </div>
  ${rhAlertHTML(period)}
  <div class="card rh-period-card"><div class="rh-period-copy"><span class="eyebrow">PERÍODO DE APURAÇÃO</span><h2>${periodLabel}</h2><p>O fechamento é sempre do dia 21 ao dia 20 do mês seguinte. Diárias são calculadas pela saída e chegada da viagem, contando os dois dias.</p></div><div class="rh-period-picker"><label for="rhMonth">Mês de fechamento</label><input id="rhMonth" type="month" value="${esc(ym)}" onchange="rhChangeMonth(this.value)"></div></div>
  <div class="grid four rh-kpis">
@@ -2825,7 +3124,12 @@ function rhPage(){
   <div class="rh-add-driver no-print"><input id="rhNewDriver" placeholder="Nome do motorista para incluir manualmente"><button class="soft" onclick="rhAddDriver()">＋ Adicionar motorista</button></div>
   <div class="rh-actions no-print"><div class="rh-note">Diárias: dias corridos entre saída e chegada (incluindo ambos), limitados ao período × R$ 100,00. Chapas: soma integral dos valores lançados no período, sem rateio por quantidade de entregas.</div><button class="primary" onclick="rhSave()">Salvar fechamento e ajustes</button></div>
  </div>
- <div class="rh-print-footer"><span>FROTA PRO · CONTROLE DE CHAPAS E DIÁRIAS</span><span>Documento para conferência e envio ao RH</span></div>
+ <div class="rh-print-signatures">
+  <div class="rh-sig-box">Responsável Operacional / Frota</div>
+  <div class="rh-sig-box">Conferência Financeira</div>
+  <div class="rh-sig-box">Recebimento Recursos Humanos (RH)</div>
+ </div>
+ <div class="rh-print-footer"><span>FROTA PRO · CONTROLE DE CHAPAS E DIÁRIAS</span><span>Documento oficial para conferência e envio ao RH</span></div>
  </section>`;
 }
 function rhChangeMonth(value){if(!value)return;rhMonth=value;render()}
@@ -4391,5 +4695,57 @@ if(typeof original==='function')try{window.render()}catch(e){console.error('Rend
  }
  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',initFrotaDrawer);else initFrotaDrawer();
  window.addEventListener('resize',initFrotaDrawer);
+})();
+</script>
+
+<script id="frotapro-pwa-controller">
+(function () {
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('./sw.js').catch(() => {});
+    });
+  }
+
+  // Suporte a atalhos do manifesto (#viagens, #rh)
+  function applyHashRoute() {
+    const hash = (window.location.hash || '').replace('#', '').trim();
+    if (hash && document.querySelector(`.nav button[data-page="${hash}"]`)) {
+      const btn = document.querySelector(`.nav button[data-page="${hash}"]`);
+      if (btn) btn.click();
+    }
+  }
+  window.addEventListener('load', applyHashRoute);
+  window.addEventListener('hashchange', applyHashRoute);
+
+  let deferredPrompt = null;
+  const userBar = document.querySelector('.top .user');
+  if (userBar && !document.getElementById('fpInstallPwaBtn')) {
+    const btn = document.createElement('button');
+    btn.id = 'fpInstallPwaBtn';
+    btn.type = 'button';
+    btn.innerHTML = '⬇ Instalar App';
+    btn.title = 'Instalar FrotaPro no computador ou celular';
+    btn.onclick = async () => {
+      if (!deferredPrompt) return;
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      if (outcome === 'accepted') btn.classList.remove('visible');
+      deferredPrompt = null;
+    };
+    userBar.insertBefore(btn, userBar.firstChild);
+  }
+
+  window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault();
+    deferredPrompt = e;
+    const btn = document.getElementById('fpInstallPwaBtn');
+    if (btn) btn.classList.add('visible');
+  });
+
+  window.addEventListener('appinstalled', () => {
+    const btn = document.getElementById('fpInstallPwaBtn');
+    if (btn) btn.classList.remove('visible');
+    if (typeof notify === 'function') notify('FrotaPro instalado com sucesso!');
+  });
 })();
 </script>

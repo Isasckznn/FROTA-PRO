@@ -1,1 +1,49 @@
-{"name":"FrotaPro","short_name":"FrotaPro","start_url":"./","display":"standalone","background_color":"#f3f6fa","theme_color":"#123a60","icons":[{"src":"frotapro-icon-512.png","sizes":"512x512","type":"image/png"},{"src":"frotapro-icon-180.png","sizes":"180x180","type":"image/png"}]}
+{
+  "id": "./index.html",
+  "name": "FrotaPro | Gestão de Viagens e Despesas",
+  "short_name": "FrotaPro",
+  "description": "Sistema gerencial de controle de frotas, viagens, despesas, chapas e diárias.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "display_override": ["window-controls-overlay", "standalone", "minimal-ui"],
+  "orientation": "any",
+  "background_color": "#0b1d36",
+  "theme_color": "#11283f",
+  "lang": "pt-BR",
+  "categories": ["business", "finance", "productivity"],
+  "icons": [
+    {
+      "src": "./icons/frotapro-icon-180.png",
+      "sizes": "180x180",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "./icons/frotapro-icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "./icons/frotapro-icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Nova Viagem",
+      "short_name": "Viagens",
+      "url": "./index.html#viagens",
+      "icons": [{ "src": "./icons/frotapro-icon-180.png", "sizes": "180x180" }]
+    },
+    {
+      "name": "Controle RH · Chapas e Diárias",
+      "short_name": "Chapas e Diárias",
+      "url": "./index.html#rh",
+      "icons": [{ "src": "./icons/frotapro-icon-180.png", "sizes": "180x180" }]
+    }
+  ]
+}
