@@ -1,0 +1,17 @@
+{
+  "name": "FrotaPro | Gestão de Viagens e Despesas",
+  "short_name": "FrotaPro",
+  "description": "Gestão de viagens, frota e despesas.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#eef2f6",
+  "theme_color": "#0d2742",
+  "icons": [{
+    "src": "frotapro-icon-512.png",
+    "sizes": "512x512",
+    "type": "image/png",
+    "purpose": "any maskable"
+  }]
+}
