@@ -2527,94 +2527,6 @@ cpPresentSources=function(){
  #view .fp-period-control input[type="month"]{width:100%!important;min-width:0!important;max-width:100%!important}
 }
 </style>
-
-<meta name="theme-color" content="#0d2742">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="FrotaPro">
-<link rel="manifest" href="manifest.webmanifest">
-<link rel="apple-touch-icon" href="frotapro-icon-180.png">
-<style id="frotapro-mobile-app-final">
-
-/* Mobile redesign: layout only; existing application logic is untouched. */
-@media(max-width:700px){
- html,body{width:100%;max-width:100%;overflow-x:hidden;-webkit-text-size-adjust:100%}
- .layout{display:flex!important;flex-direction:column!important;min-height:100dvh;width:100%!important}
- .side{position:relative!important;inset:auto!important;width:100%!important;max-width:100%!important;height:auto!important;max-height:none!important;overflow:visible!important;margin:0!important;padding:8px 8px 5px!important;border-radius:0 0 16px 16px!important;z-index:8!important}
- .side .brand{display:none!important}.sidefoot{display:none!important}
- .nav{display:flex!important;flex-direction:row!important;align-items:stretch!important;gap:5px!important;width:100%!important;overflow-x:auto!important;overflow-y:hidden!important;scrollbar-width:thin!important;padding:3px 1px 7px!important;-webkit-overflow-scrolling:touch}
- .navlabel{display:none!important}
- .nav button{flex:0 0 auto!important;width:auto!important;min-width:74px!important;max-width:125px!important;height:auto!important;min-height:46px!important;margin:0!important;padding:8px 10px!important;border-radius:11px!important;display:flex!important;align-items:center!important;justify-content:center!important;gap:6px!important;text-align:center!important;white-space:nowrap!important;font-size:11px!important}
- .nav button span:last-child{display:inline!important;white-space:nowrap!important}
- .nav button .ico{width:auto!important;font-size:15px!important}
- .nav button.active:before{display:none!important}
- .main{margin:0!important;width:100%!important;max-width:100%!important;min-width:0!important}
- .top{height:auto!important;min-height:54px!important;position:sticky!important;top:0!important;padding:10px 14px!important;gap:10px!important}
- .content{width:100%!important;max-width:100%!important;padding:15px 12px 30px!important;overflow-x:visible!important}
- .head{display:flex!important;flex-direction:column!important;align-items:flex-start!important;gap:10px!important;padding-bottom:13px!important;margin-bottom:14px!important}
- .head h1{font-size:22px!important;line-height:1.2!important;overflow-wrap:anywhere}
- .head .actions{width:100%!important;display:flex!important;flex-wrap:wrap!important;justify-content:flex-start!important;gap:7px!important}
- #view, #view>*{max-width:100%!important;min-width:0!important}
- #view .grid,#view .two,#view .formgrid{grid-template-columns:minmax(0,1fr)!important}
- #view .stats,#view .dash-stats{grid-template-columns:repeat(2,minmax(0,1fr))!important}
- #view .card{min-width:0!important;max-width:100%!important;padding:13px!important}
- #view input,#view select,#view textarea,.content input,.content select,.content textarea{width:100%!important;max-width:100%!important;min-width:0!important;font-size:16px!important}
- #view button,.content button{max-width:100%!important;white-space:normal!important;overflow-wrap:anywhere}
- .tablewrap,.table-wrapper,.report-table-wrap,.overflow-auto{max-width:100%!important;width:100%!important;overflow-x:auto!important;-webkit-overflow-scrolling:touch!important}
- table{min-width:600px!important;max-width:none!important}
- .modalback{padding:10px!important;align-items:flex-start!important;overflow:auto!important}
- .modal{width:100%!important;max-width:100%!important;max-height:calc(100dvh - 20px)!important;overflow:auto!important}
- .user #today{display:none!important}
-}
-@media(max-width:430px){
- #view .stats,#view .dash-stats{grid-template-columns:minmax(0,1fr)!important}
- .nav button{min-width:66px!important;padding:8px 7px!important;font-size:10px!important}
- .content{padding-left:10px!important;padding-right:10px!important}
- .head h1{font-size:20px!important}
-}
-@media(min-width:701px){.side{width:250px}.main{margin-left:250px;width:calc(100% - 250px)}}
-</style>
-<style id="frotapro-mobile-consolidated-v2">
-@media(max-width:700px){
- html,body{width:100%;max-width:100%;overflow-x:hidden!important;-webkit-text-size-adjust:100%;}
- .layout{display:flex!important;flex-direction:column!important;width:100%!important;min-height:100dvh!important}
- .side{position:fixed!important;left:0!important;right:0!important;bottom:0!important;top:auto!important;width:100%!important;height:auto!important;max-height:none!important;z-index:9999!important;padding:7px 5px calc(7px + env(safe-area-inset-bottom))!important;margin:0!important;border-radius:20px 20px 0 0!important;background:rgba(10,24,43,.97)!important;backdrop-filter:blur(18px)!important;box-shadow:0 -8px 28px rgba(0,0,0,.22)!important;overflow:hidden!important}
- .side .brand,.side .navlabel,.sidefoot{display:none!important}
- .side .nav{display:flex!important;flex-direction:row!important;align-items:stretch!important;gap:3px!important;width:100%!important;margin:0!important;padding:0!important;overflow-x:auto!important;overflow-y:hidden!important;scrollbar-width:none!important}
- .side .nav::-webkit-scrollbar{display:none!important}
- .side .nav button{display:flex!important;flex:1 0 68px!important;width:auto!important;min-width:68px!important;max-width:110px!important;min-height:61px!important;flex-direction:column!important;align-items:center!important;justify-content:center!important;gap:5px!important;margin:0!important;padding:6px 4px!important;border-radius:12px!important;font-size:10px!important;line-height:1.15!important;text-align:center!important;white-space:normal!important;color:#b9c9dc!important}
- .side .nav button span:not(.ico){display:block!important;max-width:100%!important;overflow-wrap:anywhere!important}
- .side .nav button .ico{display:flex!important;align-items:center!important;justify-content:center!important;height:22px!important;font-size:19px!important}
- .side .nav button .ico svg{width:21px!important;height:21px!important}
- .side .nav button.active{background:linear-gradient(145deg,#1d65b6,#174879)!important;color:#fff!important;box-shadow:inset 0 0 0 1px #69b8ff55!important}
- .main{margin:0!important;width:100%!important;min-width:0!important}
- .top{width:100%!important;min-height:56px!important;height:auto!important;padding:10px 13px!important;gap:8px!important;flex-wrap:wrap!important}
- .content{width:100%!important;min-width:0!important;padding:14px 12px calc(108px + env(safe-area-inset-bottom))!important;box-sizing:border-box!important}
- #view{width:100%!important;min-width:0!important}
- #view .head{display:flex!important;flex-direction:column!important;align-items:stretch!important;gap:10px!important}
- #view .head h1{font-size:22px!important;line-height:1.25!important;overflow-wrap:anywhere!important}
- #view .head .actions{display:flex!important;flex-wrap:wrap!important;width:100%!important;gap:8px!important}
- #view .grid,#view .formgrid,#view .two,#view .report-filter-grid,#view .custom-date-grid{grid-template-columns:minmax(0,1fr)!important}
- #view .grid>*,#view .formgrid>*,#view .two>*{width:100%!important;min-width:0!important}
- #view .filter{display:flex!important;flex-direction:column!important;align-items:stretch!important;gap:10px!important}
- #view .filter>*{width:100%!important;max-width:100%!important;min-width:0!important}
- #view input,#view select,#view textarea,#modal input,#modal select,#modal textarea{width:100%!important;max-width:100%!important;min-width:0!important;min-height:44px!important;font-size:16px!important;box-sizing:border-box!important}
- #view input[type=checkbox],#view input[type=radio]{width:auto!important;min-height:0!important}
- #view .tablewrap,.tablewrap{width:100%!important;max-width:100%!important;overflow-x:auto!important;-webkit-overflow-scrolling:touch!important}
- #view table,.tablewrap table{min-width:620px!important}
- #view .calendar,#view .calendar-grid,#view [class*=calendar]{max-width:100%!important;min-width:0!important}
- #view .calendar-grid{grid-template-columns:repeat(7,minmax(0,1fr))!important}
- #view .calendar-grid>*{min-width:0!important;overflow-wrap:anywhere!important}
- .dash-stats{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:9px!important}
- .dash-stats>*{min-width:0!important}
- .dash-secondary-stats,.dash-insights{grid-template-columns:1fr!important;gap:10px!important}
- .modalback{padding:9px!important;align-items:center!important}
- .modal{width:100%!important;max-width:100%!important;max-height:90dvh!important;overflow:auto!important}
- .modalbody{max-width:100%!important;overflow-x:hidden!important}
- .tabs,.tablist{max-width:100%!important;overflow-x:auto!important}
-}
-@media(max-width:390px){.content{padding-left:9px!important;padding-right:9px!important}.dash-stats{grid-template-columns:repeat(2,minmax(0,1fr))!important}.side .nav button{flex-basis:62px!important;min-width:62px!important;font-size:9px!important}}
-</style>
 </head>
 <body>
 <div class="layout">
@@ -3270,40 +3182,6 @@ function printTripList(){let html=tripTable(db.viagens,false);let w=window.open(
 
 </head><body><h1>FROTAPRO — RELATÓRIO DE VIAGENS</h1><p>Emitido em ${dateBR(today())}</p>${html}
 
-
-
-<style id="frotapro-mobile-navigation-stability">
-/* Final mobile layout: menu fixed and content independent from navigation. */
-@media (max-width:700px){
- html,body{width:100%;max-width:100%;overflow-x:hidden!important}
- .layout{display:block!important;width:100%!important;min-height:100dvh!important}
- .side{position:fixed!important;left:0!important;right:0!important;bottom:0!important;top:auto!important;transform:none!important;width:100%!important;height:auto!important;max-height:none!important;min-width:0!important;z-index:10000!important;margin:0!important;padding:7px 6px calc(7px + env(safe-area-inset-bottom))!important;overflow:visible!important;box-sizing:border-box!important;border-radius:18px 18px 0 0!important;background:rgba(12,29,49,.98)!important;box-shadow:0 -8px 28px rgba(0,0,0,.20)!important}
- .side .brand,.side .navlabel,.sidefoot{display:none!important}
- .side .nav{display:flex!important;flex-direction:row!important;width:100%!important;min-width:0!important;gap:4px!important;margin:0!important;padding:0!important;overflow-x:auto!important;overflow-y:hidden!important;scrollbar-width:none!important}
- .side .nav::-webkit-scrollbar{display:none!important}
- .side .nav button{display:flex!important;flex:1 0 70px!important;min-width:70px!important;max-width:120px!important;width:auto!important;min-height:62px!important;height:auto!important;flex-direction:column!important;align-items:center!important;justify-content:center!important;margin:0!important;padding:6px 4px!important;gap:5px!important;white-space:normal!important;overflow:visible!important;font-size:10px!important;line-height:1.2!important;text-align:center!important}
- .side .nav button span:not(.ico){display:block!important;max-width:100%!important;white-space:normal!important;overflow-wrap:anywhere!important}
- .side .nav button .ico{display:flex!important;justify-content:center!important;align-items:center!important;min-width:0!important;height:22px!important;font-size:19px!important}
- .side .nav button.active:before{display:none!important}
- .main{display:block!important;width:100%!important;max-width:100%!important;min-width:0!important;margin:0!important;padding:0!important}
- .top{position:relative!important;top:auto!important;width:100%!important;box-sizing:border-box!important}
- .content{display:block!important;width:100%!important;max-width:100%!important;min-width:0!important;box-sizing:border-box!important;padding:14px 12px calc(105px + env(safe-area-inset-bottom))!important;margin:0!important}
- #view{display:block!important;width:100%!important;max-width:100%!important;min-width:0!important;box-sizing:border-box!important}
- #view>*{min-width:0!important;max-width:100%!important;box-sizing:border-box!important}
- #view .grid.two,#view .formgrid,#view .two,#view .report-filter-grid,#view .custom-date-grid{grid-template-columns:minmax(0,1fr)!important}
- #view .grid:not(.stats):not(.dash-stats):not(.dash-secondary-stats):not(.three){grid-template-columns:minmax(0,1fr)!important}
- #view .dash-stats,.dash-stats{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:10px!important}
- #view .dash-secondary-stats,.dash-secondary-stats,#view .dash-insights,.dash-insights{grid-template-columns:minmax(0,1fr)!important;gap:10px!important}
- #view .filter{display:flex!important;flex-direction:column!important;align-items:stretch!important;gap:10px!important}
- #view .filter>*{width:100%!important;min-width:0!important;max-width:100%!important}
- #view input,#view select,#view textarea,#modal input,#modal select,#modal textarea{width:100%!important;max-width:100%!important;min-width:0!important;box-sizing:border-box!important;font-size:16px!important}
- #view input[type=checkbox],#view input[type=radio]{width:auto!important}
- .tablewrap,#view .tablewrap{width:100%!important;max-width:100%!important;overflow-x:auto!important;-webkit-overflow-scrolling:touch!important}
- .modalback{padding:10px!important;box-sizing:border-box!important}
- .modal{width:100%!important;max-width:100%!important;max-height:90dvh!important;overflow:auto!important}
-}
-@media(max-width:390px){.content{padding-left:10px!important;padding-right:10px!important}.side .nav button{flex-basis:64px!important;min-width:64px!important;font-size:9px!important}}
-</style>
 
 </body></html>`);w.document.close();w.focus();w.print()}
 function backupPage(){return head('Backup e restauração','Proteja os dados e transfira-os quando necessário.')+`<div class="grid two"><div class="card"><h3>Baixar backup completo</h3><p class="muted">Inclui viagens, despesas vinculadas e cadastros. Os dados antigos de fretes e abastecimentos são preservados no arquivo, mas não entram nos cálculos.</p><button class="primary" onclick="backup()">Baixar JSON</button></div><div class="card"><h3>Restaurar backup</h3><p class="muted">A restauração substitui os dados atuais.</p><input id="backupFile" type="file" accept=".json"><button class="soft" style="margin-top:10px" onclick="restoreBackup()">Restaurar arquivo</button></div><div class="card"><h3>Quantidade de registros</h3>${[['Viagens',db.viagens.length],['Despesas avulsas',db.despesas.length],['Despesas dentro das viagens',db.viagens.reduce((s,t)=>s+(t.despesas||[]).length,0)],['Fretes',db.fretes.length],['Abastecimentos',db.abastecimentos.length]].map(x=>`<p style="display:flex;justify-content:space-between;border-bottom:1px solid var(--line);padding:7px 0"><span class="muted">${x[0]}</span><b>${x[1]}</b></p>`).join('')}</div><div class="card"><h3>Importante</h3><p class="muted" style="line-height:1.7">Este arquivo funciona localmente no navegador e não sincroniza automaticamente entre computadores. Faça backup frequente e guarde o JSON fora do computador.</p></div></div>`}
@@ -4456,39 +4334,62 @@ if(typeof original==='function')try{window.render()}catch(e){console.error('Rend
 @media(max-width:600px){#view .fp-recent-trip{grid-template-columns:38px minmax(0,1fr);gap:9px;padding:11px;min-height:0}#view .fp-recent-meta{grid-column:2;display:flex;justify-content:space-between;align-items:center;width:100%;padding-left:0}#view .fp-recent-truck{width:36px;height:36px}#view .fp-recent-truck svg{width:27px;height:27px}}
 </style>
 
-
-<style id="frotapro-mobile-navigation-stability">
-/* Final mobile layout: menu fixed and content independent from navigation. */
-@media (max-width:700px){
- html,body{width:100%;max-width:100%;overflow-x:hidden!important}
- .layout{display:block!important;width:100%!important;min-height:100dvh!important}
- .side{position:fixed!important;left:0!important;right:0!important;bottom:0!important;top:auto!important;transform:none!important;width:100%!important;height:auto!important;max-height:none!important;min-width:0!important;z-index:10000!important;margin:0!important;padding:7px 6px calc(7px + env(safe-area-inset-bottom))!important;overflow:visible!important;box-sizing:border-box!important;border-radius:18px 18px 0 0!important;background:rgba(12,29,49,.98)!important;box-shadow:0 -8px 28px rgba(0,0,0,.20)!important}
- .side .brand,.side .navlabel,.sidefoot{display:none!important}
- .side .nav{display:flex!important;flex-direction:row!important;width:100%!important;min-width:0!important;gap:4px!important;margin:0!important;padding:0!important;overflow-x:auto!important;overflow-y:hidden!important;scrollbar-width:none!important}
- .side .nav::-webkit-scrollbar{display:none!important}
- .side .nav button{display:flex!important;flex:1 0 70px!important;min-width:70px!important;max-width:120px!important;width:auto!important;min-height:62px!important;height:auto!important;flex-direction:column!important;align-items:center!important;justify-content:center!important;margin:0!important;padding:6px 4px!important;gap:5px!important;white-space:normal!important;overflow:visible!important;font-size:10px!important;line-height:1.2!important;text-align:center!important}
- .side .nav button span:not(.ico){display:block!important;max-width:100%!important;white-space:normal!important;overflow-wrap:anywhere!important}
- .side .nav button .ico{display:flex!important;justify-content:center!important;align-items:center!important;min-width:0!important;height:22px!important;font-size:19px!important}
- .side .nav button.active:before{display:none!important}
- .main{display:block!important;width:100%!important;max-width:100%!important;min-width:0!important;margin:0!important;padding:0!important}
- .top{position:relative!important;top:auto!important;width:100%!important;box-sizing:border-box!important}
- .content{display:block!important;width:100%!important;max-width:100%!important;min-width:0!important;box-sizing:border-box!important;padding:14px 12px calc(105px + env(safe-area-inset-bottom))!important;margin:0!important}
- #view{display:block!important;width:100%!important;max-width:100%!important;min-width:0!important;box-sizing:border-box!important}
- #view>*{min-width:0!important;max-width:100%!important;box-sizing:border-box!important}
- #view .grid.two,#view .formgrid,#view .two,#view .report-filter-grid,#view .custom-date-grid{grid-template-columns:minmax(0,1fr)!important}
- #view .grid:not(.stats):not(.dash-stats):not(.dash-secondary-stats):not(.three){grid-template-columns:minmax(0,1fr)!important}
- #view .dash-stats,.dash-stats{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:10px!important}
- #view .dash-secondary-stats,.dash-secondary-stats,#view .dash-insights,.dash-insights{grid-template-columns:minmax(0,1fr)!important;gap:10px!important}
- #view .filter{display:flex!important;flex-direction:column!important;align-items:stretch!important;gap:10px!important}
- #view .filter>*{width:100%!important;min-width:0!important;max-width:100%!important}
- #view input,#view select,#view textarea,#modal input,#modal select,#modal textarea{width:100%!important;max-width:100%!important;min-width:0!important;box-sizing:border-box!important;font-size:16px!important}
- #view input[type=checkbox],#view input[type=radio]{width:auto!important}
- .tablewrap,#view .tablewrap{width:100%!important;max-width:100%!important;overflow-x:auto!important;-webkit-overflow-scrolling:touch!important}
- .modalback{padding:10px!important;box-sizing:border-box!important}
- .modal{width:100%!important;max-width:100%!important;max-height:90dvh!important;overflow:auto!important}
-}
-@media(max-width:390px){.content{padding-left:10px!important;padding-right:10px!important}.side .nav button{flex-basis:64px!important;min-width:64px!important;font-size:9px!important}}
-</style>
-
 </body>
 </html>
+
+<!-- FrotaPro mobile navigation rebuild: drawer, full-width content, touch-first controls -->
+<style id="frotapro-mobile-drawer-rebuild">
+@media(max-width:760px){
+ html,body{margin:0!important;width:100%!important;max-width:100%!important;overflow-x:hidden!important}
+ .layout{display:block!important;width:100%!important;min-height:100dvh!important}
+ .main{width:100%!important;min-width:0!important;margin:0!important;padding:0!important}
+ .top{position:sticky!important;top:0!important;z-index:20!important;display:flex!important;align-items:center!important;gap:10px!important;padding:10px 12px!important;min-height:58px!important;background:#fff!important;box-shadow:0 2px 10px #10243b12!important}
+ #fp-mobile-menu-toggle{flex:0 0 46px!important;width:46px!important;height:46px!important;border:0!important;border-radius:13px!important;background:#123a60!important;color:#fff!important;font-size:24px!important;display:flex!important;align-items:center!important;justify-content:center!important;touch-action:manipulation!important}
+ #crumb{font-size:16px!important;line-height:1.3!important;min-width:0!important;flex:1!important}
+ .top .user{margin-left:auto!important;min-width:0!important;gap:6px!important;font-size:12px!important}
+ .top .user #today{display:none!important}
+ .content,#view{width:100%!important;max-width:100%!important;min-width:0!important;margin:0!important;padding:14px 12px calc(30px + env(safe-area-inset-bottom))!important;box-sizing:border-box!important;overflow:visible!important}
+ .side{position:fixed!important;top:0!important;bottom:0!important;left:0!important;width:min(310px,86vw)!important;max-width:86vw!important;height:100dvh!important;max-height:100dvh!important;z-index:1003!important;transform:translateX(-110%)!important;transition:transform .25s ease!important;overflow-y:auto!important;overscroll-behavior:contain!important;padding:18px 14px calc(24px + env(safe-area-inset-bottom))!important;margin:0!important;border-radius:0 22px 22px 0!important;background:#102b48!important;box-shadow:0 0 30px #0005!important;display:block!important}
+ .side.fp-drawer-open{transform:translateX(0)!important}
+ .side .brand{display:flex!important;margin-bottom:18px!important}.side .navlabel{display:block!important;margin:16px 8px 8px!important;color:#b6cce2!important;font-size:11px!important;letter-spacing:1px!important}
+ .side .nav{display:flex!important;flex-direction:column!important;align-items:stretch!important;gap:5px!important;width:100%!important;overflow:visible!important}
+ .side .nav button{display:flex!important;width:100%!important;min-width:0!important;min-height:52px!important;flex-direction:row!important;align-items:center!important;justify-content:flex-start!important;gap:13px!important;padding:12px 14px!important;border-radius:12px!important;text-align:left!important;font-size:15px!important;white-space:normal!important}
+ .side .nav button .ico{flex:0 0 25px!important;width:25px!important;height:25px!important}.side .nav button span:last-child{flex:1!important}
+ .side .sidefoot{display:block!important;margin-top:22px!important;font-size:12px!important}
+ #fp-mobile-drawer-shade{position:fixed!important;inset:0!important;background:rgba(5,17,29,.48)!important;z-index:1002!important;display:none!important;touch-action:manipulation!important}
+ #fp-mobile-drawer-shade.fp-shade-visible{display:block!important}
+ #view>*{max-width:100%!important;min-width:0!important;box-sizing:border-box!important}
+ #view .head{display:flex!important;flex-direction:column!important;align-items:stretch!important;gap:12px!important}
+ #view .head .actions{display:flex!important;flex-wrap:wrap!important;width:100%!important;gap:8px!important}
+ #view .grid,#view .formgrid,#view .two,#view .report-filter-grid,#view .custom-date-grid{grid-template-columns:minmax(0,1fr)!important}
+ #view .grid>* ,#view .formgrid>*{min-width:0!important;width:100%!important}
+ #view .filter{display:flex!important;flex-direction:column!important;align-items:stretch!important;gap:12px!important}
+ #view .filter>*{min-width:0!important;width:100%!important;max-width:100%!important}
+ #view input,#view select,#view textarea,#modal input,#modal select,#modal textarea{max-width:100%!important;min-width:0!important;box-sizing:border-box!important;font-size:16px!important}
+ #view input[type=date],#view input[type=month],#view input[type=datetime-local],#view select,#view input[type=text],#view input[type=number],#view textarea{width:100%!important;min-height:45px!important}
+ .tablewrap{width:100%!important;max-width:100%!important;overflow-x:auto!important;-webkit-overflow-scrolling:touch!important}
+ .tablewrap table{min-width:620px!important;width:max-content!important}
+ .modalback{padding:8px!important}.modal{width:100%!important;max-width:100%!important;max-height:92dvh!important;overflow:auto!important}
+ body.fp-mobile-drawer-active{overflow:hidden!important}
+}
+@media(max-width:390px){#view,.content{padding-left:10px!important;padding-right:10px!important}#view .dash-stats{grid-template-columns:repeat(2,minmax(0,1fr))!important}}
+@media(min-width:761px){#fp-mobile-menu-toggle,#fp-mobile-drawer-shade{display:none!important}}
+</style>
+<script id="frotapro-mobile-drawer-controller">
+(function(){
+ function initFrotaDrawer(){
+  if(window.innerWidth>760)return;
+  const side=document.querySelector('.side'),top=document.querySelector('.main .top');if(!side||!top)return;
+  if(!document.getElementById('fp-mobile-menu-toggle')){const btn=document.createElement('button');btn.id='fp-mobile-menu-toggle';btn.type='button';btn.setAttribute('aria-label','Abrir menu de navegação');btn.setAttribute('aria-expanded','false');btn.textContent='☰';top.insertBefore(btn,top.firstChild);}
+  if(!document.getElementById('fp-mobile-drawer-shade')){const shade=document.createElement('div');shade.id='fp-mobile-drawer-shade';shade.setAttribute('aria-hidden','true');document.body.appendChild(shade);}
+  const btn=document.getElementById('fp-mobile-menu-toggle'),shade=document.getElementById('fp-mobile-drawer-shade');
+  function close(){side.classList.remove('fp-drawer-open');shade.classList.remove('fp-shade-visible');document.body.classList.remove('fp-mobile-drawer-active');btn.setAttribute('aria-expanded','false');}
+  function open(){side.classList.add('fp-drawer-open');shade.classList.add('fp-shade-visible');document.body.classList.add('fp-mobile-drawer-active');btn.setAttribute('aria-expanded','true');}
+  btn.onclick=()=>side.classList.contains('fp-drawer-open')?close():open();shade.onclick=close;
+  side.querySelectorAll('.nav button[data-page]').forEach(b=>b.addEventListener('click',close));
+  document.addEventListener('keydown',e=>{if(e.key==='Escape')close();});
+ }
+ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',initFrotaDrawer);else initFrotaDrawer();
+ window.addEventListener('resize',initFrotaDrawer);
+})();
+</script>
