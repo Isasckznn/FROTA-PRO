@@ -3689,6 +3689,123 @@ button:not(:disabled){box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 2px 8px r
 .brand .brandicon svg{width:58px!important;height:58px!important;stroke:#eaf4ff!important;filter:drop-shadow(0 4px 12px rgba(76,154,255,.45))}
 @media(max-width:700px){.brand .brandicon{width:46px!important;height:46px!important;flex-basis:46px!important}.brand .brandicon svg{width:42px!important;height:42px!important}}
 </style>
+<style id="fp-v330-redesign">
+/* ============ SISTEMA VISUAL FROTAPRO 3.3 ============
+   Tokens do tema alimentam o sistema inteiro (menu, botões, cards, campos, tabelas, modais, avisos).
+   Só camada visual: não altera nenhum comportamento. */
+:root{
+  --fp-radius:16px; --fp-radius-sm:11px;
+  --fp-shadow:0 1px 2px rgba(16,35,63,.05),0 10px 30px -12px rgba(16,35,63,.16);
+  --fp-glass:rgba(255,255,255,.72);
+  --fp-line-soft:color-mix(in srgb,var(--fp-a) 14%,#e2e9f2);
+  --fp-tint:color-mix(in srgb,var(--fp-a) 9%,#ffffff);
+}
+body{background:radial-gradient(1200px 600px at 110% -10%,color-mix(in srgb,var(--fp-a) 10%,transparent),transparent 60%),var(--fp-bg)!important;color:#17243a;-webkit-font-smoothing:antialiased}
+
+/* ---------- Barra lateral: vitrificada, com borda em bisel animada ---------- */
+.side{
+  background:
+    linear-gradient(180deg,rgba(255,255,255,.06),transparent 30%),
+    linear-gradient(170deg,var(--fp-s1) 0%,var(--fp-s2) 58%,var(--fp-s3) 100%)!important;
+  backdrop-filter:blur(18px) saturate(140%);
+  box-shadow:inset -1px 0 0 rgba(255,255,255,.16),inset -4px 0 8px -6px rgba(0,0,0,.55),18px 0 44px -18px rgba(0,0,0,.45)!important;
+  border-right:0!important;
+}
+.side::before{background:radial-gradient(120% 60% at 0% 0%,color-mix(in srgb,var(--fp-a) 22%,transparent),transparent 60%)!important}
+.side::after{
+  content:"";position:absolute;top:0;right:0;bottom:0;width:3px;pointer-events:auto;
+  background:linear-gradient(180deg,transparent 0%,color-mix(in srgb,var(--fp-a) 55%,transparent) 30%,#ffffff 50%,color-mix(in srgb,var(--fp-a) 55%,transparent) 70%,transparent 100%);
+  background-size:100% 46%;background-repeat:no-repeat;background-position:0 -46%;
+  opacity:.85;animation:fpBevelFlow 5.5s cubic-bezier(.45,0,.55,1) infinite;
+  box-shadow:0 0 12px color-mix(in srgb,var(--fp-a) 60%,transparent);
+  background-image:linear-gradient(180deg,transparent 0%,color-mix(in srgb,var(--fp-a) 55%,transparent) 30%,#ffffff 50%,color-mix(in srgb,var(--fp-a) 55%,transparent) 70%,transparent 100%);
+  -webkit-mask:none;mask:none;
+}
+@keyframes fpBevelFlow{0%{background-position:0 -50%}100%{background-position:0 150%}}
+
+/* Marca */
+.brand{border-bottom:0!important}
+.brand .brandicon{background:transparent!important;box-shadow:none!important}
+.brand b span{color:#fff}
+.brand b i{color:color-mix(in srgb,var(--fp-a) 60%,#fff);font-style:normal}
+
+/* Botões do menu: leves, sem contraste pesado */
+.nav button{
+  background:transparent!important;box-shadow:none!important;border:1px solid transparent!important;
+  border-radius:12px!important;min-height:44px;color:rgba(226,236,250,.78)!important;
+  transition:background .25s ease,color .25s ease,border-color .25s ease!important;
+}
+.nav button::after{display:none!important}
+.nav button:hover{transform:none!important;background:rgba(255,255,255,.055)!important;color:#fff!important;border-color:rgba(255,255,255,.05)!important}
+.nav button.active{
+  background:linear-gradient(90deg,color-mix(in srgb,var(--fp-a) 22%,transparent),transparent 85%)!important;
+  color:#fff!important;border-color:color-mix(in srgb,var(--fp-a) 26%,transparent)!important;
+  box-shadow:none!important;
+}
+.nav button.active:before{width:3px!important;left:-10px!important;top:12px!important;bottom:12px!important;background:var(--fp-a)!important;border-radius:0 4px 4px 0!important}
+.nav button .ico{width:auto!important;height:auto!important;background:none!important;box-shadow:none!important;color:rgba(200,218,240,.7)}
+.nav button .ico svg{stroke:currentColor;width:18px;height:18px}
+.nav button.active .ico{color:color-mix(in srgb,var(--fp-a) 55%,#fff)!important}
+.navlabel{color:rgba(170,192,220,.55)!important;letter-spacing:2px!important}
+.fp-version-card{background:rgba(255,255,255,.04)!important;border:1px solid rgba(255,255,255,.08)!important;box-shadow:none!important;border-radius:14px!important}
+.fp-version-card:hover{background:rgba(255,255,255,.07)!important;transform:none!important}
+
+/* ---------- Topo ---------- */
+.top{background:linear-gradient(90deg,#ffffff,var(--fp-tint))!important;border-bottom:1px solid var(--fp-line-soft)!important;backdrop-filter:blur(12px)}
+.top b{letter-spacing:.2px}
+.top .avatar{box-shadow:0 0 0 2px #fff,0 0 0 4px color-mix(in srgb,var(--fp-a) 35%,transparent)}
+
+/* ---------- Títulos e cabeçalhos ---------- */
+.head h1{font-size:26px;letter-spacing:-.6px;color:#10233f}
+.section{color:color-mix(in srgb,var(--fp-a) 70%,#17243a)!important;border-bottom-color:var(--fp-line-soft)!important}
+
+/* ---------- Cards ---------- */
+.card{border-radius:var(--fp-radius)!important;border:1px solid #e6edf6!important;box-shadow:var(--fp-shadow)!important;transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease}
+.card:hover{border-color:color-mix(in srgb,var(--fp-a) 22%,#e6edf6)}
+.stat-card:hover,.dash-stats .stat-card:hover,.dash-secondary-stats>.card:hover{transform:translateY(-2px)}
+.staticon{background:color-mix(in srgb,var(--fp-a) 12%,#fff)!important;color:var(--fp-a)!important;border-radius:12px!important}
+.dash-category-card .bar span,.bar span{background:linear-gradient(90deg,var(--fp-a),var(--fp-a2))!important;box-shadow:0 2px 8px color-mix(in srgb,var(--fp-a) 35%,transparent)}
+.bar{background:color-mix(in srgb,var(--fp-a) 10%,#edf2f7)!important;border-radius:20px}
+
+/* ---------- Botões ---------- */
+button{border-radius:11px!important;transition:background .2s ease,color .2s ease,box-shadow .2s ease,transform .15s ease!important}
+button:not(:disabled):active{transform:scale(.97)!important}
+.primary{background:linear-gradient(135deg,var(--fp-a),var(--fp-a2))!important;color:#fff!important;box-shadow:0 6px 16px -6px color-mix(in srgb,var(--fp-a) 70%,transparent),inset 0 1px 0 rgba(255,255,255,.25)!important}
+.primary:not(:disabled):hover{filter:brightness(1.06)!important;box-shadow:0 10px 22px -8px color-mix(in srgb,var(--fp-a) 75%,transparent),inset 0 1px 0 rgba(255,255,255,.25)!important}
+.soft{background:#f1f5fa!important;color:#2b4166!important;box-shadow:inset 0 0 0 1px #e1e9f3!important}
+.soft:not(:disabled):hover{background:color-mix(in srgb,var(--fp-a) 10%,#fff)!important;color:color-mix(in srgb,var(--fp-a) 75%,#17243a)!important;box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--fp-a) 25%,#e1e9f3)!important}
+.danger{background:#fff1f2!important;color:#b42333!important;box-shadow:inset 0 0 0 1px #fbd5d9!important}
+.greenbtn{background:#e8f8f1!important;color:#0a7a52!important;box-shadow:inset 0 0 0 1px #c6eedc!important}
+
+/* ---------- Campos ---------- */
+.field input,.field select,.field textarea,.filter input,.filter select{border-radius:var(--fp-radius-sm)!important;border:1px solid #dfe7f1!important;background:#fff!important;transition:border-color .2s,box-shadow .2s}
+.field input:focus,.field select:focus,.field textarea:focus,.filter input:focus,.filter select:focus{border-color:var(--fp-a)!important;box-shadow:0 0 0 4px color-mix(in srgb,var(--fp-a) 16%,transparent)!important;outline:none}
+.field label{letter-spacing:.2px;color:#4a5f7a!important}
+
+/* ---------- Tabelas ---------- */
+.tablewrap{border-radius:var(--fp-radius-sm)!important;border:1px solid #e6edf6!important}
+th{background:color-mix(in srgb,var(--fp-a) 6%,#f7f9fc)!important;color:#4a5f7a!important;letter-spacing:.6px!important}
+tr:hover td{background:color-mix(in srgb,var(--fp-a) 4%,#fff)!important}
+td{transition:background .15s}
+
+/* ---------- Pílulas e avisos ---------- */
+.pill{border-radius:999px!important;letter-spacing:.3px}
+.notice{border-radius:var(--fp-radius-sm)!important;background:color-mix(in srgb,var(--fp-a) 7%,#fff)!important;border:1px solid color-mix(in srgb,var(--fp-a) 18%,#fff)!important;color:#2d4a72!important}
+
+/* ---------- Modal e avisos flutuantes ---------- */
+.modalback{background:rgba(8,23,43,.45)!important;backdrop-filter:blur(6px)}
+.modal{border-radius:20px!important;box-shadow:0 30px 90px -20px rgba(8,23,43,.45)!important}
+.modalhead{background:linear-gradient(180deg,#fff,color-mix(in srgb,var(--fp-a) 4%,#fff))!important;border-bottom:1px solid var(--fp-line-soft)!important}
+.toast{background:rgba(14,30,52,.92)!important;backdrop-filter:blur(10px);border-radius:14px!important;box-shadow:0 18px 40px -14px rgba(8,23,43,.5),inset 0 1px 0 rgba(255,255,255,.08)!important;border:1px solid rgba(255,255,255,.08)}
+
+/* ---------- Seletor de temas: mostra o tema real ---------- */
+.fp-theme-chip{border-radius:14px!important}
+.fp-theme-chip.on{background:#fff!important;box-shadow:0 0 0 2px var(--fp-a)!important;outline:none!important}
+.fp-theme-sw{border-radius:9px!important}
+
+/* ---------- Movimento reduzido ---------- */
+@media (prefers-reduced-motion: reduce){.side::after{animation:none!important}*{transition:none!important}}
+</style>
 </head>
 <body>
 <div class="layout">
@@ -3706,7 +3823,7 @@ button:not(:disabled){box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 2px 8px r
 <button data-page="configuracoes"><span class="ico"><svg viewbox="0 0 24 24"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09a1.65 1.65 0 0 0-1-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09a1.65 1.65 0 0 0 1.51-1 1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33h.01a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82v.01a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg></span><span>Configurações</span><span class="fp-nav-badge" id="fpConfigBadge" hidden>NOVA</span></button></nav>
 <div class="sidefoot fp-version-card" onclick="go('configuracoes')" title="Abrir Configurações e Atualizações">
   <div class="fp-ver-row"><span class="fp-ver-dot"></span><b>FrotaPro Enterprise</b></div>
-  <div class="fp-ver-meta">Versão <span id="fpSideVer">v3.2.1</span> • <span id="fpSideStatus">Atualizado</span></div>
+  <div class="fp-ver-meta">Versão <span id="fpSideVer">v3.3.0</span> • <span id="fpSideStatus">Atualizado</span></div>
 </div></aside>
 <main class="main"><header class="top"><b id="crumb">Painel gerencial</b><div class="user"><span id="today"></span><span class="avatar">GP</span><b>Gestão</b></div></header><div class="content" id="view"></div></main>
 </div>
@@ -4805,7 +4922,7 @@ cpPresentSources=function(){const sources=cpPresentSourcesBeforeClean();return s
     <div class="fp-splash-sub">Gestão Inteligente de Frotas</div>
     <div class="fp-splash-bar"><div class="fp-splash-bar-fill" id="fpSplashProgress"></div></div>
     <div class="fp-splash-status" id="fpSplashStatusText">Inicializando módulos operacionais...</div>
-    <div class="fp-splash-ver" id="fpSplashVersionTag">Versão v3.2.1 • Edição Desktop</div>
+    <div class="fp-splash-ver" id="fpSplashVersionTag">Versão v3.3.0 • Edição Desktop</div>
   </div>
 </div>
 
@@ -4835,7 +4952,7 @@ cpPresentSources=function(){const sources=cpPresentSourcesBeforeClean();return s
 </aside>
 <script id="frotapro-settings-and-updater">
 (function () {
-  const APP_VERSION = '3.2.1';
+  const APP_VERSION = '3.3.0';
   const APP_BUILD_DATE = '27/11/2026';
   const SETTINGS_KEY = 'frotapro_settings_v3';
 

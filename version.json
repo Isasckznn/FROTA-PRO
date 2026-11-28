@@ -1,9 +1,10 @@
 {
-  "version": "3.2.1",
+  "version": "3.3.0",
   "releaseDate": "2026-11-27",
   "notes": [
-    "Barra lateral em bloco único, com textura e borda luminosa",
-    "Logo sem moldura quadrada",
-    "Ajuste no texto do menu Controle RH"
+    "Redesign visual completo do sistema, com o mesmo padrão em todas as telas",
+    "Temas agora mudam o sistema inteiro: menu, botões, cards, campos, tabelas e avisos",
+    "Barra lateral vitrificada com borda em relevo animada",
+    "Botões do menu mais leves e discretos"
   ]
 }
