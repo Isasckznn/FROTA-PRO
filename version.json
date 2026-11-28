@@ -1,10 +1,10 @@
 {
-  "version": "3.1.0",
+  "version": "3.2.0",
   "releaseDate": "2026-11-27",
   "notes": [
-    "Botões com animação suave e visual mais refinado",
-    "Aba de Configurações com versão instalada e botão de atualização",
-    "Aviso de atualização discreto para quem já tem o app instalado no computador",
-    "Abertura animada exclusiva para o app instalado no computador"
+    "12 temas visuais para escolher nas Configurações",
+    "Foto de perfil escolhida do computador",
+    "Barra lateral com relevo e botões com visual renovado",
+    "Abertura animada mais longa, com elementos abstratos do projeto"
   ]
 }

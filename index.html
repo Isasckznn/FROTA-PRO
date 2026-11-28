@@ -3598,6 +3598,87 @@ button:focus-visible{outline:2px solid #2866d8;outline-offset:2px}
 @keyframes fpShine{to{background-position:200% center}}
 @media (prefers-reduced-motion: reduce){#fpDesktopSplash *,.nav button{animation:none!important;transition:none!important}}
 </style>
+<style id="fp-v32-temas-splash-sidebar">
+/* Temas */
+html[data-theme="oceano"]{--fp-a:#0ea5e9;--fp-a2:#0369a1;--fp-s1:#0c4a6e;--fp-s2:#082f49;--fp-s3:#04202f;--fp-bg:#eff9fd}
+html[data-theme="grafite"]{--fp-a:#94a3b8;--fp-a2:#475569;--fp-s1:#1f2937;--fp-s2:#111827;--fp-s3:#030712;--fp-bg:#eef1f5}
+html[data-theme="esmeralda"]{--fp-a:#10b981;--fp-a2:#047857;--fp-s1:#064e3b;--fp-s2:#053a2d;--fp-s3:#022c22;--fp-bg:#effaf5}
+html[data-theme="floresta"]{--fp-a:#84cc16;--fp-a2:#3f6212;--fp-s1:#1a2e1a;--fp-s2:#122212;--fp-s3:#0a140a;--fp-bg:#f5f9f0}
+html[data-theme="vinho"]{--fp-a:#e11d48;--fp-a2:#9f1239;--fp-s1:#4c0519;--fp-s2:#3b0414;--fp-s3:#1f020b;--fp-bg:#fdf2f4}
+html[data-theme="cobre"]{--fp-a:#fb923c;--fp-a2:#c2410c;--fp-s1:#431407;--fp-s2:#2c0d04;--fp-s3:#180702;--fp-bg:#fdf5ef}
+html[data-theme="ouro"]{--fp-a:#f59e0b;--fp-a2:#b45309;--fp-s1:#3f2a06;--fp-s2:#2a1c04;--fp-s3:#1a1102;--fp-bg:#fdf8ec}
+html[data-theme="ardosia"]{--fp-a:#a78bfa;--fp-a2:#6d28d9;--fp-s1:#2e1065;--fp-s2:#1e0b47;--fp-s3:#12062e;--fp-bg:#f6f4fe}
+html[data-theme="ciano"]{--fp-a:#22d3ee;--fp-a2:#0e7490;--fp-s1:#0b2530;--fp-s2:#061820;--fp-s3:#030f14;--fp-bg:#eefafc}
+html[data-theme="aco"]{--fp-a:#7dd3fc;--fp-a2:#0284c7;--fp-s1:#1e293b;--fp-s2:#0f172a;--fp-s3:#020617;--fp-bg:#f1f5f9}
+html[data-theme="claro"]{--fp-a:#2563eb;--fp-a2:#1e40af;--fp-s1:#ffffff;--fp-s2:#f1f5f9;--fp-s3:#e2e8f0;--fp-bg:#f5f7fb}
+html{--fp-a:#4c9aff;--fp-a2:#1d5bc2;--fp-s1:#102e50;--fp-s2:#0b1d34;--fp-s3:#081629;--fp-bg:#f3f6fb}
+body{background:var(--fp-bg)!important}
+.side{background:linear-gradient(165deg,var(--fp-s1) 0%,var(--fp-s2) 54%,var(--fp-s3) 100%)!important}
+.primary{background:linear-gradient(135deg,var(--fp-a),var(--fp-a2))!important}
+.bar span{background:linear-gradient(90deg,var(--fp-a),var(--fp-a2))!important}
+.brand .brandicon{background:linear-gradient(145deg,var(--fp-a),var(--fp-a2))!important}
+.nav button.active:before{background:var(--fp-a)!important}
+.nav button.active{background:linear-gradient(90deg,var(--fp-a),transparent)!important;background-color:transparent!important}
+html[data-theme="claro"] .side,html[data-theme="claro"] .side *{color:#1e293b!important}
+html[data-theme="claro"] .brand b,html[data-theme="claro"] .brand span{color:#0f172a!important}
+html[data-theme="claro"] .nav button.active,html[data-theme="claro"] .nav button.active *{color:#fff!important}
+html[data-theme="claro"] .side{box-shadow:8px 0 30px rgba(15,23,42,.08)!important;border-right:1px solid #e2e8f0!important}
+.top .user .avatar{overflow:hidden;padding:0}
+.top .user .avatar img,.fp-avatar-prev img{width:100%;height:100%;object-fit:cover;border-radius:50%}
+
+/* Configurações: tema e foto */
+.fp-theme-title{font-weight:800;font-size:13px;margin:14px 0 8px;color:#193a62}
+.fp-theme-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:8px}
+.fp-theme-chip{display:flex;align-items:center;gap:9px;background:#f5f8fc;color:#24344d;border:1px solid #dfe7f1;padding:9px 11px;border-radius:11px;font-size:12px;font-weight:700;text-align:left;transition:transform .15s ease,box-shadow .2s ease}
+.fp-theme-chip:hover{transform:translateY(-2px);box-shadow:0 8px 18px rgba(16,35,63,.12)}
+.fp-theme-chip.on{outline:2px solid var(--fp-a,#2866d8);outline-offset:2px;background:#fff}
+.fp-theme-sw{width:24px;height:24px;border-radius:8px;flex-shrink:0;box-shadow:inset 0 0 0 1px rgba(0,0,0,.08),0 2px 6px rgba(0,0,0,.12)}
+.fp-photo-block{display:flex;gap:16px;align-items:center;margin-top:14px}
+.fp-avatar-prev{width:72px;height:72px;border-radius:50%;overflow:hidden;background:#e8efff;color:#2458b9;display:grid;place-items:center;font-weight:800;font-size:20px;flex-shrink:0;box-shadow:0 6px 16px rgba(16,35,63,.18),inset 0 0 0 3px #fff}
+.fp-photo-btn{cursor:pointer;display:inline-block;margin-right:8px}
+
+/* Abertura: elementos abstratos (rotas, anéis, cubos de carga, pontos) */
+#fpDesktopSplash .fp-splash-card{position:relative;z-index:2}
+#fpDesktopSplash .fp-abs{position:absolute;inset:0;pointer-events:none;opacity:.9;z-index:1}
+#fpDesktopSplash .fp-abs svg{width:100%;height:100%}
+#fpDesktopSplash .fp-route{fill:none;stroke:rgba(125,211,252,.55);stroke-width:2;stroke-dasharray:14 10;animation:fpRouteFlow 4s linear infinite}
+#fpDesktopSplash .fp-route-b{stroke:rgba(96,165,250,.45);animation-duration:5.5s;animation-direction:reverse}
+#fpDesktopSplash .fp-route-c{stroke:rgba(56,189,248,.3);animation-duration:7s}
+#fpDesktopSplash .fp-ring{fill:none;stroke:rgba(125,211,252,.22);stroke-width:1.5;transform-origin:400px 300px;animation:fpRingPulse 3.6s ease-in-out infinite}
+#fpDesktopSplash .fp-ring-b{animation-delay:.9s}
+#fpDesktopSplash .fp-ring-c{animation-delay:1.8s;stroke-dasharray:6 12}
+#fpDesktopSplash .fp-cube{fill:rgba(56,189,248,.16);stroke:rgba(125,211,252,.55);stroke-width:1.5;animation:fpFloat 5s ease-in-out infinite}
+#fpDesktopSplash .fp-cube-b{animation-delay:1.2s}
+#fpDesktopSplash .fp-cube-c{animation-delay:2.4s}
+#fpDesktopSplash .fp-dot{fill:#7dd3fc;animation:fpBlink 2.4s ease-in-out infinite}
+#fpDesktopSplash .fp-dot-b{animation-delay:.8s}
+#fpDesktopSplash .fp-dot-c{animation-delay:1.6s}
+@keyframes fpRouteFlow{to{stroke-dashoffset:-240}}
+@keyframes fpRingPulse{0%,100%{opacity:.25;transform:scale(1)}50%{opacity:.7;transform:scale(1.04)}}
+@keyframes fpFloat{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-14px) rotate(8deg)}}
+@keyframes fpBlink{0%,100%{opacity:.2}50%{opacity:1}}
+
+/* Barra lateral com relevo */
+.side{box-shadow:inset -1px 0 0 rgba(255,255,255,.07),14px 0 42px rgba(0,0,0,.30)!important}
+.side::before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(circle at 12% 0%,rgba(255,255,255,.12),transparent 42%),linear-gradient(180deg,rgba(255,255,255,.04),transparent 38%)}
+.side>*{position:relative}
+.nav button{position:relative;overflow:hidden;background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.012))!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.07),0 5px 12px rgba(0,0,0,.20)!important;border:1px solid rgba(255,255,255,.04)}
+.nav button::after{content:"";position:absolute;inset:0;background:linear-gradient(110deg,transparent 30%,rgba(255,255,255,.16) 50%,transparent 70%);transform:translateX(-120%);transition:transform .6s ease;pointer-events:none}
+.nav button:hover::after{transform:translateX(120%)}
+.nav button:hover{transform:translateX(4px)!important}
+.nav button .ico{width:30px;height:30px;border-radius:9px;display:grid;place-items:center;flex-shrink:0;background:rgba(255,255,255,.06);box-shadow:inset 0 1px 0 rgba(255,255,255,.12)}
+.nav button .ico svg{width:17px;height:17px}
+.nav button.active .ico{background:linear-gradient(135deg,var(--fp-a),var(--fp-a2));box-shadow:0 6px 16px rgba(0,0,0,.35)}
+.nav button.active{box-shadow:inset 0 0 0 1px rgba(255,255,255,.18),0 8px 22px rgba(0,0,0,.30)!important}
+.fp-version-card{box-shadow:inset 0 1px 0 rgba(255,255,255,.08),0 8px 18px rgba(0,0,0,.25)!important}
+
+/* Botões com relevo */
+button:not(:disabled){box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 2px 8px rgba(16,35,63,.10)}
+.primary:not(:disabled){position:relative;overflow:hidden}
+.primary:not(:disabled)::after{content:"";position:absolute;top:0;bottom:0;left:-40%;width:34%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.38),transparent);transform:skewX(-18deg);transition:left .55s ease;pointer-events:none}
+.primary:not(:disabled):hover::after{left:120%}
+@media (prefers-reduced-motion: reduce){#fpDesktopSplash .fp-abs *{animation:none!important}}
+</style>
 </head>
 <body>
 <div class="layout">
@@ -3615,7 +3696,7 @@ button:focus-visible{outline:2px solid #2866d8;outline-offset:2px}
 <button data-page="configuracoes"><span class="ico"><svg viewbox="0 0 24 24"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09a1.65 1.65 0 0 0-1-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09a1.65 1.65 0 0 0 1.51-1 1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33h.01a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82v.01a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg></span><span>Configurações</span><span class="fp-nav-badge" id="fpConfigBadge" hidden>NOVA</span></button></nav>
 <div class="sidefoot fp-version-card" onclick="go('configuracoes')" title="Abrir Configurações e Atualizações">
   <div class="fp-ver-row"><span class="fp-ver-dot"></span><b>FrotaPro Enterprise</b></div>
-  <div class="fp-ver-meta">Versão <span id="fpSideVer">v3.1.0</span> • <span id="fpSideStatus">Atualizado</span></div>
+  <div class="fp-ver-meta">Versão <span id="fpSideVer">v3.2.0</span> • <span id="fpSideStatus">Atualizado</span></div>
 </div></aside>
 <main class="main"><header class="top"><b id="crumb">Painel gerencial</b><div class="user"><span id="today"></span><span class="avatar">GP</span><b>Gestão</b></div></header><div class="content" id="view"></div></main>
 </div>
@@ -4689,6 +4770,22 @@ cpPresentSources=function(){const sources=cpPresentSourcesBeforeClean();return s
 <!-- ABERTURA INOVADORA PARA O APP INSTALADO NO COMPUTADOR -->
 <div id="fpDesktopSplash" aria-hidden="true" style="display:none">
   <div class="fp-splash-grid"></div>
+  <div class="fp-abs" aria-hidden="true">
+    <svg viewBox="0 0 800 600" preserveAspectRatio="xMidYMid slice">
+      <path class="fp-route" d="M-20 470 C 150 370, 250 560, 410 430 S 690 250, 830 330"/>
+      <path class="fp-route fp-route-b" d="M-20 150 C 170 240, 330 40, 500 140 S 720 300, 830 170"/>
+      <path class="fp-route fp-route-c" d="M-20 300 C 120 300, 260 230, 400 300 S 640 380, 830 300"/>
+      <circle class="fp-ring" cx="400" cy="300" r="170"/>
+      <circle class="fp-ring fp-ring-b" cx="400" cy="300" r="250"/>
+      <circle class="fp-ring fp-ring-c" cx="400" cy="300" r="330"/>
+      <rect class="fp-cube" x="112" y="92" width="26" height="26" rx="6"/>
+      <rect class="fp-cube fp-cube-b" x="652" y="418" width="34" height="34" rx="8"/>
+      <rect class="fp-cube fp-cube-c" x="642" y="104" width="16" height="16" rx="4"/>
+      <circle class="fp-dot" cx="240" cy="190" r="4"/>
+      <circle class="fp-dot fp-dot-b" cx="560" cy="500" r="5"/>
+      <circle class="fp-dot fp-dot-c" cx="700" cy="260" r="3.5"/>
+    </svg>
+  </div>
   <div class="fp-splash-card">
     <div class="fp-splash-logo-ring fp-splash-logo-photo">
       <img src="./icons/frotapro-icon-512.png" alt="Logo FrotaPro" onerror="this.onerror=null;this.src='data:image/png;base64,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';" />
@@ -4698,7 +4795,7 @@ cpPresentSources=function(){const sources=cpPresentSourcesBeforeClean();return s
     <div class="fp-splash-sub">Gestão Inteligente de Frotas</div>
     <div class="fp-splash-bar"><div class="fp-splash-bar-fill" id="fpSplashProgress"></div></div>
     <div class="fp-splash-status" id="fpSplashStatusText">Inicializando módulos operacionais...</div>
-    <div class="fp-splash-ver" id="fpSplashVersionTag">Versão v3.1.0 • Edição Desktop</div>
+    <div class="fp-splash-ver" id="fpSplashVersionTag">Versão v3.2.0 • Edição Desktop</div>
   </div>
 </div>
 
@@ -4728,7 +4825,7 @@ cpPresentSources=function(){const sources=cpPresentSourcesBeforeClean();return s
 </aside>
 <script id="frotapro-settings-and-updater">
 (function () {
-  const APP_VERSION = '3.1.0';
+  const APP_VERSION = '3.2.0';
   const APP_BUILD_DATE = '27/11/2026';
   const SETTINGS_KEY = 'frotapro_settings_v3';
 
@@ -4738,8 +4835,26 @@ cpPresentSources=function(){const sources=cpPresentSourcesBeforeClean();return s
     gestorSigla: 'GP',
     splashDesktop: true,
     autoCheckUpdates: true,
-    compactTables: false
+    compactTables: false,
+    theme: 'azul',
+    photo: ''
   };
+
+  const FP_THEMES = [
+    { id: 'azul', name: 'Azul-marinho', a: '#4c9aff', a2: '#1d5bc2' },
+    { id: 'oceano', name: 'Oceano', a: '#0ea5e9', a2: '#0369a1' },
+    { id: 'grafite', name: 'Grafite', a: '#94a3b8', a2: '#475569' },
+    { id: 'esmeralda', name: 'Esmeralda', a: '#10b981', a2: '#047857' },
+    { id: 'floresta', name: 'Floresta', a: '#84cc16', a2: '#3f6212' },
+    { id: 'vinho', name: 'Vinho', a: '#e11d48', a2: '#9f1239' },
+    { id: 'cobre', name: 'Cobre', a: '#fb923c', a2: '#c2410c' },
+    { id: 'ouro', name: 'Ouro', a: '#f59e0b', a2: '#b45309' },
+    { id: 'ardosia', name: 'Ardósia Violeta', a: '#a78bfa', a2: '#6d28d9' },
+    { id: 'ciano', name: 'Ciano Noturno', a: '#22d3ee', a2: '#0e7490' },
+    { id: 'aco', name: 'Aço Polar', a: '#7dd3fc', a2: '#0284c7' },
+    { id: 'claro', name: 'Sol Claro', a: '#2563eb', a2: '#1e40af' }
+  ];
+  window.FP_THEMES = FP_THEMES;
 
   function getSettings() {
     try {
@@ -4761,7 +4876,18 @@ cpPresentSources=function(){const sources=cpPresentSourcesBeforeClean();return s
     const userBold = document.querySelector('.top .user b');
     const userAvatar = document.querySelector('.top .user .avatar');
     if (userBold && cfg.gestorNome) userBold.textContent = cfg.gestorNome;
-    if (userAvatar && cfg.gestorSigla) userAvatar.textContent = cfg.gestorSigla.slice(0, 3).toUpperCase();
+    if (userAvatar) {
+      if (cfg.photo) {
+        userAvatar.innerHTML = '';
+        const im = document.createElement('img');
+        im.src = cfg.photo; im.alt = '';
+        userAvatar.appendChild(im);
+      } else if (cfg.gestorSigla) {
+        userAvatar.textContent = cfg.gestorSigla.slice(0, 3).toUpperCase();
+      }
+    }
+    if (cfg.theme && cfg.theme !== 'azul') document.documentElement.setAttribute('data-theme', cfg.theme);
+    else document.documentElement.removeAttribute('data-theme');
     const sideVer = document.getElementById('fpSideVer');
     if (sideVer) sideVer.textContent = 'v' + APP_VERSION;
   }
@@ -4799,7 +4925,7 @@ cpPresentSources=function(){const sources=cpPresentSourcesBeforeClean();return s
       setTimeout(() => {
         if (bar) bar.style.width = step.pct + '%';
         if (status) status.textContent = step.text;
-      }, 220 * (idx + 1));
+      }, 1600 * (idx + 1));
     });
 
     setTimeout(() => {
@@ -4807,7 +4933,7 @@ cpPresentSources=function(){const sources=cpPresentSourcesBeforeClean();return s
       setTimeout(() => {
         if (splash && splash.parentNode) splash.style.display = 'none';
       }, 600);
-    }, 1350);
+    }, 6400);
   }
 
   window.fpPreviewSplash = function () {
@@ -4819,12 +4945,12 @@ cpPresentSources=function(){const sources=cpPresentSourcesBeforeClean();return s
     const status = document.getElementById('fpSplashStatusText');
     if (bar) bar.style.width = '0%';
     if (status) status.textContent = 'Inicializando módulos operacionais...';
-    setTimeout(() => { if (bar) bar.style.width = '45%'; if (status) status.textContent = 'Verificando integridade dos dados...'; }, 240);
-    setTimeout(() => { if (bar) bar.style.width = '100%'; if (status) status.textContent = 'Tudo pronto!'; }, 620);
+    setTimeout(() => { if (bar) bar.style.width = '45%'; if (status) status.textContent = 'Verificando integridade dos dados...'; }, 1600);
+    setTimeout(() => { if (bar) bar.style.width = '100%'; if (status) status.textContent = 'Tudo pronto!'; }, 3600);
     setTimeout(() => {
       splash.classList.add('fp-splash-hide');
       setTimeout(() => { splash.style.display = 'none'; }, 600);
-    }, 1450);
+    }, 6400);
   };
 
   // 2. SISTEMA INTELIGENTE DE ATUALIZAÇÃO (NÃO TRAVA O SISTEMA)
@@ -5040,6 +5166,16 @@ cpPresentSources=function(){const sources=cpPresentSourcesBeforeClean();return s
       <div class="card fp-cfg-card">
         <h3>Personalização e Experiência</h3>
         <p class="muted" style="margin:0 0 12px">Ajuste a identificação exibida no topo do sistema e o comportamento da abertura.</p>
+        <div class="fp-theme-title">Tema visual</div>
+        <div class="fp-theme-grid">${(window.FP_THEMES||[]).map(t=>`<button type="button" class="fp-theme-chip${cfg.theme===t.id||(!cfg.theme&&t.id==='azul')?' on':''}" onclick="fpSetTheme('${t.id}')"><span class="fp-theme-sw" style="background:linear-gradient(135deg,${t.a},${t.a2})"></span><span>${t.name}</span></button>`).join('')}</div>
+        <div class="fp-photo-block">
+          <div class="fp-avatar-prev">${cfg.photo?`<img src="${cfg.photo}" alt="Foto de perfil">`:esc(cfg.gestorSigla||'GP')}</div>
+          <div>
+            <div class="fp-theme-title" style="margin-top:0">Foto de perfil</div>
+            <label class="soft small fp-photo-btn">Escolher foto do computador<input type="file" accept="image/*" hidden onchange="fpPickPhoto(this)"></label>
+            ${cfg.photo?'<button type="button" class="danger small" onclick="fpSetPhoto(\'\')">Remover foto</button>':''}
+          </div>
+        </div>
         <div class="grid" style="gap:11px">
           <div class="field">
             <label>Nome do perfil / operador no cabeçalho</label>
@@ -5116,6 +5252,27 @@ cpPresentSources=function(){const sources=cpPresentSourcesBeforeClean();return s
     saveSettings({ gestorNome, gestorSigla, splashDesktop, autoCheckUpdates });
     if (typeof notify === 'function') notify('Configurações salvas com sucesso!');
     render();
+  };
+
+  window.fpSetTheme = function (id) { saveSettings({ theme: id }); if (typeof render === 'function') render(); };
+  window.fpSetPhoto = function (data) { saveSettings({ photo: data || '' }); if (typeof render === 'function') render(); };
+  window.fpPickPhoto = function (input) {
+    const f = input && input.files && input.files[0];
+    if (!f) return;
+    const reader = new FileReader();
+    reader.onload = () => {
+      const im = new Image();
+      im.onload = () => {
+        const S = 192, c = document.createElement('canvas');
+        c.width = S; c.height = S;
+        const x = c.getContext('2d');
+        const m = Math.min(im.width, im.height);
+        x.drawImage(im, (im.width - m) / 2, (im.height - m) / 2, m, m, 0, 0, S, S);
+        window.fpSetPhoto(c.toDataURL('image/jpeg', 0.88));
+      };
+      im.src = reader.result;
+    };
+    reader.readAsDataURL(f);
   };
 
   window.afterRenderSettings = function () {
