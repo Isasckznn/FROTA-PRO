@@ -1,10 +1,9 @@
 {
-  "version": "3.2.0",
+  "version": "3.2.1",
   "releaseDate": "2026-11-27",
   "notes": [
-    "12 temas visuais para escolher nas Configurações",
-    "Foto de perfil escolhida do computador",
-    "Barra lateral com relevo e botões com visual renovado",
-    "Abertura animada mais longa, com elementos abstratos do projeto"
+    "Barra lateral em bloco único, com textura e borda luminosa",
+    "Logo sem moldura quadrada",
+    "Ajuste no texto do menu Controle RH"
   ]
 }

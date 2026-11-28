@@ -3679,6 +3679,16 @@ button:not(:disabled){box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 2px 8px r
 .primary:not(:disabled):hover::after{left:120%}
 @media (prefers-reduced-motion: reduce){#fpDesktopSplash .fp-abs *{animation:none!important}}
 </style>
+<style id="fp-v321-sidebar-bloco">
+/* Barra lateral como bloco único: textura, borda luminosa e fundo contínuo */
+.side{border-right:0!important;box-shadow:inset -1px 0 0 rgba(125,190,255,.38),inset -10px 0 22px -14px rgba(76,154,255,.45),14px 0 42px rgba(0,0,0,.30)!important}
+.side::after{content:"";position:absolute;inset:0;pointer-events:none;background-image:radial-gradient(rgba(255,255,255,.05) 1px,transparent 1px);background-size:14px 14px;-webkit-mask-image:linear-gradient(180deg,#000 0%,rgba(0,0,0,.6) 60%,transparent 100%);mask-image:linear-gradient(180deg,#000 0%,rgba(0,0,0,.6) 60%,transparent 100%)}
+.side .brand{margin-bottom:6px}
+/* Logo sem moldura quadrada */
+.brand .brandicon{background:transparent!important;box-shadow:none!important;border:0!important;outline:0!important;border-radius:0!important;width:64px!important;height:64px!important;flex:0 0 64px!important}
+.brand .brandicon svg{width:58px!important;height:58px!important;stroke:#eaf4ff!important;filter:drop-shadow(0 4px 12px rgba(76,154,255,.45))}
+@media(max-width:700px){.brand .brandicon{width:46px!important;height:46px!important;flex-basis:46px!important}.brand .brandicon svg{width:42px!important;height:42px!important}}
+</style>
 </head>
 <body>
 <div class="layout">
@@ -3687,7 +3697,7 @@ button:not(:disabled){box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 2px 8px r
 <button class="active" data-page="dashboard"><span class="ico"><svg viewbox="0 0 24 24"><rect height="7" rx="1.5" width="7" x="3" y="3"></rect><rect height="7" rx="1.5" width="7" x="14" y="3"></rect><rect height="7" rx="1.5" width="7" x="3" y="14"></rect><rect height="7" rx="1.5" width="7" x="14" y="14"></rect></svg></span><span>Dashboard</span></button>
 <button data-page="viagens"><span class="ico"><svg viewbox="0 0 24 24"><path d="M4 12h15m-6-6 6 6-6 6"></path></svg></span><span>Viagens e despesas</span></button>
 <button data-page="despesas"><span class="ico"><svg viewbox="0 0 24 24"><path d="M12 5v14M5 12h14"></path></svg></span><span>Todas as despesas</span></button>
-<button data-page="rh"><span class="ico"><svg viewbox="0 0 24 24"><path d="M7 3h10a2 2 0 0 1 2 2v16H5V5a2 2 0 0 1 2-2Z"></path><path d="M9 3V2h6v1M8 9h8M8 13h8M8 17h5"></path></svg></span><span>Controle RH<br/>Chapas e diárias</span></button>
+<button data-page="rh"><span class="ico"><svg viewbox="0 0 24 24"><path d="M7 3h10a2 2 0 0 1 2 2v16H5V5a2 2 0 0 1 2-2Z"></path><path d="M9 3V2h6v1M8 9h8M8 13h8M8 17h5"></path></svg></span><span>Controle RH <br/>Chapas e diárias</span></button>
 <button data-page="custos"><span class="ico"><svg viewbox="0 0 24 24"><path d="M3 7h11v10H3zM14 11h4l3 3v3h-7"></path><circle cx="7" cy="18" r="2"></circle><circle cx="18" cy="18" r="2"></circle><path d="M9 3v7m2-6H8.5a1.5 1.5 0 0 0 0 3h1a1.5 1.5 0 0 1 0 3H7"></path></svg></span><span>Custo por veículo</span></button>
 <div class="navlabel">GESTÃO</div>
 <button data-page="cadastros"><span class="ico"><svg viewbox="0 0 24 24"><circle cx="12" cy="8" r="4"></circle><path d="M4 21a8 8 0 0 1 16 0"></path></svg></span><span>Cadastros</span></button>
@@ -3696,7 +3706,7 @@ button:not(:disabled){box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 2px 8px r
 <button data-page="configuracoes"><span class="ico"><svg viewbox="0 0 24 24"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09a1.65 1.65 0 0 0-1-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09a1.65 1.65 0 0 0 1.51-1 1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33h.01a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82v.01a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg></span><span>Configurações</span><span class="fp-nav-badge" id="fpConfigBadge" hidden>NOVA</span></button></nav>
 <div class="sidefoot fp-version-card" onclick="go('configuracoes')" title="Abrir Configurações e Atualizações">
   <div class="fp-ver-row"><span class="fp-ver-dot"></span><b>FrotaPro Enterprise</b></div>
-  <div class="fp-ver-meta">Versão <span id="fpSideVer">v3.2.0</span> • <span id="fpSideStatus">Atualizado</span></div>
+  <div class="fp-ver-meta">Versão <span id="fpSideVer">v3.2.1</span> • <span id="fpSideStatus">Atualizado</span></div>
 </div></aside>
 <main class="main"><header class="top"><b id="crumb">Painel gerencial</b><div class="user"><span id="today"></span><span class="avatar">GP</span><b>Gestão</b></div></header><div class="content" id="view"></div></main>
 </div>
@@ -4795,7 +4805,7 @@ cpPresentSources=function(){const sources=cpPresentSourcesBeforeClean();return s
     <div class="fp-splash-sub">Gestão Inteligente de Frotas</div>
     <div class="fp-splash-bar"><div class="fp-splash-bar-fill" id="fpSplashProgress"></div></div>
     <div class="fp-splash-status" id="fpSplashStatusText">Inicializando módulos operacionais...</div>
-    <div class="fp-splash-ver" id="fpSplashVersionTag">Versão v3.2.0 • Edição Desktop</div>
+    <div class="fp-splash-ver" id="fpSplashVersionTag">Versão v3.2.1 • Edição Desktop</div>
   </div>
 </div>
 
@@ -4825,7 +4835,7 @@ cpPresentSources=function(){const sources=cpPresentSourcesBeforeClean();return s
 </aside>
 <script id="frotapro-settings-and-updater">
 (function () {
-  const APP_VERSION = '3.2.0';
+  const APP_VERSION = '3.2.1';
   const APP_BUILD_DATE = '27/11/2026';
   const SETTINGS_KEY = 'frotapro_settings_v3';
 
